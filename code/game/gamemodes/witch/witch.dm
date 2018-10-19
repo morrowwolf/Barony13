@@ -17,14 +17,14 @@
 	<span class='notice'>Villagers</span>: Eliminate the necromancer before they can succeed!"
 	
 /datum/game_mode/witch/pre_setup()
+	var/datum/mind/witch = antag_pick(antag_candidates)
+	witch.special_role = "witch"
+	witch.restricted_roles = restricted_jobs
+	witchs += witch
+	
 	return 1
 	
 /datum/game_mode/witch/post_setup()
-
-	var/datum/mind/witch = antag_pick(antag_candidates)
-	witchs += witch
-	witch.restricted_roles = restricted_jobs
-	
 	for(var/datum/mind/witchbrain in witchs)
 		witchbrain.add_antag_datum(/datum/antagonist/witch)
 	return ..()
