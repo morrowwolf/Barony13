@@ -17,7 +17,8 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
-	/client/proc/stop_sounds
+	/client/proc/stop_sounds,
+	/client/proc/fix_air // yogs - fix air verb
 	)
 GLOBAL_PROTECT(admin_verbs_admin)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
@@ -123,7 +124,6 @@ GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
-	/client/proc/fix_air, // yogs - fix air verb
 	/client/proc/toggle_hub
 	)
 GLOBAL_PROTECT(admin_verbs_debug)
@@ -166,6 +166,9 @@ GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 	/client/proc/cmd_display_overlay_log,
 	/client/proc/reload_configuration,
 	/datum/admins/proc/create_or_modify_area,
+	/client/proc/cmd_edit_script,		//yogs start - external script
+	/client/proc/cmd_run_script,
+	/client/proc/cmd_stop_script		//yogs end
 	)
 GLOBAL_PROTECT(admin_verbs_possess)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
