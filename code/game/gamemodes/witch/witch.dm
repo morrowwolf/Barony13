@@ -25,8 +25,8 @@
 	witchs += witch
 	witch.restricted_roles = restricted_jobs
 	
-	for(var/datum/mind/witch in witchs)
-		witch.add_antag_datum(/datum/antagonist/witch)
+	for(var/datum/mind/witchbrain in witchs)
+		witchbrain.add_antag_datum(/datum/antagonist/witch)
 	return ..()
 	
 /datum/game_mode/witch/are_special_antags_dead()
