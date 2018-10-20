@@ -1,5 +1,5 @@
 /datum/game_mode
-	var/list/datum/mind/witchs = list()
+	var/list/datum/mind/witches = list()
 	var/list/datum/mind/witchcultists = list()
 	
 /datum/game_mode/witch
@@ -20,17 +20,17 @@
 	var/datum/mind/witch = antag_pick(antag_candidates)
 	witch.special_role = "witch"
 	witch.restricted_roles = restricted_jobs
-	witchs += witch
+	witches += witch
 	
 	return 1
 	
 /datum/game_mode/witch/post_setup()
-	for(var/datum/mind/witchbrain in witchs)
+	for(var/datum/mind/witchbrain in witches)
 		witchbrain.add_antag_datum(/datum/antagonist/witch)
 	return ..()
 	
 /datum/game_mode/witch/are_special_antags_dead()
-	for(var/datum/mind/witch in witchs)
+	for(var/datum/mind/witch in witches)
 		if(isliving(witch.current) && witch.current.stat!=DEAD)
 			return FALSE
 
