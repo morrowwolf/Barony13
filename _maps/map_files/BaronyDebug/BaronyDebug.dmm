@@ -29,9 +29,38 @@
 "C" = (/obj/structure/fermenting_barrel,/turf/open/floor/wood,/area/barony/inside)
 "D" = (/obj/structure/bed/medieval,/turf/open/floor/wood,/area/barony/inside)
 "E" = (/obj/structure/flora/ausbushes,/obj/effect/light_emitter/sun_light,/turf/open/floor/grass,/area/barony/outside)
+"F" = (/obj/machinery/hydroponics/soil/medieval,/turf/open/floor/plating/dirt,/area/barony/outside)
+"G" = (/obj/item/flashlight/lantern{on = 1},/turf/open/floor/wood,/area/barony/inside)
+"H" = (/mob/living/simple_animal/cow,/turf/open/floor/wood,/area/barony/inside)
+"I" = (/mob/living/simple_animal/chicken,/turf/open/floor/wood,/area/barony/inside)
+"J" = (/obj/item/flashlight/lantern{on = 1},/mob/living/simple_animal/chicken,/turf/open/floor/wood,/area/barony/inside)
+"K" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/turf/open/floor/wood,/area/barony/inside)
+"L" = (/obj/structure/table/wood,/obj/item/clothing/head/rice_hat,/obj/item/clothing/head/rice_hat,/turf/open/floor/wood,/area/barony/inside)
+"M" = (/obj/structure/table/wood,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/turf/open/floor/wood,/area/barony/inside)
+"N" = (/obj/structure/sink/puddle,/turf/open/floor/grass,/area/barony/outside)
 
 (1,1,1) = {"
 bbbbaaaaaaaaaaaaaaaaaaaaaaaaaa
+bbbbacccccccccccccccccccccccca
+bbbbaccccccccccccmmmmmmmmmmcca
+bbbbaccFFFFFFFccmddddddddddmca
+bbbbacccccccccccmdGfHHfffGdmca
+bbbbaccFFFFFFFccmdfHffffffdmca
+bbbbacccccccccccmdffHffIfIdmca
+bbbbaNcFFFFFFFccmdfHffffIfdmca
+bbbbacccccccccccmdffffffffdmca
+bbbbaccFFFFFFFccmdffffffIIdmca
+bbbbacccccccccccmdffffffIfdmca
+bbbbaccmmmmcccccmdGffffffJdmca
+bbbbacmdffdmmmmcmddddllddddmca
+bbbbacmdffdddffmcmmmmmmmmmmcca
+bbbbacmdffKKfffmccccccccccccca
+bbbbacmdLfffffdmccccccccccccca
+bbbbacmdoMCCgodmccccccccccccca
+bbbbacmddddddddmccccccccccccca
+bbbbaccmmmmmmmmcccccccccccccca
+bbbbacccccccccccccccccccccccca
+bbbbacccccccccccccccccccccccca
 bbbbatccccccccxcccccccccccccua
 bbbbacccccccccccccccccccccccca
 bbbbaccyzccccccccAcccccmmEmmca
