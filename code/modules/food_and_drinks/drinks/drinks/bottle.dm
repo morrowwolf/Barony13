@@ -54,6 +54,10 @@
 	if(user.has_trait(TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return
+		
+	if(H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
+		smash(target, user)
+		return
 
 	force = 15 //Smashing bottles over someoen's head hurts.
 
