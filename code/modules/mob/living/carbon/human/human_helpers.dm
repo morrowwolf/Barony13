@@ -55,6 +55,8 @@
 		return if_no_face
 	if( head && (head.flags_inv&HIDEFACE) )
 		return if_no_face		//Likewise for hats
+	if( wear_neck && (wear_neck.flags_inv&HIDEFACE) )
+		return if_no_face
 	var/obj/item/bodypart/O = get_bodypart(BODY_ZONE_HEAD)
 	if( !O || (has_trait(TRAIT_DISFIGURED)) || (O.brutestate+O.burnstate)>2 || cloneloss>50 || !real_name )	//disfigured. use id-name if possible
 		return if_no_face

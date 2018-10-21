@@ -110,7 +110,8 @@
 			msg += "<span class='warning'>[t_He] appear[p_s()] to have committed suicide... there is no hope of recovery.</span>\n"
 		if(hellbound)
 			msg += "<span class='warning'>[t_His] soul seems to have been ripped out of [t_his] body.  Revival is impossible.</span>\n"
-		msg += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life"
+		if(!has_trait(TRAIT_FAKEDEATH) || (has_trait(TRAIT_FAKEDEATH) && !cmptext(get_face_name(), "Unknown")))
+			msg += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life"
 		if(getorgan(/obj/item/organ/brain))
 			if(!key)
 				var/foundghost = 0
