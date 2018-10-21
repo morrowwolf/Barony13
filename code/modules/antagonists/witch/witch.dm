@@ -21,7 +21,7 @@
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
 	objectives += /datum/objective/kill_everyone
 	
-/datum/antagonist/witch_cult/equip()
+/datum/antagonist/witch_cult/on_gain()
 	. = ..()
 	equip_antag()
 	
