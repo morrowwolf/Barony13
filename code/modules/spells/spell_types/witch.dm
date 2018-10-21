@@ -19,8 +19,30 @@
 	for(var/turf/T in targets)
 		for(var/obj/item/stack/sheet/bone/b in T.contents)
 			bones += b
+		for(var/mob/living/carbon/human/M in T.contents)
+			for(var/obj/item/I in M.contents)
+				if(istype(I, /obj/item/stack/sheet/bone))
+					var/obj/item/stack/sheet/bone/newbone = I
+					bones += newbone
+					continue
+				if(I.contents)
+					for(var/obj/item/J in I.contents)
+						if(istype(J, /obj/item/stack/sheet/bone))
+							var/obj/item/stack/sheet/bone/newbone = J
+							bones += newbone
+							continue
+						if(J.contents)
+							for(var/obj/item/K in J.contents)
+								if(istype(K, /obj/item/stack/sheet/bone))
+									var/obj/item/stack/sheet/bone/newbone = K
+									bones += newbone
+									
+	var/bone_total = 0
+	
+	for(var/obj/item/stack/sheet/bone/b in bones)
+		bone_total += b.amount
 			
-	if(bones.len < 5)
+	if(bone_total < 5)
 		to_chat(user, "Not enough bones to summon an undead minion!")
 		return
 	
@@ -34,7 +56,7 @@
 		to_chat(user, "No undead to summon!")
 		return
 		
-	while(bones.len >= 5 && candidates.len)
+	while(bone_total >= 5 && candidates.len)
 		var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 		var/key = selected_candidate.key
 
@@ -64,10 +86,18 @@
 		if(skeleton.mind != Mind)			//something has gone wrong!
 			throw EXCEPTION("Skeleton created with incorrect mind")
 	
-		qdel(bones[bones.len])
-		qdel(bones[bones.len])
-		qdel(bones[bones.len])
-		qdel(bones[bones.len])
-		qdel(bones[bones.len])
+		var/bone_removal = 5
+		
+		for(var/obj/item/stack/sheet/bone/b in bones)
+			if(b.amount > bone_removal)
+				b.amount -= bone_removal
+				bone_removal = 0
+			if(b.amount <= bone_removal)
+				bone_removal -= b.amount
+				qdel(b)
+			if(bone_removal == 0)
+				goto FinishBoneRemoval
+				
+		FinishBoneRemoval
 			
 		log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
