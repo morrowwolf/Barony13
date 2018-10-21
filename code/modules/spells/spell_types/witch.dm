@@ -12,6 +12,8 @@
 
 	action_icon_state = "skeleton"
 	
+	var/bones_required = 5
+	
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton/cast(list/targets,mob/user = usr)
 
 	var/list/bones = list()
@@ -42,7 +44,7 @@
 	for(var/obj/item/stack/sheet/bone/b in bones)
 		bone_total += b.amount
 			
-	if(bone_total < 5)
+	if(bone_total < bones_required)
 		to_chat(user, "Not enough bones to summon an undead minion!")
 		return
 	
@@ -56,7 +58,14 @@
 		to_chat(user, "No undead to summon!")
 		return
 		
-	while(bone_total >= 5 && candidates.len)
+	while(bone_total >= bones_required && candidates.len)
+	
+		for(var/obj/item/stack/sheet/bone/b in bones)
+			bone_total += b.amount
+			
+		if(bone_total < bones_required)
+			return
+		
 		var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 		var/key = selected_candidate.key
 
@@ -86,7 +95,8 @@
 		if(skeleton.mind != Mind)			//something has gone wrong!
 			throw EXCEPTION("Skeleton created with incorrect mind")
 	
-		var/bone_removal = 5
+		var/bone_removal = bones_required
+		bone_total -= bone_removal
 		
 		for(var/obj/item/stack/sheet/bone/b in bones)
 			if(b.amount > bone_removal)
