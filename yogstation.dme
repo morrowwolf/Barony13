@@ -1434,6 +1434,7 @@
 #include "code\modules\clothing\masks\hailer.dm"
 #include "code\modules\clothing\masks\miscellaneous.dm"
 #include "code\modules\clothing\neck\_neck.dm"
+#include "code\modules\clothing\neck\cloak.dm"
 #include "code\modules\clothing\outfits\ert.dm"
 #include "code\modules\clothing\outfits\event.dm"
 #include "code\modules\clothing\outfits\standard.dm"

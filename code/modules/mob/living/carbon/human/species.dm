@@ -334,6 +334,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		dynamic_fhair_suffix = M.dynamic_fhair_suffix //mask > head in terms of facial hair
 		if(M.flags_inv & HIDEFACIALHAIR)
 			facialhair_hidden = TRUE
+			
+	if(H.wear_neck)
+		var/obj/item/clothing/neck/N = H.wear_neck
+		dynamic_fhair_suffix = N.dynamic_fhair_suffix //hood > mask > head in terms of facial hair
+		if(N.flags_inv & HIDEFACIALHAIR)
+			facialhair_hidden = TRUE
 
 	if(H.facial_hair_style && (FACEHAIR in species_traits) && (!facialhair_hidden || dynamic_fhair_suffix))
 		S = GLOB.facial_hair_styles_list[H.facial_hair_style]
@@ -385,6 +391,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!dynamic_hair_suffix) //head > mask in terms of head hair
 			dynamic_hair_suffix = M.dynamic_hair_suffix
 		if(M.flags_inv & HIDEHAIR)
+			hair_hidden = TRUE
+			
+	if(H.wear_neck)
+		var/obj/item/clothing/neck/N = H.wear_neck
+		dynamic_hair_suffix = N.dynamic_hair_suffix		//hood > head > mask in terms of head hair
+		if(N.flags_inv & HIDEHAIR)
 			hair_hidden = TRUE
 
 	if(!hair_hidden || dynamic_hair_suffix)

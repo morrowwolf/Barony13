@@ -20,6 +20,7 @@ Arena guys
 	jobtype = /datum/job/peasant
 	belt = /obj/item/melee/medieval/blade/dagger
 	uniform = /obj/item/clothing/under/yogs/peasant
+	neck = /obj/item/clothing/neck/cloak/medieval
 	shoes = null
 	id = null
 	ears = null
@@ -52,6 +53,7 @@ Arena guys
 	l_hand = /obj/item/shields/medieval
 	belt = /obj/item/melee/medieval/blade/shortsword
 	back = /obj/item/melee/medieval/blade/sword
+	neck = /obj/item/clothing/neck/cloak/medieval
 	id = null
 	ears = null
 	
