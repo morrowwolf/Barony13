@@ -12,10 +12,10 @@
 	job_rank = ROLE_WITCH
 	hud_type = "witch"
 	
-/datum/antagonist/witch_cult/proc/equip()
+/datum/antagonist/witch_cult/proc/equip_antag()
 	return
 	
-/datum/antagonist/witch_cult/witch/equip()
+/datum/antagonist/witch_cult/witch/equip_antag()
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/aimed/fireball(null))
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton(null))
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
@@ -23,7 +23,7 @@
 	
 /datum/antagonist/witch_cult/equip()
 	. = ..()
-	equip()
+	equip_antag()
 	
 /datum/antagonist/witch_cult/witch/greet()
 	to_chat(owner, "<span class='userdanger'>You are a necromancer!  Use discretion and destroy all the villagers!</span>")
