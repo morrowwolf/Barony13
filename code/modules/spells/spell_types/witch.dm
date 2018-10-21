@@ -77,7 +77,7 @@
 
 		var/mob/living/carbon/human/skeleton = new(user.loc)
 		var/datum/preferences/A = new()
-		A.real_name = "Servant of [user]"
+		A.real_name = "Undead Servant"
 		A.underwear = "Nude"
 		A.undershirt = "Nude"
 		A.socks = "Nude"
