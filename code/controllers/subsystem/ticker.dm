@@ -538,7 +538,11 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
 		if(SHUTTLE_HIJACK)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
-
+		if(WITCH_WIN)
+			news_message = "Another village has been decimated by what looks like the Warren of Witches"			//is this shit even relevant to anything?  Name is WIP.
+		if(WITCH_LOSE)
+			news_message = "A village has successfully fought of a member of the Warren of Witches"
+			
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
 
