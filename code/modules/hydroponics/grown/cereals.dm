@@ -25,6 +25,13 @@
 	grind_results = list("flour" = 0)
 	tastes = list("wheat" = 1)
 	distill_reagent = "beer"
+	
+/obj/item/reagent_containers/food/snacks/grown/wheat/attack_self(mob/living/user)
+	user.visible_message("<span class='notice'>[user] harvests [src] into seeds.</span>", "<span class='notice'>You harvest [src] into seeds.</span>")
+	var/obj/item/seeds/wheat/S = new
+	qdel(src)
+	user.put_in_hands(S)
+	return 1
 
 // Oat
 /obj/item/seeds/wheat/oat
