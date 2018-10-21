@@ -4,7 +4,7 @@
 
 	school = "evocation"
 	charge_max = 200
-	clothes_req = 1
+	clothes_req = 0
 	invocation = "FORTI GY AMA"
 	invocation_type = "shout"
 	range = 7
