@@ -75,7 +75,7 @@
 			return FALSE
 	return TRUE
 	
-/datum/game_mode/revolution/set_round_result()
+/datum/game_mode/witch/set_round_result()
 	..()
 	if(finished == 1)
 		SSticker.mode_result = "win - village killed"
@@ -84,7 +84,7 @@
 		SSticker.mode_result = "loss - witch killed"
 		SSticker.news_report = WITCH_LOSE
 
-/datum/game_mode/revolution/special_report()
+/datum/game_mode/witch/special_report()
 	if(finished == 1)
 		return "<span class='redtext big'>The village was destroyed!  The witch wins!</span>"
 	else if(finished == 2)
