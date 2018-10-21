@@ -66,6 +66,11 @@
 	if(ishuman(target))
 
 		var/mob/living/carbon/human/H = target
+		
+		if(H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
+			smash(target, user)
+			return
+		
 		var/headarmor = 0 // Target's head armor
 		armor_block = H.run_armor_check(affecting, "melee","","",armour_penetration) // For normal attack damage
 
