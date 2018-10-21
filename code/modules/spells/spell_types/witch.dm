@@ -14,13 +14,13 @@
 	
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton/cast(list/targets,mob/user = usr)
 
-	var/bones = 0
+	var/list/bones = list()
 	
 	for(var/turf/T in targets)
 		for(var/obj/item/stack/sheet/bone/b in T.contents)
-			bones += b.amount
+			bones += b
 			
-	if(bones < 5)
+	if(bones.len < 5)
 		to_chat(user, "Not enough bones to summon an undead minion!")
 		return
 	
@@ -34,7 +34,7 @@
 		to_chat(user, "No undead to summon!")
 		return
 		
-	while(bones >= 5 && candidates.len)
+	while(bones.len >= 5 && candidates.len)
 		var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 		var/key = selected_candidate.key
 
@@ -58,25 +58,16 @@
 		
 		
 		Mind.transfer_to(skeleton)
-		var/datum/antagonist/witch/witch_skeleton/skeletondatum = new
+		var/datum/antagonist/witch_cult/skeletondatum = new
 		Mind.add_antag_datum(skeletondatum)
 			
 		if(skeleton.mind != Mind)			//something has gone wrong!
 			throw EXCEPTION("Skeleton created with incorrect mind")
 	
-		bones -= 5
-		var/bone_removal = 5
-		for(var/turf/T in targets)
-			for(var/obj/item/stack/sheet/bone/b in T.contents)
-				if(b.amount > bone_removal)
-					b.amount -= bone_removal
-					bone_removal = 0
-				if(b.amount <= bone_removal)
-					bone_removal -= b.amount
-					qdel(b)
-				if(bone_removal == 0)
-					goto FinishBoneRemoval
-		
-		FinishBoneRemoval
+		qdel(bones[bones.len])
+		qdel(bones[bones.len])
+		qdel(bones[bones.len])
+		qdel(bones[bones.len])
+		qdel(bones[bones.len])
 			
 		log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
