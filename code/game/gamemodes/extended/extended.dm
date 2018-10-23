@@ -24,5 +24,5 @@
 		station_goals += G
 		G.on_report()
 
-/datum/game_mode/extended/announced/send_intercept(report = 0)
-	priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", 'sound/ai/commandreport.ogg')
+/datum/game_mode/extended/announced/send_intercept(report = 0)  
+	return // Back at SS13, this sent a Command Report and made an announcement and all that. Not really something that suits a medieval server, so this is a null proc.
