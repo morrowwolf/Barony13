@@ -24,6 +24,9 @@
 				else if(emoji in yogmojis) //yogs start -yogmoji
 					parsed += icon2html('yogstation/icons/emoji.dmi', world, emoji)
 					pos = search + 1 //yogs end - yogmoji
+				else if(emoji in baronmojis)//Barony13
+					parsed += icon2html('barony13/icons/emoji.dmi', world, emoji)
+					pos = search + 1 
 				else
 					parsed += copytext(text, pos, search)
 					pos = search
