@@ -15,8 +15,8 @@ allowing humans to charge stupidly at their enemy.
 		//Because if it does, then there's a chance that the distance between the attacker and attackée will change and become zero
 		//causing a division-by-zero error in the destination calculations below
 		//See: https://github.com/morrowwolf/Barony13/issues/30
-		if(get_dist(src,A) > 0) // Separating this from the rest of the checks to absolutely minimize the time this whole bit takes,
-		//to reduce chance of said divison-by-zero issue
+		if(get_dist(src,A) > 0)) // Separating this from the rest of the checks to absolutely minimize the time this whole bit takes,
+			//to reduce chance of said divison-by-zero issue
 			charge_cooldown = world.time + 50
 			charging = TRUE
 			if(get_dist(src,A) < CHARGE_RANGE) // If the charge target is too close
