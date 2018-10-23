@@ -4,6 +4,7 @@
 		return
 	var/static/list/emojis = icon_states(icon('icons/emoji.dmi'))
 	var/static/list/yogmojis = icon_states(icon('yogstation/icons/emoji.dmi')) //YOGS - yogmoji
+	var/static/list/baronmojis = icon_states(icon('barony/icons/emoji.dmi'))// We're making our emoji a separate thing, so that porting new yogmoji is just copying their file easy-peasy
 	var/parsed = ""
 	var/pos = 1
 	var/search = 0
@@ -25,7 +26,7 @@
 					parsed += icon2html('yogstation/icons/emoji.dmi', world, emoji)
 					pos = search + 1 //yogs end - yogmoji
 				else if(emoji in baronmojis)//Barony13
-					parsed += icon2html('barony13/icons/emoji.dmi', world, emoji)
+					parsed += icon2html('barony/icons/emoji.dmi', world, emoji)
 					pos = search + 1 
 				else
 					parsed += copytext(text, pos, search)
