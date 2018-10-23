@@ -1,18 +1,31 @@
-#define CHARGE_RANGE 4
+//Barony13
+/*
+This file holds some of the stuff related to the Barony charging mechanic,
+allowing humans to charge stupidly at their enemy.
+*/
+#define CHARGE_RANGE 4 // How far a charge goes, in tiles
 
 /mob/proc/charge(atom/A, var/obj/item/I = null)
 	return
 
 /mob/living/carbon/human/charge(atom/A, var/obj/item/I = null)
-	if(charge_cooldown == null || charge_cooldown <= world.time && get_dist(src,A) > 0)
-		charge_cooldown = world.time + 50
-		charging = TRUE
-		if(get_dist(src,A) < CHARGE_RANGE)
-			var/destination_x = (A.x - x) / sqrt((A.y - y)*(A.y - y) + (A.x - x)*(A.x - x)) * CHARGE_RANGE + x
-			var/destination_y = (A.y - y) / sqrt((A.y - y)*(A.y - y) + (A.x - x)*(A.x - x)) * CHARGE_RANGE + y
-			A = locate(round(destination_x, 1), round(destination_y, 1), z)
-		playsound(get_turf(src), 'sound/effects/charge_2.ogg', 150, 1, -1)
-		throw_at(A, CHARGE_RANGE, 1, src, FALSE, FALSE, callback = CALLBACK(src, .proc/charge_end))
+	
+	if(charge_cooldown == null || charge_cooldown <= world.time)
+		sleep(-1) // To make abso-fucking-lutely sure that the tick is not going to click over while this proc is running
+		//Because if it does, then there's a chance that the distance between the attacker and attackée will change and become zero
+		//causing a division-by-zero error in the destination calculations below
+		//See: https://github.com/morrowwolf/Barony13/issues/30
+		if(get_dist(src,A) > 0) // Separating this from the rest of the checks to absolutely minimize the time this whole bit takes,
+		//to reduce chance of said divison-by-zero issue
+			charge_cooldown = world.time + 50
+			charging = TRUE
+			if(get_dist(src,A) < CHARGE_RANGE) // If the charge target is too close
+			//Then we need to extend the charge to still be CHARGE_RANGE long, so this fuck will still hit a wall if A steps out of the way
+				var/destination_x = (A.x - x) / sqrt((A.y - y)*(A.y - y) + (A.x - x)*(A.x - x)) * CHARGE_RANGE + x
+				var/destination_y = (A.y - y) / sqrt((A.y - y)*(A.y - y) + (A.x - x)*(A.x - x)) * CHARGE_RANGE + y
+				A = locate(round(destination_x, 1), round(destination_y, 1), z)
+			playsound(get_turf(src), 'sound/effects/charge_2.ogg', 150, 1, -1)
+			throw_at(A, CHARGE_RANGE, 1, src, FALSE, FALSE, callback = CALLBACK(src, .proc/charge_end) // throw_at() handles the charge target being too far away just fine, btw
 	
 /mob/living/carbon/human/proc/charge_end()
 	charging = FALSE
