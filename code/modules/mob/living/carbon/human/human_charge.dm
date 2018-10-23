@@ -15,7 +15,7 @@ allowing humans to charge stupidly at their enemy.
 		//Because if it does, then there's a chance that the distance between the attacker and attackée will change and become zero
 		//causing a division-by-zero error in the destination calculations below
 		//See: https://github.com/morrowwolf/Barony13/issues/30
-		if(get_dist(src,A) > 0)) // Separating this from the rest of the checks to absolutely minimize the time this whole bit takes,
+		if(get_dist(src,A) > 0) // Separating this from the rest of the checks to absolutely minimize the time this whole bit takes,
 			//to reduce chance of said divison-by-zero issue
 			charge_cooldown = world.time + 50
 			charging = TRUE
@@ -25,7 +25,7 @@ allowing humans to charge stupidly at their enemy.
 				var/destination_y = (A.y - y) / sqrt((A.y - y)*(A.y - y) + (A.x - x)*(A.x - x)) * CHARGE_RANGE + y
 				A = locate(round(destination_x, 1), round(destination_y, 1), z)
 			playsound(get_turf(src), 'sound/effects/charge_2.ogg', 150, 1, -1)
-			throw_at(A, CHARGE_RANGE, 1, src, FALSE, FALSE, callback = CALLBACK(src, .proc/charge_end) // throw_at() handles the charge target being too far away just fine, btw
+			throw_at(A, CHARGE_RANGE, 1, src, FALSE, FALSE, callback = CALLBACK(src, .proc/charge_end)) // throw_at() handles the charge target being too far away just fine, btw
 	
 /mob/living/carbon/human/proc/charge_end()
 	charging = FALSE
