@@ -865,5 +865,16 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
 
-
-
+/datum/objective/kill_everyone
+	explanation_text = "Destroy the village.  Leave none alive."
+	
+/datum/objective/kill_everyone/check_completion()
+	var/list/players = GLOB.player_list
+	
+	for(var/player in players)
+		if(istype(player, /mob/living))
+			var/mob/living/living_player = player
+			if(!living_player.mind.antag_datums)
+				return FALSE
+				
+	return TRUE

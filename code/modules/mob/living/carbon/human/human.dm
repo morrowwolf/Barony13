@@ -537,6 +537,14 @@
 			obscured |= SLOT_GLASSES
 		if(head.flags_inv & HIDEEARS)
 			obscured |= SLOT_EARS
+			
+	if(wear_neck)
+		if(wear_neck.flags_inv & HIDEMASK)
+			obscured |= SLOT_WEAR_MASK
+		if(wear_neck.flags_inv & HIDEEYES)
+			obscured |= SLOT_GLASSES
+		if(wear_neck.flags_inv & HIDEEARS)
+			obscured |= SLOT_EARS
 
 	if(wear_mask)
 		if(wear_mask.flags_inv & HIDEEYES)
