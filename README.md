@@ -1,6 +1,6 @@
 ## Barony13 codebase
 
-[![Build Status](https://travis-ci.org/yogstation13/Yogstation-TG.png)](https://travis-ci.org/yogstation13/Yogstation-TG)  
+[![Build Status](https://travis-ci.org/morrowwolf/Barony13.png)](https://travis-ci.org/morrowwolf/Barony13)  
 [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 **Code:** https://github.com/morrowwolf/Barony13/
@@ -15,7 +15,7 @@ Option 1:
 Follow this: https://wiki.yogstation.net/wiki/Setting_up_git
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/yogstation13/Yogstation-TG
+code tab of https://github.com/morrowwolf/Barony13
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -36,7 +36,7 @@ yogstation.dmb - 0 errors, 0 warnings
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
 download or the files extracted wrong. If problems persist, ask for assistance
-in irc://irc.rizon.net/coderbus or in #coder-public on discord.
+in #development-general on discord.
 
 Once that's done, open up the config folder. You'll want to edit config.txt to
 set the probabilities for different gamemodes in Secret and to set your server
