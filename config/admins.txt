@@ -14,4 +14,3 @@ Parune 				= Game Admin
 Solnear 			= Game Admin
 Altoids0			= Co-Host
 AtRealDonaldTrump	= Head Admin
-ThatLing			= Developer
