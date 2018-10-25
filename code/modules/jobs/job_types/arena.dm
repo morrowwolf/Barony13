@@ -16,7 +16,7 @@ Arena guys
 	handle_arena_spawn(H)
 	
 /datum/job/peasant/override_latejoin_spawn(mob/living/carbon/human/H)
-	handle_arena_spawn(H)
+	return TRUE
 
 /datum/outfit/job/peasant
 	name = "Peasant"
@@ -47,7 +47,7 @@ Arena guys
 	handle_arena_spawn(H)
 	
 /datum/job/knight/override_latejoin_spawn(mob/living/carbon/human/H)
-	handle_arena_spawn(H)
+	return TRUE
 	
 /datum/outfit/job/knight
 	name = "Knight"
@@ -81,7 +81,7 @@ Arena guys
 	handle_arena_spawn(H)
 	
 /datum/job/fighter/override_latejoin_spawn(mob/living/carbon/human/H)
-	handle_arena_spawn(H)
+	return TRUE
 	
 /datum/outfit/job/fighter
 	name = "Fighter"
@@ -114,7 +114,7 @@ Arena guys
 	H.update_inv_back()
 	
 /datum/job/archer/override_latejoin_spawn(mob/living/carbon/human/H)
-	handle_arena_spawn(H)
+	return TRUE
 	
 /datum/outfit/job/archer
 	name = "Archer"
