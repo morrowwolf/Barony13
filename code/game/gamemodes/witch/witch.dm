@@ -36,7 +36,7 @@
 	
 /datum/game_mode/witch/are_special_antags_dead()
 	for(var/datum/mind/witch in witches)
-		if(isliving(witch.current) && witch.current.stat!=DEAD)				//45634
+		if(considered_alive(witch))
 			return FALSE
 
 	return TRUE
@@ -71,7 +71,7 @@
 
 /datum/game_mode/witch/proc/check_villager_victory()
 	for(var/datum/mind/witch in witches)
-		if(considered_alive(witch))								//like this is from rev and uses considered_alive() while from wiz game_mode (ref#45634) uses a different method, which is better?  Are they inherently different in a meaningful way?, I'm not even going down that rabbit hole but future me: look into that
+		if(considered_alive(witch))
 			return FALSE
 	return TRUE
 	
