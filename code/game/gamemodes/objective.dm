@@ -874,7 +874,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	for(var/player in players)
 		if(istype(player, /mob/living))
 			var/mob/living/living_player = player
-			if(!living_player.mind.antag_datums)
+			if(living_player.mind && !living_player.mind.antag_datums && considered_alive(living_player.mind))		//if there's a mind and that mind isn't an antag and that mind is alive then not every villager is dead
 				return FALSE
 				
 	return TRUE
