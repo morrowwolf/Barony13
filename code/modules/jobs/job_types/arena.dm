@@ -14,6 +14,9 @@ Arena guys
 	
 /datum/job/peasant/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
+	
+/datum/job/peasant/override_latejoin_spawn(mob/living/carbon/human/H)
+	handle_arena_spawn(H)
 
 /datum/outfit/job/peasant
 	name = "Peasant"
@@ -41,6 +44,9 @@ Arena guys
 	outfit = /datum/outfit/job/knight
 	
 /datum/job/knight/after_spawn(mob/living/carbon/human/H, mob/M)
+	handle_arena_spawn(H)
+	
+/datum/job/knight/override_latejoin_spawn(mob/living/carbon/human/H)
 	handle_arena_spawn(H)
 	
 /datum/outfit/job/knight
@@ -74,6 +80,9 @@ Arena guys
 /datum/job/fighter/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
 	
+/datum/job/fighter/override_latejoin_spawn(mob/living/carbon/human/H)
+	handle_arena_spawn(H)
+	
 /datum/outfit/job/fighter
 	name = "Fighter"
 	jobtype = /datum/job/fighter
@@ -103,6 +112,9 @@ Arena guys
 /datum/job/archer/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
 	H.update_inv_back()
+	
+/datum/job/archer/override_latejoin_spawn(mob/living/carbon/human/H)
+	handle_arena_spawn(H)
 	
 /datum/outfit/job/archer
 	name = "Archer"
