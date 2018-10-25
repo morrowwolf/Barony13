@@ -10,6 +10,19 @@ allowing humans to charge stupidly at their enemy.
 
 /mob/living/carbon/human/charge(atom/A, var/obj/item/I = null)
 	
+	if(buckled)
+		to_chat(src, "You can't charge while buckled!")			//can't charge while buckled
+		return
+		
+	if(resting)
+		return													//can't charge while laying down
+		
+	if(health <= crit_threshold)
+		return													//can't charge in crit
+		
+	if(status_effects.Find(/datum/status_effect/incapacitating/knockdown))
+		return													//can't charge while knocked down
+	
 	if(charge_cooldown == null || charge_cooldown <= world.time)
 		sleep(-1) // To make abso-fucking-lutely sure that the tick is not going to click over while this proc is running
 		//Because if it does, then there's a chance that the distance between the attacker and attackée will change and become zero
