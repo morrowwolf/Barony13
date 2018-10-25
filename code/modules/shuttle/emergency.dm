@@ -481,6 +481,9 @@
 	if(!mapload)
 		return
 
+	if(TRUE)
+		return		//WE DON'T HAVE AN EMERGENCY SHUTTLE
+		
 	var/list/turfs = get_area_turfs(target_area)
 	var/turf/T = pick(turfs)
 
