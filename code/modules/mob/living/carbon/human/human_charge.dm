@@ -10,6 +10,9 @@ allowing humans to charge stupidly at their enemy.
 
 /mob/living/carbon/human/charge(atom/A, var/obj/item/I = null)
 	
+	if(incapacitated())
+		return
+	
 	if(charge_cooldown == null || charge_cooldown <= world.time)
 		sleep(-1) // To make abso-fucking-lutely sure that the tick is not going to click over while this proc is running
 		//Because if it does, then there's a chance that the distance between the attacker and attackée will change and become zero
