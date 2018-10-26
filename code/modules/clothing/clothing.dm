@@ -193,7 +193,6 @@ BLIND     // can't see anything
 		to_chat(usr, "This suit does not have any sensors.")
 		return 0
 
-		
 	var/list/modes = list("Off", "Binary vitals", "Exact vitals", "Tracking beacon")
 	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
 	if(get_dist(usr, src) > 1)
