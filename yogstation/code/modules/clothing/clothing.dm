@@ -48,6 +48,8 @@
 	icon = 'yogstation/icons/obj/items.dmi'
 	icon_state = "clothscrap"
 	
+
+	
 /obj/item/clothing/under/proc/handle_tear(mob/user)
 	if(!tearable)
 		return
