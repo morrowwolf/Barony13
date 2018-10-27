@@ -42,12 +42,6 @@
 	alternate_worn_icon = 'yogstation/icons/mob/belt.dmi'
 	icon = 'yogstation/icons/obj/clothing/belts.dmi'
 	
-/obj/item/clothing/torncloth
-	name = "strip of torn cloth"
-	desc = "Looks like it was pulled from a piece of clothing with considerable force. Could be used for a makeshift bandage if worked a little bit on a sturdy surface."
-	icon = 'yogstation/icons/obj/items.dmi'
-	icon_state = "clothscrap"
-	
 /obj/item/clothing/under/proc/handle_tear(mob/user)
 	if(!tearable)
 		return
@@ -55,8 +49,9 @@
 	take_teardamage(20)
 	permeability_coefficient += 0.20
 	if (user)
-		if (user.loc)
-			new /obj/item/clothing/torncloth(user.loc)
+		if(user.loc)
+			var/obj/item/I = new /obj/item/stack/torncloth(user.loc)
+			user.put_in_hands(I)
 			if(!QDELETED(src))
 				user.visible_message("You hear cloth tearing.", "A segment of [src] falls away to the floor, torn apart.", "*riiip*")
 	return TRUE
