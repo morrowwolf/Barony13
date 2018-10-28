@@ -3,37 +3,37 @@
 /obj/dohickey/oven
 	name = "oven"
 	desc = "Cooks and boils things."
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "mw"
+	icon = 'barony/icons/oven.dmi'
+	icon_state = "oven"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	pass_flags = PASSTABLE
 	var/wood = 0 // How much wood is in the dang thing
 	var/max_wood = 10 // The most wood it can hold
 	var/operating = FALSE // Holds whether it's on or not
-	var/max_n_of_items = 10 // How many things fit in the oven
+	var/max_items = 10 // How many non-wood things fit in the oven
 	
 /obj/dohickey/oven/examine(mob/user)
 	..()
 	if(wood)
-		to_chat(user,"There seems to be [wood] logs within the oven.")
+		to_chat(user,"<span class='notice'>There seems to be [wood] logs within the oven.</span>")
 	else
 		to_chat(user,"<span class='notice'>There's no wood inside of [src]!</span>")
 	if(contents.len)
-		to_chat(user,"There's something in the oven to cook.")
+		to_chat(user,"<span class='notice'>There's something in the oven to cook.</span>")
 	else
-		to_chat(user,"There's nothing inside of the oven to cook.")
+		to_chat(user,"<span class='notice'>There's nothing inside of the oven to cook.</span>")
 		
 /obj/dohickey/oven/proc/start()
 	visible_message("The [src] roars to life!", "<span class='italics'>You smell something burning.</span>")
 	//soundloop.start()
 	operating = TRUE
-	icon_state = "mw1"
+	icon_state = "oven_alive"
 	updateUsrDialog()
 	
 /obj/dohickey/oven/proc/stop()
 	operating = FALSE // Turn it off again aferwards
-	icon_state = "mw"
+	icon_state = "oven"
 	updateUsrDialog()
 	//soundloop.stop()
 
@@ -57,29 +57,27 @@
 		if(!wood)
 			return
 		O.microwave_act(src)
-		visible_message("<span class='notice'>[src] cooked a thing!!.</span>")
+		//visible_message("<span class='notice'>[src] cooked a thing!!.</span>")
 		wood -= 1
-		sleep(12) // The old SS13 microwave, regular parts, did basically sleep(10), so we're doing that too, more or less
+		sleep(50) // 5 Seconds per thing
 
 /obj/dohickey/oven/AltClick(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE) && anchored && wood)
 		startcook()
-
+		
+/obj/dohickey/oven/attack_hand(mob/user)
+	if(!startcook()) // Starts cooking. If it fails, it warns there ain't enough wood.
+		to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
+		
 /obj/dohickey/oven/attackby(obj/item/O, mob/user, params)
-	to_chat(user,"Penis!")
 	if(operating)
 		..()
 		return
-	if(!O) // If there's no object in their hand, then we're assuming that they're trying to make the dang thing cook.
-		if(!startcook()) // Starts cooking. If it fails, it warns there ain't enough wood.
-			to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
-		else
-			to_chat(user,"It should start cooking, I guess!")
 	else if(istype(O, /obj/item/storage/bag/tray))
 		var/obj/item/storage/T = O
 		var/loaded = 0
 		for(var/obj/item/reagent_containers/food/snacks/S in T.contents)
-			if (contents.len>=max_n_of_items)
+			if (contents.len>=max_items)
 				to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
 				return 1
 			if(SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, S, src))
@@ -92,8 +90,9 @@
 		qdel(O)
 		//Add 1 Wood unit to the oven
 		wood += 1
+		to_chat(user, "<span class='notice'>You insert the log into [src], for burning.</span>")
 	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O, /obj/item/storage) && user.a_intent == INTENT_HELP)
-		if (contents.len>=max_n_of_items)
+		if (contents.len>=max_items)
 			to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
 			return 1
 		else
