@@ -59,12 +59,6 @@
 		return
 		
 	while(bone_total >= bones_required && candidates.len)
-	
-		for(var/obj/item/stack/sheet/bone/b in bones)
-			bone_total += b.amount
-			
-		if(bone_total < bones_required)
-			return
 		
 		var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 		var/key = selected_candidate.key
@@ -106,8 +100,6 @@
 				bone_removal -= b.amount
 				qdel(b)
 			if(bone_removal == 0)
-				goto FinishBoneRemoval
-				
-		FinishBoneRemoval
+				break
 			
 		log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
