@@ -65,8 +65,8 @@
 
 		
 		var/datum/mind/Mind = new /datum/mind(key)
-		Mind.assigned_role = ROLE_WITCH_SKELETON
-		Mind.special_role = ROLE_WITCH_SKELETON
+		Mind.assigned_role = ROLE_WITCH_CULT
+		Mind.special_role = ROLE_WITCH_CULT
 		Mind.active = 1
 
 		var/mob/living/carbon/human/skeleton = new(user.loc)
