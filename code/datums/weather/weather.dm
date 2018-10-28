@@ -133,6 +133,7 @@
 				N.set_opacity(weather_opacity)
 			if(WIND_DOWN_STAGE)
 				N.icon_state = end_overlay
+				N.set_opacity(FALSE)
 			if(END_STAGE)
 				N.blend_mode = 4
 				N.color = null
