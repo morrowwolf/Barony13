@@ -11,7 +11,14 @@
 	hud_type = "witch"
 	
 /datum/antagonist/witch_cult/proc/equip_antag()
-	return
+	var/datum/objective/protect/protect_witch = new /datum/objective/protect
+	for(var/mob/living/carbon/human/mob in GLOB.player_list)
+		if(cmptext(mob.mind.special_role, "witch"))
+			protect_witch.target = mob.mind
+	if(protect_witch.target)
+		objectives += protect_witch
+		owner.objectives += protect_witch
+
 	
 /datum/antagonist/witch_cult/witch/equip_antag()
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile(null))
