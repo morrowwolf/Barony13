@@ -50,13 +50,6 @@
 			user.block_dir = null
 			user.update_icons()
 	return ..(destination)
-	
-/obj/item/shields/medieval/on_swap_hand(mob/living/carbon/user)
-	if(user.blocking)
-		to_chat(user, "You cannot swap hands while blocking!")
-		return TRUE
-	
-	return FALSE
 
 /obj/item/shields/medieval/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!owner.blocking)
