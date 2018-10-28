@@ -28,7 +28,6 @@
 #define ROLE_BRAINWASHED		"brainwashed victim"
 #define ROLE_WITCH				"witch"
 #define ROLE_WITCH_CULT			"witch cultist"
-#define ROLE_WITCH_SKELETON		"witch's skeleton"
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough

@@ -4,8 +4,6 @@
 	antagpanel_category = "Witch Cult"
 	job_rank = ROLE_WITCH_CULT
 	var/hud_type = "witch cult"
-	var/datum/mind/master
-	var/datum/team/witch/witch_team
 	
 /datum/antagonist/witch_cult/witch
 	name = "Witch"
@@ -21,10 +19,16 @@
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
 	objectives += new /datum/objective/kill_everyone(null)
 	owner.objectives += new /datum/objective/kill_everyone(null)
+
+/datum/antagonist/witch_cult/witch/on_gain()
+	. = ..()
 	
 /datum/antagonist/witch_cult/on_gain()
 	. = ..()
 	equip_antag()
+	var/datum/atom_hud/antag/witchhud = GLOB.huds[ANTAG_HUD_WITCH_CULT]
+	witchhud.join_hud(owner.current)
+	set_antag_hud(owner.current, hud_type)
 	
 /datum/antagonist/witch_cult/witch/greet()
 	to_chat(owner, "<span class='userdanger'>You are a necromancer!  Use discretion and destroy all the villagers!</span>")
@@ -34,3 +38,9 @@
 	
 /datum/antagonist/witch_cult/witch/antag_listing_name()
 	return ..() + "(Witch)"
+
+/datum/antagonist/witch_cult/on_removal()
+	var/datum/atom_hud/antag/witchhud = GLOB.huds[ANTAG_HUD_WITCH_CULT]
+	witchhud.leave_hud(owner.current)
+	set_antag_hud(owner.current, null)
+	. = ..()
