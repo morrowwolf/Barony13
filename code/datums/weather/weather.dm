@@ -16,6 +16,7 @@
 	var/weather_sound
 	var/weather_overlay
 	var/weather_color = null
+	var/weather_opacity = FALSE
 
 	var/end_message = "<span class='danger'>The wind relents its assault.</span>" //Displayed once the weather is over
 	var/end_duration = 300 //In deciseconds, how long the "wind-down" graphic will appear before vanishing entirely
@@ -123,14 +124,17 @@
 		N.layer = overlay_layer
 		N.icon = 'icons/effects/weather_effects.dmi'
 		N.color = weather_color
+		N.blend_mode = 0
 		switch(stage)
 			if(STARTUP_STAGE)
 				N.icon_state = telegraph_overlay
 			if(MAIN_STAGE)
 				N.icon_state = weather_overlay
+				N.set_opacity(weather_opacity)
 			if(WIND_DOWN_STAGE)
 				N.icon_state = end_overlay
 			if(END_STAGE)
+				N.blend_mode = 4
 				N.color = null
 				N.icon_state = ""
 				N.icon = 'icons/turf/areas.dmi'

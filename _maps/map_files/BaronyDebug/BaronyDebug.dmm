@@ -1,4 +1,4 @@
-"a" = (/turf/closed/indestructible/rock,/area/barony/outside)
+"a" = (/turf/closed/indestructible/rock,/area/barony/edge)
 "b" = (/turf/open/space/basic,/area/space)
 "c" = (/turf/open/floor/grass,/area/barony/outside)
 "d" = (/turf/closed/wall/mineral/wood/nonmetal,/area/barony/inside)
