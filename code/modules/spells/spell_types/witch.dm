@@ -60,6 +60,7 @@
 		
 	while(bone_total >= bones_required && candidates.len)
 	
+		bone_total = 0
 		for(var/obj/item/stack/sheet/bone/b in bones)
 			bone_total += b.amount
 			
