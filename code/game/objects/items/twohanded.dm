@@ -786,7 +786,7 @@
 /*
  * Medieval Steel Spear
  */
-/obj/item/twohanded/steelspear	//Blatant imitation of spear, but made out of bone. Not valid for explosive modification.
+/obj/item/twohanded/steelspear
 	icon_state = "spearsteel0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
