@@ -132,9 +132,6 @@ SUBSYSTEM_DEF(job)
 		if(!job)
 			continue
 
-		if(istype(job, GetJob(SSjob.overflow_role))) // We don't want to give him assistant, that's boring!
-			continue
-
 		if(job.title in GLOB.command_positions) //If you want a command position, select it!
 			continue
 
