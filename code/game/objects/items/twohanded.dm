@@ -791,18 +791,20 @@
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "steel spear"
-	desc = "An sharp steel tip attached to an oak shaft. An affordable yet effective means of defence."
+	desc = "A sharp steel tip attached to an oak shaft. An affordable yet effective means of defence."
 	force = 10
 	w_class = WEIGHT_CLASS_BULKY
 	force_unwielded = 10
 	force_wielded = 22
 	throwforce = 25
 	throw_speed = 4
-	embedding = list("embedded_impact_pain_multiplier" = 3)
-	armour_penetration = 16				//Enhanced armor piercing
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "pierced", "gored")
 	sharpness = IS_SHARP
+
+/obj/item/twohanded/steelspear/Initialize()
+	. = ..()
+	AddComponent(/datum/component/charge)
 
 /obj/item/twohanded/steelspear/update_icon()
 	icon_state = "spearsteel[wielded]"
