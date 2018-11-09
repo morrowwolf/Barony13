@@ -136,7 +136,7 @@ Arena guys
 
 	
 /datum/job/proc/handle_arena_spawn(mob/living/carbon/human/H)
-	var/destination = pick(list(/area/barony/outside, /area/barony/inside))
+	var/destination = /area/barony/inside
 	var/turf/T
 	var/safety = 0
 	while(safety < 40)
