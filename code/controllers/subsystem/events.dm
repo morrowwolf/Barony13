@@ -111,16 +111,19 @@ SUBSYSTEM_DEF(events)
 	var/normal 	= ""
 	var/magic 	= ""
 	var/holiday = ""
+	var/barony  = ""
 	for(var/datum/round_event_control/E in SSevents.control)
 		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];forceevent=[REF(E)]'>[E]</A>"
 		if(E.holidayID)
 			holiday	+= dat
 		else if(E.wizardevent)
 			magic 	+= dat
+		else if(istype(E, /datum/round_event_control/barony_event))
+			barony  += dat
 		else
 			normal 	+= dat
 
-	dat = normal + "<BR>" + magic + "<BR>" + holiday
+	dat = barony + "<BR>" + normal + "<BR>" + magic + "<BR>" + holiday
 
 	var/datum/browser/popup = new(usr, "forceevent", "Force Random Event", 300, 750)
 	popup.set_content(dat)
