@@ -67,7 +67,7 @@ Arena guys
 	belt = /obj/item/melee/medieval/blade/shortsword
 	back = /obj/item/melee/medieval/blade/sword
 	neck = /obj/item/clothing/neck/cloak/medieval
-	id = null
+	id = /obj/item/key/armory
 	ears = null
 	
 /datum/outfit/job/knight/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
