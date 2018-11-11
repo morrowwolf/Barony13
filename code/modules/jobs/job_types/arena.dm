@@ -48,6 +48,8 @@ Arena guys
 	//Now lets add a thing before their names to make them more honourable or some shit
 	if(H.gender == FEMALE)
 		H.real_name = "Dame [H.real_name]"
+	else if(H.gender == PLURAL) // If this person is... multiple?? people???
+		H.real_name = "Sirs [H.real_name]"
 	else // For both Males, and the bizarre technicality of a NEUTER-gendered mob becoming a knight somehow
 		H.real_name = "Sir [H.real_name]"
 	
