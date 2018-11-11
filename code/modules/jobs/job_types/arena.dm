@@ -45,6 +45,8 @@ Arena guys
 	
 /datum/job/knight/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
+	H.name = "Sir [H.name]"
+	H.real_name = "Sir [H.real_name]"
 	
 /datum/job/knight/override_latejoin_spawn(mob/living/carbon/human/H)
 	return TRUE
