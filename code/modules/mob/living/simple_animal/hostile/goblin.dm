@@ -42,6 +42,9 @@
 
 	sleep(20)
 
+	if(stat == DEAD)
+		return
+
 	var/goblin_sprite = pick("goblin_1", "goblin_2")
 	icon_state = goblin_sprite
 	icon_living = goblin_sprite
@@ -59,7 +62,7 @@
 			continue
 		initialMove = initialMove.loc
 
-	if(check <= 0)
+	if(check <= 0 || !initialMove)
 		return
 
 	Move(initialMove)
