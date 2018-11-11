@@ -30,6 +30,8 @@
 	
 	robust_searching = 1
 	gold_core_spawnable = NO_SPAWN
+
+	guaranteed_butcher_results = list(/obj/item/stack/sheet/bone = 2)
 	
 	
 /mob/living/simple_animal/hostile/goblin/Initialize()
