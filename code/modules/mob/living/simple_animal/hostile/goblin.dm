@@ -2,8 +2,8 @@
 	name = "goblin"
 	desc = "A short, green creature defined by its anger and hate."
 	icon = 'icons/mob/creatures.dmi'
-	icon_state = "goblin_1"
-	icon_living = "goblin_1"
+	icon_state = ""
+	icon_living = ""
 	icon_dead = "goblin_dead"
 	mob_biotypes = list(MOB_ORGANIC)
 	gender = NEUTER
@@ -33,10 +33,37 @@
 	
 	
 /mob/living/simple_animal/hostile/goblin/Initialize()
+	..()
+
+	icon_state = "goblin_spawn"
+	icon_living = "goblin_spawn"
+
+	anchored = TRUE
+
+	sleep(20)
+
 	var/goblin_sprite = pick("goblin_1", "goblin_2")
 	icon_state = goblin_sprite
 	icon_living = goblin_sprite
-	return ..()
+
+	anchored = FALSE
+
+	var/atom/initialMove = pick(range(1, src))
+
+	var/check = 20
+
+	while(!istype(initialMove, /turf/open) && check > 0)
+		check--
+		if(istype(initialMove, /turf/closed))
+			initialMove = pick(range(1, src))
+			continue
+		initialMove = initialMove.loc
+
+	if(check <= 0)
+		return
+
+	Move(initialMove)
+
 	
 /mob/living/simple_animal/hostile/goblin/death(gibbed)
 	new /obj/effect/decal/cleanable/blood/splatter(get_turf(src), get_static_viruses())
