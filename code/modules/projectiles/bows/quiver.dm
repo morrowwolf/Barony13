@@ -27,6 +27,6 @@
 /obj/item/storage/backpack/quiver/full
 	icon_state = "quiver-3"
 
-/obj/item/storage/backpack/quiver/full/Initialize()
+/obj/item/storage/backpack/quiver/full/PopulateContents()
 	for(var/i = 0, i < 8, i++)
-		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, /obj/item/ammo_casing/arrow, null, TRUE)
+		new /obj/item/ammo_casing/arrow(src)
