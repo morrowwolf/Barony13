@@ -38,6 +38,16 @@
 "L" = (/obj/structure/table/wood,/obj/item/clothing/head/rice_hat,/obj/item/clothing/head/rice_hat,/turf/open/floor/wood,/area/barony/inside)
 "M" = (/obj/structure/table/wood,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/turf/open/floor/wood,/area/barony/inside)
 "N" = (/obj/structure/sink/puddle,/turf/open/floor/grass,/area/barony/outside)
+"O" = (/obj/structure/mineral_door/wood/armory,/turf/open/floor/wood,/area/barony/inside)
+"P" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -10; step_x = 0},/obj/item/twohanded/steelspear{pixel_x = 5; step_x = 0},/obj/item/twohanded/steelspear{pixel_x = -2},/turf/open/floor/wood,/area/barony/inside)
+"Q" = (/obj/structure/table/wood,/obj/item/bow,/obj/item/storage/backpack/quiver/full,/turf/open/floor/wood,/area/barony/inside)
+"R" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -2},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -10},/turf/open/floor/wood,/area/barony/inside)
+"S" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = 5},/turf/open/floor/wood,/area/barony/inside)
+"T" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = 10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = -5},/turf/open/floor/wood,/area/barony/inside)
+"U" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/grass,/area/barony/outside)
+"V" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/grass,/area/barony/outside)
+"W" = (/obj/structure/flora/rock/jungle,/turf/open/floor/grass,/area/barony/outside)
+"X" = (/obj/structure/table/wood,/obj/item/clothing/under/gambeson{pixel_x = -8},/obj/item/clothing/under/gambeson{pixel_x = 8},/turf/open/floor/wood,/area/barony/inside)
 
 (1,1,1) = {"
 bbbbaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -55,11 +65,11 @@ bbbbaccmmmmcccccmdGffffffJdmca
 bbbbacmdffdmmmmcmddddllddddmca
 bbbbacmdffdddffmcmmmmmmmmmmcca
 bbbbacmdffKKfffmccccccccccccca
-bbbbacmdLfffffdmccccccccccccca
-bbbbacmdoMCCgodmccccccccccccca
+bbbbacmdLfffffdmccccUcccccccca
+bbbbacmdoMCCgodmcVcccccccWccca
 bbbbacmddddddddmccccccccccccca
 bbbbaccmmmmmmmmcccccccccccccca
-bbbbacccccccccccccccccccccccca
+bbbbacccccccccccccccccUcccccca
 bbbbacccccccccccccccccccccccca
 bbbbatccccccccxcccccccccccccua
 bbbbacccccccccccccccccccccccca
@@ -74,17 +84,17 @@ bbbbacmdffghpppplmccccmdddddma
 bbbbacmdggqhpppplmcccccmmmmmca
 bbbbacmdrrffffffdmcccccccccxca
 bbbbacmdffffsffidmccccccczccca
-bbbbacmdkohkohkodmccccccccccca
+bbbbacmdkohkohkodmcccUccccccca
 bbbbacmddddddddddmccccccccccca
 bbbbaccmmmmmmmmmmcccccccccccca
 bbbbacccccccccccccccccycccccca
-bbbbaccccccccccccccccmmmmmmcca
-bbbbacccccccccccccccmddddldmca
-bbbbacccccccccccccccmdofffdmca
-bbbbaccccccccccccxccmdfDdrdmca
-bbbbaccBccccccccccccmddddddmca
-bbbbaccccczccccccccccmmmmmmcca
-bbbbavccccccccccccccccccccccwa
+bbbbaccccccmmmmmcccccmmmmmmcca
+bbbbacccccmddOddmcccmddddldmca
+bbbbacccccmdPfQdmcccmdofffdmca
+bbbbacccccmdRfQdmxccmdfDdrdmca
+bbbbaccBccmdSXTdmcccmddddddmca
+bbbbacccccEdddddmccccmmmmmmcca
+bbbbavcccccmmmmmccccccccccccwa
 bbbbaaaaaaaaaaaaaaaaaaaaaaaaaa
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb

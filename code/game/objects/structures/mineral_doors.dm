@@ -22,6 +22,8 @@
 	var/closeSound = 'sound/effects/stonedoor_openclose.ogg'
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
+	var/locked = FALSE
+
 /obj/structure/mineral_door/Initialize()
 	. = ..()
 	initial_state = icon_state
@@ -64,6 +66,9 @@
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates)
 		return
+	if(locked)
+		to_chat(user, "The door is locked!")
+		return
 	if(isliving(user))
 		var/mob/living/M = user
 		if(world.time - M.last_bumped <= 60)
@@ -83,6 +88,14 @@
 		Close()
 	else
 		Open()
+
+/obj/structure/mineral_door/proc/switchLockState(obj/item/key/K, mob/user)
+	if(locked)
+		locked = FALSE
+		to_chat(user, "You unlock [src] with [K].")
+	else
+		locked = TRUE
+		to_chat(user, "You lock [src] with [K].")
 
 /obj/structure/mineral_door/proc/Open()
 	isSwitchingStates = 1
@@ -129,6 +142,20 @@
 			to_chat(user, "<span class='notice'>You finish digging.</span>")
 			deconstruct(TRUE)
 	else if(user.a_intent != INTENT_HARM)
+		if(istype(I, /obj/item/key))
+			if(!req_access)
+				to_chat(user, "This door has no lock.")
+				return
+			if(isSwitchingStates || state)
+				to_chat(user, "The door is open and cannot be locked.")
+				return
+			var/obj/item/key/K = I
+			for(var/access in K.access)
+				if(req_access.Find(access))
+					switchLockState(K, user)
+					return
+			to_chat(user, "The [K.name] does not fit into the door.")
+			return
 		return attack_hand(user)
 	else
 		return ..()
@@ -140,6 +167,13 @@
 	else
 		new sheetType(T, max(sheetAmount - 2, 1))
 	qdel(src)
+
+/obj/structure/mineral_door/examine(mob/user)
+	..()
+	if(locked)
+		to_chat(user, "This door is locked.")
+	else if(req_access)
+		to_chat(user, "This door is unlocked")
 
 /obj/structure/mineral_door/iron
 	name = "iron door"
@@ -233,6 +267,11 @@
 
 /obj/structure/mineral_door/wood/ComponentInitialize()
 	AddComponent(/datum/component/rad_insulation, RAD_VERY_LIGHT_INSULATION)
+
+/obj/structure/mineral_door/wood/armory
+	name = "armory door"
+	locked = TRUE
+	req_access = list(ACCESS_KEY_ARMORY)
 
 /obj/structure/mineral_door/paperframe
 	name = "paper frame door"
