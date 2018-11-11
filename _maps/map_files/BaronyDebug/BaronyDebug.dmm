@@ -39,7 +39,7 @@
 "M" = (/obj/structure/table/wood,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/turf/open/floor/wood,/area/barony/inside)
 "N" = (/obj/structure/sink/puddle,/turf/open/floor/grass,/area/barony/outside)
 "O" = (/obj/structure/mineral_door/wood/armory,/turf/open/floor/wood,/area/barony/inside)
-"P" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -10; step_x = 0},/obj/item/twohanded/steelspear{pixel_x = 5; step_x = 0},/obj/item/twohanded/steelspear{pixel_x = -2},/turf/open/floor/wood,/area/barony/inside)
+"P" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -10},/obj/item/twohanded/steelspear{pixel_x = 5;},/obj/item/twohanded/steelspear{pixel_x = -2},/turf/open/floor/wood,/area/barony/inside)
 "Q" = (/obj/structure/table/wood,/obj/item/bow,/obj/item/storage/backpack/quiver/full,/turf/open/floor/wood,/area/barony/inside)
 "R" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -2},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -10},/turf/open/floor/wood,/area/barony/inside)
 "S" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = 5},/turf/open/floor/wood,/area/barony/inside)
