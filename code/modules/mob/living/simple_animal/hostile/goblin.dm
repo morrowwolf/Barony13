@@ -43,6 +43,7 @@
 	sleep(20)
 
 	if(stat == DEAD)
+		anchored = FALSE
 		return
 
 	var/goblin_sprite = pick("goblin_1", "goblin_2")
