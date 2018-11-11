@@ -62,7 +62,7 @@
 			continue
 		initialMove = initialMove.loc
 
-	if(check <= 0 || !initialMove || stat == dead)
+	if(check <= 0 || !initialMove || stat == DEAD)
 		return
 
 	Move(initialMove)
