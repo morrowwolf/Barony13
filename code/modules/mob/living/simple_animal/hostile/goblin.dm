@@ -57,12 +57,12 @@
 
 	while(!istype(initialMove, /turf/open) && check > 0)
 		check--
-		if(istype(initialMove, /turf/closed))
+		if(istype(initialMove, /turf/closed) || !initialMove.loc)
 			initialMove = pick(range(1, src))
 			continue
 		initialMove = initialMove.loc
 
-	if(check <= 0 || !initialMove || stat == DEAD)
+	if(check <= 0 || stat == DEAD)
 		return
 
 	Move(initialMove)
