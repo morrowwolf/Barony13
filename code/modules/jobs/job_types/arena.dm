@@ -45,10 +45,11 @@ Arena guys
 	
 /datum/job/knight/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
-	if(H.gender == MALE)
-		H.real_name = "Sir [H.real_name]"
-	else if(H.gender == FEMALE)
+	//Now lets add a thing before their names to make them more honourable or some shit
+	if(H.gender == FEMALE)
 		H.real_name = "Dame [H.real_name]"
+	else // For both Males, and the bizarre technicality of a NEUTER-gendered mob becoming a knight somehow
+		H.real_name = "Sir [H.real_name]"
 	
 /datum/job/knight/override_latejoin_spawn(mob/living/carbon/human/H)
 	return TRUE
