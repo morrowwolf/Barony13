@@ -113,7 +113,7 @@
 	else
 		..()
 
-/obj/structure/medieval/oven/proc/handle_wood(obj/item/stack/sheet/mineral/wood O,mob/user)
+/obj/structure/medieval/oven/proc/handle_wood(obj/item/stack/sheet/mineral/wood/O,mob/user)
 	/*See: 
 	code\datums\components\material_container.dm
 	Which seems to be the thing that holds & processes materials & item/stack's in machinery such as the autolathe & protolathe
