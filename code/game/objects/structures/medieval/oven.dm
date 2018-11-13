@@ -113,7 +113,7 @@
 	else
 		..()
 
-/obj/structure/medieval/oven/proc/handle_wood(obj/item/stack/sheet/mineral/wood/O,mob/user)
+/obj/structure/medieval/oven/proc/handle_wood(obj/item/stack/sheet/mineral/wood/O, mob/user)
 	/*See: 
 	code\datums\components\material_container.dm
 	Which seems to be the thing that holds & processes materials & item/stack's in machinery such as the autolathe & protolathe
@@ -123,10 +123,10 @@
 	//First some input scrubbing
 	if(isnull(requested_amount) || (requested_amount <= 0)) // If they responded like the retards they are
 		return
-	if(QDELETED(I) || QDELETED(user) || QDELETED(src)) // If anything magically disappeared or goofed while we were waiting on input
+	if(QDELETED(O) || QDELETED(user) || QDELETED(src)) // If anything magically disappeared or goofed while we were waiting on input
 		return
-	request_amount = min(requested_amount,O.amount,max_wood - wood) // If they try to take out more than is in the stack, or put more wood than the oven can fit at the moment, then truncate
+	requested_amount = min(requested_amount, O.amount, max_wood - wood) // If they try to take out more than is in the stack, or put more wood than the oven can fit at the moment, then truncate
 	//Now on to the real bidness
 	if(O.use(requested_amount))
 		wood += requested_amount
-		to_chat(user,"<span class='notice'>You insert [requested_amount] plank\s of wood, for burning.</span>")
+		to_chat(user, "<span class='notice'>You insert [requested_amount] plank\s of wood, for burning.</span>")
