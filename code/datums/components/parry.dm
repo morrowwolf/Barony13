@@ -32,7 +32,7 @@
 	if(!owner.parrying)
 		return FALSE
 		
-	if(attack_type != MELEE_ATTACK && attack_type != UNARMED_ATTACK)
+	if(attack_type != MELEE_ATTACK && attack_type != UNARMED_ATTACK && attack_type != CHARGE_ATTACK)
 		return FALSE
 		
 	var/mob/living/mobhitby

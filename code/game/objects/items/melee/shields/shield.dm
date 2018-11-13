@@ -1,6 +1,6 @@
 /obj/item/shields/medieval
 	name = "shield"
-	desc = "You probably shouldn't be able to see this"
+	desc = "A strong metal shield fit for a knight."
 	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70)
 	
 	slot_flags = ITEM_SLOT_BACK
@@ -50,13 +50,6 @@
 			user.block_dir = null
 			user.update_icons()
 	return ..(destination)
-	
-/obj/item/shields/medieval/on_swap_hand(mob/living/carbon/user)
-	if(user.blocking)
-		to_chat(user, "You cannot swap hands while blocking!")
-		return TRUE
-	
-	return FALSE
 
 /obj/item/shields/medieval/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!owner.blocking)

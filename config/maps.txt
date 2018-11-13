@@ -16,29 +16,5 @@ map BaronyDebug
 	default
 endmap
 
-map yogstation
-	voteweight 1.5
-endmap
-
-#map boxstation
-	#default
-	#voteweight 1.5
-#endmap
-
-map metastation
-	minplayers 25
-endmap
-
-map pubbystation
-endmap
-
-map omegastation
-	maxplayers 35
-endmap
-
-map deltastation
-	minplayers 50
-endmap
-
 map runtimestation
 endmap

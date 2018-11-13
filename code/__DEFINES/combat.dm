@@ -77,6 +77,7 @@
 #define PROJECTILE_ATTACK 3
 #define THROWN_PROJECTILE_ATTACK 4
 #define LEAP_ATTACK 5
+#define CHARGE_ATTACK 6
 
 //attack visual effects
 #define ATTACK_EFFECT_PUNCH		"punch"

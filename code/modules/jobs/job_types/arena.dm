@@ -45,6 +45,13 @@ Arena guys
 	
 /datum/job/knight/after_spawn(mob/living/carbon/human/H, mob/M)
 	handle_arena_spawn(H)
+	//Now lets add a thing before their names to make them more honourable or some shit
+	if(H.gender == FEMALE)
+		H.real_name = "Dame [H.real_name]"
+	else if(H.gender == PLURAL) // If this person is... multiple?? people???
+		H.real_name = "Sirs [H.real_name]"
+	else // For both Males, and the bizarre technicality of a NEUTER-gendered mob becoming a knight somehow
+		H.real_name = "Sir [H.real_name]"
 	
 /datum/job/knight/override_latejoin_spawn(mob/living/carbon/human/H)
 	return TRUE
@@ -60,7 +67,7 @@ Arena guys
 	belt = /obj/item/melee/medieval/blade/shortsword
 	back = /obj/item/melee/medieval/blade/sword
 	neck = /obj/item/clothing/neck/cloak/medieval
-	id = null
+	id = /obj/item/key/armory
 	ears = null
 	
 /datum/outfit/job/knight/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -136,7 +143,7 @@ Arena guys
 
 	
 /datum/job/proc/handle_arena_spawn(mob/living/carbon/human/H)
-	var/destination = pick(list(/area/barony/outside, /area/barony/inside))
+	var/destination = /area/barony/inside
 	var/turf/T
 	var/safety = 0
 	while(safety < 40)

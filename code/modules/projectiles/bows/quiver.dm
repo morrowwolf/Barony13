@@ -23,3 +23,10 @@
 	else
 		icon_state = "quiver-3"
 	..()
+
+/obj/item/storage/backpack/quiver/full
+	icon_state = "quiver-3"
+
+/obj/item/storage/backpack/quiver/full/PopulateContents()
+	for(var/i = 0, i < 8, i++)
+		new /obj/item/ammo_casing/arrow(src)

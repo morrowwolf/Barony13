@@ -55,6 +55,12 @@ allowing humans to charge stupidly at their enemy.
 			changeNext_move(CLICK_CD_CHARGE_MISS)
 			
 /mob/living/carbon/human/proc/hitMobNoItem(mob/living/L)
+	
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = L
+		if(H.check_shields(src, 0, "[src]", CHARGE_ATTACK))
+			return FALSE
+
 	src.do_attack_animation(L, ATTACK_EFFECT_PUNCH)
 
 	var/damage = 3*rand(src.dna.species.punchdamagelow, src.dna.species.punchdamagehigh)
@@ -75,7 +81,13 @@ allowing humans to charge stupidly at their enemy.
 	L.lastattackerckey = src.ckey
 	
 /mob/living/carbon/human/proc/hitMobItem(mob/living/L)
+
 	var/obj/item/I = get_active_held_item()
+
+	if(istype(L, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = L
+		if(H.check_shields(src, 0, "[src]'s [I.name]", CHARGE_ATTACK))
+			return FALSE
 	
 	src.do_attack_animation(L)
 	

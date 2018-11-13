@@ -59,20 +59,14 @@
 		return
 		
 	while(bone_total >= bones_required && candidates.len)
-	
-		for(var/obj/item/stack/sheet/bone/b in bones)
-			bone_total += b.amount
-			
-		if(bone_total < bones_required)
-			return
 		
 		var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 		var/key = selected_candidate.key
 
 		
 		var/datum/mind/Mind = new /datum/mind(key)
-		Mind.assigned_role = ROLE_WITCH_SKELETON
-		Mind.special_role = ROLE_WITCH_SKELETON
+		Mind.assigned_role = ROLE_WITCH_CULT
+		Mind.special_role = ROLE_WITCH_CULT
 		Mind.active = 1
 
 		var/mob/living/carbon/human/skeleton = new(user.loc)
@@ -106,8 +100,6 @@
 				bone_removal -= b.amount
 				qdel(b)
 			if(bone_removal == 0)
-				goto FinishBoneRemoval
-				
-		FinishBoneRemoval
+				break
 			
 		log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
