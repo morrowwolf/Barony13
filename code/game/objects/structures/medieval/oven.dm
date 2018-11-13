@@ -1,43 +1,48 @@
 //See: code\modules\food_and_drinks\kitchen_machinery\microwave.dm
 
-/obj/dohickey/oven
+/obj/structure/medieval/oven
 	name = "oven"
 	desc = "Cooks and boils things."
 	icon = 'barony/icons/oven.dmi'
 	icon_state = "oven"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
-	pass_flags = PASSTABLE
 	var/wood = 0 // How much wood is in the dang thing
 	var/max_wood = 10 // The most wood it can hold
 	var/operating = FALSE // Holds whether it's on or not
 	var/max_items = 10 // How many non-wood things fit in the oven
+	var/datum/looping_sound/oven/soundloop // The WOOSH and WoOoOOOo fire noises :D
 	
-/obj/dohickey/oven/examine(mob/user)
+/obj/structure/medieval/oven/Initialize()
+	. = ..()
+	soundloop = new(list(src), FALSE)
+	
+/obj/structure/medieval/oven/examine(mob/user)
 	..()
 	if(wood)
-		to_chat(user,"<span class='notice'>There seems to be [wood] logs within the oven.</span>")
+		to_chat(user,"<span class='notice'>There seems to be [wood] log\s within the oven.</span>")
 	else
 		to_chat(user,"<span class='notice'>There's no wood inside of [src]!</span>")
 	if(contents.len)
-		to_chat(user,"<span class='notice'>There's something in the oven to cook.</span>")
+		var/noticed = contents[1]
+		to_chat(user,"<span class='notice'>You can see \a [noticed] in the oven to cook.</span>")
 	else
 		to_chat(user,"<span class='notice'>There's nothing inside of the oven to cook.</span>")
 		
-/obj/dohickey/oven/proc/start()
-	visible_message("The [src] roars to life!", "<span class='italics'>You smell something burning.</span>")
-	//soundloop.start()
+/obj/structure/medieval/oven/proc/start()
+	visible_message("\The [src] roars to life!", "<span class='italics'>You smell something burning.</span>")
+	soundloop.start()
 	operating = TRUE
 	icon_state = "oven_alive"
 	updateUsrDialog()
 	
-/obj/dohickey/oven/proc/stop()
+/obj/structure/medieval/oven/proc/stop()
 	operating = FALSE // Turn it off again aferwards
 	icon_state = "oven"
 	updateUsrDialog()
-	//soundloop.stop()
+	soundloop.stop()
 
-/obj/dohickey/oven/proc/startcook()
+/obj/structure/medieval/oven/proc/startcook()
 	if(!wood) // If it's broken or there ain't no wood
 		return FALSE// Naw
 	start()
@@ -45,31 +50,31 @@
 	stop()
 	return TRUE
 	
-/obj/dohickey/oven/proc/dispose()
+/obj/structure/medieval/oven/proc/dispose()
 	for (var/obj/O in contents)
 		O.forceMove(drop_location())
 	to_chat(usr, "<span class='notice'>You dispose of \the [src]'s contents.</span>")
 	updateUsrDialog()
 
-/obj/dohickey/oven/proc/cook()
+/obj/structure/medieval/oven/proc/cook()
 	visible_message("<span class='notice'>[src] is set alight and begins cooking.</span>")
 	for(var/obj/item/O in contents)
 		if(!wood)
 			return
+		sleep(75) // 75 deciseconds per thing
 		O.microwave_act(src)
 		//visible_message("<span class='notice'>[src] cooked a thing!!.</span>")
 		wood -= 1
-		sleep(50) // 5 Seconds per thing
 
-/obj/dohickey/oven/AltClick(mob/user)
+/obj/structure/medieval/oven/AltClick(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE) && anchored && wood)
 		startcook()
 		
-/obj/dohickey/oven/attack_hand(mob/user)
+/obj/structure/medieval/oven/attack_hand(mob/user)
 	if(!startcook()) // Starts cooking. If it fails, it warns there ain't enough wood.
 		to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
 		
-/obj/dohickey/oven/attackby(obj/item/O, mob/user, params)
+/obj/structure/medieval/oven/attackby(obj/item/O, mob/user, params)
 	if(operating)
 		..()
 		return
@@ -109,7 +114,7 @@
 	updateUsrDialog()
 
 /*
-/obj/dohickey/oven/Topic(href, href_list)
+/obj/structure/medieval/oven/Topic(href, href_list)
 	if(..())
 		return
 
