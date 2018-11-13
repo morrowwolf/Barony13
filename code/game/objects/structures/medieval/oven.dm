@@ -12,6 +12,7 @@
 	var/operating = FALSE // Holds whether it's on or not
 	var/max_items = 10 // How many non-wood things fit in the oven
 	var/datum/looping_sound/oven/soundloop // The WOOSH and WoOoOOOo fire noises :D
+	var/efficiency = 0 // Some vestige of how microwave_act() works. REMOVE THIS WHEN YOU WRITE cook_act() SHIT!
 	
 /obj/structure/medieval/oven/Initialize()
 	. = ..()
@@ -20,12 +21,12 @@
 /obj/structure/medieval/oven/examine(mob/user)
 	..()
 	if(wood)
-		to_chat(user,"<span class='notice'>There seems to be [wood] log\s within the oven.</span>")
+		to_chat(user,"<span class='notice'>There seems to be enough wood in the oven to cook about [wood] thing\s.</span>")
 	else
 		to_chat(user,"<span class='notice'>There's no wood inside of [src]!</span>")
 	if(contents.len)
 		var/noticed = contents[1]
-		to_chat(user,"<span class='notice'>You can see \a [noticed] in the oven to cook.</span>")
+		to_chat(user,"<span class='notice'>You can see \a [noticed] in the oven.</span>")
 	else
 		to_chat(user,"<span class='notice'>There's nothing inside of the oven to cook.</span>")
 		
@@ -34,12 +35,10 @@
 	soundloop.start()
 	operating = TRUE
 	icon_state = "oven_alive"
-	updateUsrDialog()
 	
 /obj/structure/medieval/oven/proc/stop()
 	operating = FALSE // Turn it off again aferwards
 	icon_state = "oven"
-	updateUsrDialog()
 	soundloop.stop()
 
 /obj/structure/medieval/oven/proc/startcook()
@@ -54,7 +53,6 @@
 	for (var/obj/O in contents)
 		O.forceMove(drop_location())
 	to_chat(usr, "<span class='notice'>You dispose of \the [src]'s contents.</span>")
-	updateUsrDialog()
 
 /obj/structure/medieval/oven/proc/cook()
 	visible_message("<span class='notice'>[src] is set alight and begins cooking.</span>")
@@ -90,12 +88,15 @@
 
 		if(loaded)
 			to_chat(user, "<span class='notice'>You insert [loaded] items into [src].</span>")
-	else if(istype(O, /obj/item/grown/log/tree))
+	else if(istype(O, /obj/item/grown/log/tree)) // If it's a log that can be burned
 		//Delete the log from their hand
 		qdel(O)
 		//Add 1 Wood unit to the oven
 		wood += 1
-		to_chat(user, "<span class='notice'>You insert the log into [src], for burning.</span>")
+		to_chat(user, "<span class='notice'>You insert \the [O] into [src], for burning.</span>")
+	else if(istype(O, /obj/item/stack/sheet/mineral/wood)) // If it's some sheets of wood
+		//(Which has to be treated a bit special compared to the logs because we're not 100% sure how much of the sheets the user wants to put into the oven)
+		handle_wood(O,user)
 	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O, /obj/item/storage) && user.a_intent == INTENT_HELP)
 		if (contents.len>=max_items)
 			to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
@@ -111,24 +112,21 @@
 
 	else
 		..()
-	updateUsrDialog()
 
-/*
-/obj/structure/medieval/oven/Topic(href, href_list)
-	if(..())
+/obj/structure/medieval/oven/proc/handle_wood(obj/item/stack/sheet/mineral/wood O,mob/user)
+	/*See: 
+	code\datums\components\material_container.dm
+	Which seems to be the thing that holds & processes materials & item/stack's in machinery such as the autolathe & protolathe
+	*/
+	set waitfor = FALSE // This is a separate proc specificaly because I need this
+	var/requested_amount = input(user, "How much wood do you insert?", "Inserting wood planks") as num|null
+	//First some input scrubbing
+	if(isnull(requested_amount) || (requested_amount <= 0)) // If they responded like the retards they are
 		return
-
-	//usr.set_machine(src)
-	if(operating)
-		updateUsrDialog()
+	if(QDELETED(I) || QDELETED(user) || QDELETED(src)) // If anything magically disappeared or goofed while we were waiting on input
 		return
-
-	switch(href_list["action"])
-		if ("cook")
-			startcook()
-
-		if ("eject")
-			dispose()
-	updateUsrDialog()
-*/
-	
+	request_amount = min(requested_amount,O.amount,max_wood - wood) // If they try to take out more than is in the stack, or put more wood than the oven can fit at the moment, then truncate
+	//Now on to the real bidness
+	if(O.use(requested_amount))
+		wood += requested_amount
+		to_chat(user,"<span class='notice'>You insert [requested_amount] plank\s of wood, for burning.</span>")
