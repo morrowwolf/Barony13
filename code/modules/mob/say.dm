@@ -2,12 +2,9 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
-
-	var/oldmsg = message //yogs start - pretty filter
-	message = pretty_filter(message)
-	if(oldmsg != message)
-		to_chat(usr, "<span class='notice'>You fumble over your words. https://discord.gg/CqrVvRZ.</span>")
-		message_admins("[key_name(usr)] just tripped a pretty filter: '[oldmsg]'.")
+	if(isnotpretty(message)) // If they said something that's ass
+		to_chat(usr, "<span class='notice'>You fumble over your words.</span>")
+		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
 		return //yogs end - pretty filter
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
@@ -21,17 +18,16 @@
 	set name = "Whisper"
 	set category = "IC"
 
-	var/oldmsg = message //yogs start - pretty filter
-	message = pretty_filter(message)
-	if(oldmsg != message)
-		to_chat(usr, "<span class='notice'>You fumble over your words. https://discord.gg/CqrVvRZ.</span>")
-		message_admins("[key_name(usr)] just tripped a pretty filter: '[oldmsg]'.")
+	if(isnotpretty(message)) // If they said something that's ass
+		to_chat(usr, "<span class='notice'>You fumble over your words.</span>")
+		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
 		return //yogs end - pretty filter
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
-	whisper(message)
+	if(message)
+		whisper(message)
 
 /mob/proc/whisper(message, datum/language/language=null)
 	say(message, language) //only living mobs actually whisper, everything else just talks
@@ -45,7 +41,10 @@
 		return
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
-
+	if(isnotpretty(message))
+		to_chat(usr, "<span class='notice'>You fumble over a bit.</span>")
+		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
+		return //yogs end - pretty filter
 	usr.emote("me",1,message,TRUE)
 
 /mob/proc/say_dead(var/message)
