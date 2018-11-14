@@ -80,7 +80,6 @@ This file has the procs and global lists associated with the prettyfilter stuff 
 					replacement += "="
 
 		to_chat(usr, "&nbsp;&nbsp;&nbsp;<font color='#994400'><b>[pattern]</b></font> -> <font color='#004499'><b>[replacement]</b></font>")
-	to_chat(usr, "<font size='3'><b>--------------</b></font>")
 	to_chat(usr, "<font size='3'><b>Spellfix filters list</b></font>")
 	for(var/line in spellfix_filter_items)
 		var/list/parts = splittext(line, "=")

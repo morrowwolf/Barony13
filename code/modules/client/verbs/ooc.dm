@@ -7,7 +7,7 @@
 		return
 
 	if(!mob)
-		to_chat(usr,"<span class='danger'>You seem to not have a mob associated with your cilent!</span>"
+		to_chat(usr,"<span class='danger'>You seem to not have a mob associated with your cilent!</span>")
 		message_admins("[key_name(usr)] apparently doesn't have a mob associated to their client or something? Go yell at a coder about it. Thanks.")
 		return
 
