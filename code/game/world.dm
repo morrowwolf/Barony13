@@ -36,7 +36,7 @@ GLOBAL_PROTECT(security_mode)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 	LoadBans()
-	setup_pretty_filter() //yogs
+	setup_chat_filters() //barony ; this used to be a call to setup_pretty_filter
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 

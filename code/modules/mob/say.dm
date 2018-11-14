@@ -2,14 +2,15 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
+
 	if(isnotpretty(message)) // If they said something that's ass
 		to_chat(usr, "<span class='notice'>You fumble over your words.</span>")
 		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
 		return //yogs end - pretty filter
-
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
+	message = spellfix_filter(message)
 	if(message)
 		say(message)
 
@@ -26,6 +27,7 @@
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
+	message = spellfix_filter(message)
 	if(message)
 		whisper(message)
 
@@ -44,7 +46,8 @@
 	if(isnotpretty(message))
 		to_chat(usr, "<span class='notice'>You fumble over a bit.</span>")
 		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
-		return //yogs end - pretty filter
+		return
+	message = spellfix_filter(message)
 	usr.emote("me",1,message,TRUE)
 
 /mob/proc/say_dead(var/message)
@@ -55,10 +58,11 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
-	var/jb = jobban_isbanned(src, "OOC")
+	
 	if(QDELETED(src))
 		return
 
+	var/jb = jobban_isbanned(src, "OOC")
 	if(jb)
 		to_chat(src, "<span class='danger'>You have been banned from deadchat.</span>")
 		return
