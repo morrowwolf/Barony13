@@ -124,7 +124,7 @@ This file has the procs and global lists associated with the prettyfilter stuff 
 				if(index < parts.len)
 					replacement += "="
 
-		var/regex/R = new(pattern, "ig")
+		var/regex/R = new(pattern, "g")
 		text = R.Replace(text, replacement)
 
 	return text
