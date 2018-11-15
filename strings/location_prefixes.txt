@@ -1,0 +1,17 @@
+Imperial
+North
+Northern
+East
+West
+South
+Southern
+Central
+Old
+New
+Szechuan
+White
+Black
+Grey
+Dark
+Lesser
+Greater
