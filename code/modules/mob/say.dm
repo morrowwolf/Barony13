@@ -45,7 +45,7 @@
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(isnotpretty(message))
 		to_chat(usr, "<span class='notice'>You fumble over a bit.</span>")
-		message_admins("[key_name(usr)] just tripped a pretty filter: '[message]'.")
+		message_admins("[key_name(usr)] just tripped a pretty filter when emoting: '[message]'.")
 		return
 	message = spellfix_filter(message)
 	usr.emote("me",1,message,TRUE)
