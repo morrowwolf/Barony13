@@ -5,7 +5,7 @@
 	icon = 'yogstation/icons/obj/clothing/suits.dmi'
 	icon_state = "knight"
 	allowed = list(/obj/item/kitchen/knife)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	flags_inv = HIDEJUMPSUIT
 	clothing_flags = THICKMATERIAL
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = CHEST|GROIN|ARMS
 	armor = list("melee" = 60, "bullet" = 60, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
