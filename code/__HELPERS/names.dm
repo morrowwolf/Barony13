@@ -57,14 +57,11 @@ GLOBAL_VAR(command_name)
 
 /proc/station_name()
 	if(!GLOB.station_name)
-		var/newname
 		var/config_station_name = CONFIG_GET(string/stationname)
 		if(config_station_name)
-			newname = config_station_name
+			set_station_name(config_station_name)
 		else
-			newname = new_station_name()
-
-		set_station_name(newname)
+			set_station_name(new_station_name())
 
 	return GLOB.station_name
 
@@ -73,7 +70,7 @@ GLOBAL_VAR(command_name)
 
 	var/config_server_name = CONFIG_GET(string/servername)
 	if(config_server_name)
-		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : ": [GLOB.station_name]"]"
+		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : " | [GLOB.station_name]"]"
 	else
 		world.name = GLOB.station_name
 
@@ -89,7 +86,7 @@ GLOBAL_VAR(command_name)
 		for(var/holiday_name in SSevents.holidays) // Holiday variations
 			var/datum/holiday/holiday = SSevents.holidays[holiday_name]
 			new_name += holiday.getStationPrefix()
-			continue
+			break
 	else
 		new_name += "[pick(GLOB.location_prefixes)] "
 	//[Grueland]
