@@ -9,21 +9,26 @@
 #/code/world.dm @GithubNameHere
 #/maps/ @GithubNameHere
 
-#Partheo
-#/yogstation/icons/ @Partheo
+#Parune
+/barony/icons/ @Parune
+/icons/ @Parune
+/yogstation/icons/ @Parune
 
-#ThatLing
+#morrowwolf
 
-/code/__DEFINES/tick.dm @ThatLing
-/code/controllers/admin.dm @ThatLing
-/code/controllers/failsafe.dm @ThatLing
-/code/controllers/subsystem.dm @ThatLing
-/code/controllers/subsystem/ @ThatLing
-/code/modules/keybindings/ @ThatLing
-/yogstation/code/controllers/ @ThatLing
-/yogstation/code/modules/keybindings/ @ThatLing
+/maps/ @morrowwolf
 
 #Multiple Owners
 
-/code/__DEFINES/MC.dm @AsV9 @ThatLing
-/code/controllers/master.dm @AsV9 @ThatLing
+/code/__DEFINES/MC.dm @morrowwolf @Altoids1
+/code/__DEFINES/tick.dm @morrowwolf @Altoids1
+/code/controllers/admin.dm @morrowwolf @Altoids1
+/code/controllers/failsafe.dm @morrowwolf @Altoids1
+/code/controllers/master.dm @morrowwolf @Altoids1
+/code/controllers/subsystem.dm @morrowwolf @Altoids1
+/code/controllers/subsystem/ @morrowwolf @Altoids1
+/code/modules/keybindings/ @morrowwolf @Altoids1
+/yogstation/code/controllers/ @morrowwolf @Altoids1
+/yogstation/code/modules/keybindings/ @morrowwolf @Altoids1
+
+
