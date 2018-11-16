@@ -14,18 +14,6 @@
 	var/response_timer_id = null
 	var/approval_time = 600
 
-	var/static/regex/standard_station_regex
-
-/obj/item/station_charter/Initialize()
-	. = ..()
-	if(!standard_station_regex)
-		var/prefixes = jointext(GLOB.station_prefixes, "|")
-		var/names = jointext(GLOB.station_names, "|")
-		var/suffixes = jointext(GLOB.station_suffixes, "|")
-		var/numerals = jointext(GLOB.station_numerals, "|")
-		var/regexstr = "^(([prefixes]) )?(([names]) ?)([suffixes]) ([numerals])$"
-		standard_station_regex = new(regexstr)
-
 /obj/item/station_charter/attack_self(mob/living/user)
 	if(used)
 		to_chat(user, "The [name_type] has already been named.")
@@ -50,11 +38,6 @@
 		return
 	log_game("[key_name(user)] has proposed to name the station as \
 		[new_name]")
-
-	if(standard_station_regex.Find(new_name))
-		to_chat(user, "Your name has been automatically approved.")
-		rename_station(new_name, user.name, user.real_name, key_name(user))
-		return
 
 	to_chat(user, "Your name has been sent to your employers for approval.")
 	// Autoapproves after a certain time

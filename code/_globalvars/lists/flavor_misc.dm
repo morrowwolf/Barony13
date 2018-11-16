@@ -105,11 +105,11 @@ GLOBAL_LIST_INIT(TAGGERLOCATIONS, list("Disposals",
 	"Robotics", "HoP Office", "Library", "Chapel", "Theatre",
 	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics"))
 
-GLOBAL_LIST_INIT(station_prefixes, world.file2list("strings/station_prefixes.txt") + "")
+GLOBAL_LIST_INIT(location_prefixes, world.file2list("strings/location_prefixes.txt"))
 
-GLOBAL_LIST_INIT(station_names, world.file2list("strings/station_names.txt" + ""))
+GLOBAL_LIST_INIT(location_names, world.file2list("strings/location_names.txt"))
 
-GLOBAL_LIST_INIT(station_suffixes, world.file2list("strings/station_suffixes.txt"))
+GLOBAL_LIST_INIT(barony_prefixes, world.file2list("strings/barony_prefixes.txt"))
 
 GLOBAL_LIST_INIT(greek_letters, world.file2list("strings/greek_letters.txt"))
 
