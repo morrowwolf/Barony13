@@ -18,7 +18,7 @@ If you want to contribute the first thing you'll need to do is [set up Git](http
 
 We have a [list of guides on the wiki](https://wiki.yogstation.net/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to the Barony with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. Ask around if there's any trivial bug or tweak that could be done, just so you can familiarize yourself with using Github and touching the code. 
 
-###If You're New To Programming
+### If You're New To Programming
 Tell us you're new to coding on the [Discord](https://discord.gg/rbvCtP7). We'll hold your hand the whole way through your first PR, if you want.
 If you need other help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
 
@@ -56,7 +56,7 @@ You are expected to follow these specifications in order to make everyone's live
 ### Object Oriented Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, you should probably look that up.
 
-The TLDR is: If you have a thing A that has a proc ``Foo`` and ``Bar``, and a thing B that has a proc ``Foo`` and Oof, do not do:
+The TLDR is: If you have a thing A that has a proc ``Foo`` and ``Bar``, and a thing B that has a proc ``Foo`` and ``Oof``, do not do:
 ```DM
 /obj/thingA/proc/Foo()
 	codecodecode
