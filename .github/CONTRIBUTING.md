@@ -2,42 +2,83 @@
 
 ## Reporting Issues
 
-See [this page](http://tgstation13.org/wiki/Reporting_Issues) for a guide and format to issue reports.
+Even if you can't code, we do really appreciate you filing any bugs or other issues via the [issue tab](https://github.com/morrowwolf/Barony13/issues) on this Github. This is a complex game, and we need all the help we can get in squashing the thousands of bugs lurking in it.
 
 ## Introduction
 
-Hello and welcome to Yogstation's contributing page. You are here because you are curious or interested in contributing - thank you! Everyone is free to contribute to this project as long as they follow the simple guidelines and specifications below; at yogstation, we strive to maintain code stability and maintainability, and to do that, we need all pull requests to hold up to those specifications. It's in everyone's best interests - including yours! - if the same bug doesn't have to be fixed twice because of duplicated code.
+Hi. If you are here because you are curious or interested in contributing - holy fucking shit THANK YOU!! You're totally free to contribute to this project as long as they follow the simple guidelines and specifications below. They're nothing too complex, just something to keep code quality at a tolerable level; it's in everyone's best interests - including yours! - if the same bug doesn't have to be fixed twice or thrice or daily because of your shitty duplicated code.
 
 First things first, we want to make it clear how you can contribute (if you've never contributed before), as well as the kinds of powers the team has over your additions, to avoid any unpleasant surprises if your pull request is closed for a reason you didn't foresee.
 
 ## Getting Started
 
-yogstation doesn't have a list of goals and features to add; we instead allow freedom for contributors to suggest and create their ideas for the game. That doesn't mean we aren't determined to squash bugs, which unfortunately pop up a lot due to the deep complexity of the game. Here are some useful starting guides, if you want to contribute or if you want to know what challenges you can tackle with zero knowledge about the game's code structure.
+Ultimately you can make any change you want to this video game, provided you're coding for it. Keep in mind that the staff can close PRs that they deem to be not suited for the game, so it's a very good idea to ask about what you want to do ahead of time, before you've spent hours coding it.
 
 If you want to contribute the first thing you'll need to do is [set up Git](https://wiki.yogstation.net/wiki/Setting_up_git) so you can download the source code.
 
-We have a [list of guides on the wiki](https://wiki.yogstation.net/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to yogstation with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. If you need help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
+We have a [list of guides on the wiki](https://wiki.yogstation.net/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to the Barony with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. Ask around if there's any trivial bug or tweak that could be done, just so you can familiarize yourself with using Github and touching the code. 
 
-You can of course, as always, ask for help in #coder-public on the [discord](https://discord.gg/0keg6hQH05Ha8OfO). We're just here to have fun and help out, so please don't expect professional support.
+###If You're New To Programming
+Tell us you're new to coding on the [Discord](https://discord.gg/rbvCtP7). We'll hold your hand the whole way through your first PR, if you want.
+If you need other help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
+
 
 ## Meet the Team
 
-**Headcoder**
+**Hosts - MorrowWolf & Altoids**
 
-The Headcoder is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
+The Hosts on this server participate in both the administration and development of this server, as heads of both departments. Much of the code comes from these two people. They are the people who will review & merge your PRs. Ping them if you need code assistance.
 
-**Maintainers**
+**Head Designer - Parune**
 
-Maintainers are quality control. If a proposed pull request doesn't meet the following specifications, they can request you to change it, or simply just close the pull request. Maintainers are required to give a reason for closing the pull request.
+The Head Designer leads quality control, and has made many of the sprites and artwork for the Barony. Contributions involving those two things require his authorization.
 
-Maintainers can revert your changes if they feel they are not worth maintaining or if they did not live up to the quality specifications.
+**Admin Department - DLCabbose, Solnear**
 
-## Specifications
+The administrators, headed by DLCabbose, still moderate the content and discussion on this Github. Whatever server rules can apply, still apply on the Github. Ultimately, if they tell you to quit doing something, just listen to them.
 
-As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section!
+## Pull Request Process
+
+There is no strict process when it comes to merging pull requests. Pull requests will sometimes take a while before they are looked at by a maintainer; the bigger the change, the more time it will take before they are accepted into the code. Every team member is a volunteer who is giving up their own time to help maintain and contribute, so please be courteous and respectful. Here are some helpful ways to make it easier for you and for the maintainers when making a pull request.
+
+* You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data.
+
+* If you are proposing multiple changes, which change many different aspects of the code, you are expected to section them off into different pull requests in order to make it easier to review them and to deny/accept the changes that are deemed acceptable.
+
+* If your pull request is accepted, the code you add no longer belongs exclusively to you but to everyone, and what ends up being added onto it is up to the Hosts.
+
+* Please explain why you are submitting the pull request, and how you think your change will be beneficial to the game. Failure to do so will be grounds for rejecting the PR.
+
+## How to not Shitcode
+
+You are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thanks, babe.
 
 ### Object Oriented Code
-As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, we highly recommend you do some light research to grasp the basics.
+As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, you should probably look that up.
+
+The TLDR is: If you have a thing A that has a proc ``Foo`` and ``Bar``, and a thing B that has a proc ``Foo`` and Oof, do not do:
+```DM
+/obj/thingA/proc/Foo()
+	codecodecode
+/obj/thingB/proc/Foo()
+	samecodesamecodesamcode
+/obj/thingB/proc/Oof()
+	differentcodedifferentcode
+/obj/thingA/proc/Bar()
+	moredifferentcodemoredifferentcode
+```
+Instead, do:
+```DM
+/obj/thingy/proc/Foo()
+	codecodecode
+/obj/thingy/A/proc/Bar()
+	othercodeothercode
+/obj/thingy/B/proc/Oof()
+	differentcodedifferentcode
+```
+That way, if you ever have to edit ``Foo``, you only have to do it in one place, and it affects A, B, as well as any other ``thingy``'s that are created later on.
+
+There's a bunch of other concepts about code design in Object Orientation, which is why we asked you to look it up, but this is the general concept: Having two things that are related come from a parent that has the code they share in one neat place.
 
 ### All BYOND paths must contain the full path
 (i.e. absolute pathing)
@@ -69,7 +110,7 @@ datum
 				code
 ```
 
-The use of this is not allowed in this project as it makes finding definitions via full text searching next to impossible. The only exception is the variables of an object may be nested to the object, but must not nest further.
+Coding for this game involves doing a lot of file searching for the definitions of specific procs and objects. Doing this means that if you need to search the entire 500-file codebase for ``datum/datum1/proc/proc1()``, it's pretty much next to impossible. The only exception is the variables of an object may be nested to the object, but must not nest further.
 
 The previous code made compliant:
 
@@ -127,7 +168,7 @@ Hacky code, such as adding specific checks, is highly discouraged and only allow
 You can avoid hacky code by using object-oriented methodologies, such as overriding a function (called "procs" in DM) or sectioning code into functions and then overriding them as required.
 
 ### No duplicated code
-Copying code from one place to another may be suitable for small, short-time projects, but yogstation is a long-term project and highly discourages this.
+Copying code from one place to another may be suitable for small, short-time projects, but Barony 13 is a long-term project and highly discourages this.
 
 Instead you can use object orientation, or simply placing repeated code in a function, to obey this specification easily.
 
@@ -200,7 +241,7 @@ This prevents nesting levels from getting deeper then they need to be.
 
 ### Develop Secure Code
 
-* Player input must always be escaped safely, we recommend you use stripped_input in all cases where you would use input. Essentially, just always treat input from players as inherently malicious and design with that use case in mind
+* Player input must always be escaped safely, we recommend you use stripped_input in all cases where you would use input. Essentially, just always treat input from players as inherently malicious and design with that use case in mind.
 
 * Calls to the database must be escaped properly - use sanitizeSQL to escape text based database entries from players or admins, and isnum() for number based database entries from players or admins.
 
@@ -239,149 +280,22 @@ This prevents nesting levels from getting deeper then they need to be.
 		* Subtypes only intended to be used on away mission or ruin maps should be contained within an .dm file with a name corresponding to that map within `code\modules\awaymissions` or `code\modules\ruins` respectively. This is so in the event that the map is removed, that subtype will be removed at the same time as well to minimize leftover/unused data within the repo.
 	* Please attempt to clean out any dirty variables that may be contained within items you alter through var-editing. For example, due to how DM functions, changing the `pixel_x` variable from 23 to 0 will leave a dirty record in the map's code of `pixel_x = 0`. Likewise this can happen when changing an item's icon to something else and then back. This can lead to some issues where an item's icon has changed within the code, but becomes broken on the map due to it still attempting to use the old entry.
 	* Areas should not be var-edited on a map to change it's name or attributes. All areas of a single type and it's altered instances are considered the same area within the code, and editing their variables on a map can lead to issues with powernets and event subsystems which are difficult to debug.
+	
+## Miscellaneous Notes
 
+* Code should be modular where possible. If you're making a brand new thing, put it in a new file or folder. If you're adding on to an old thing, keep it in the same file.
 
-### Other Notes
-* Code should be modular where possible; if you are working on a new addition, then strongly consider putting it in its own file unless it makes sense to put it with similar ones (i.e. a new tool would go in the "tools.dm" file)
-
-* Bloated code may be necessary to add a certain feature, which means there has to be a judgement over whether the feature is worth having or not. You can help make this decision easier by making sure your code is modular.
-
-* You are expected to help maintain the code that you add, meaning that if there is a problem then you are likely to be approached in order to fix any issues, runtimes, or bugs.
-
-* Do not divide when you can easily convert it to multiplication. (ie `4/2` should be done as `4*0.5`)
-
-* If you used regex to replace code during development of your code, post the regex in your PR for the benefit of future developers and downstream users.
+* If you used a regex to replace code during development of your code, post the regex in your PR for the benefit of future developers and downstream users.
 
 * Changes to the `/config` tree must be made in a way that allows for updating server deployments while preserving previous behaviour. This is due to the fact that the config tree is to be considered owned by the user and not necessarily updated alongside the remainder of the code. The code to preserve previous behaviour may be removed at some point in the future given the OK by maintainers.
 
-* The dlls section of tgs3.json is not designed for dlls that are purely `call()()`ed since those handles are closed between world reboots. Only put in dlls that may have to exist between world reboots.
-
-#### Enforced not enforced
-The following coding styles are not only not enforced at all, but are generally frowned upon to change for little to no reason:
-
-* English/British spelling on var/proc names
-	* Color/Colour - both are fine, but keep in mind that BYOND uses `color` as a base variable
-* Spaces after control statements
-	* `if()` and `if ()` - nobody cares!
-
-### Operators
-#### Spacing
-(this is not strictly enforced, but more a guideline for readability's sake)
-
-* Operators that should be separated by spaces
-	* Boolean and logic operators like &&, || <, >, ==, etc (but not !)
-	* Bitwise AND &
-	* Argument separator operators like , (and ; when used in a forloop)
-	* Assignment operators like = or += or the like
-* Operators that should not be separated by spaces
-	* Bitwise OR |
-	* Access operators like . and :
-	* Parentheses ()
-	* logical not !
-
-Math operators like +, -, /, *, etc are up in the air, just choose which version looks more readable.
-
-#### Use
-* Bitwise AND - '&'
-	* Should be written as ```bitfield & bitflag``` NEVER ```bitflag & bitfield```, both are valid, but the latter is confusing and nonstandard.
-* Associated lists declarations must have their key value quoted if it's a string
-	* WRONG: list(a = "b")
-	* RIGHT: list("a" = "b")
-
-### Dream Maker Quirks/Tricks
-Like all languages, Dream Maker has its quirks, some of them are beneficial to us, like these
-
-#### In-To for-loops
-```for(var/i = 1, i <= some_value, i++)``` is a fairly standard way to write an incremental for loop in most languages (especially those in the C family), but DM's ```for(var/i in 1 to some_value)``` syntax is oddly faster than its implementation of the former syntax; where possible, it's advised to use DM's syntax. (Note, the ```to``` keyword is inclusive, so it automatically defaults to replacing ```<=```; if you want ```<``` then you should write it as ```1 to some_value-1```).
-
-HOWEVER, if either ```some_value``` or ```i``` changes within the body of the for (underneath the ```for(...)``` header) or if you are looping over a list AND changing the length of the list then you can NOT use this type of for-loop!
-
-### for(var/A in list) VS for(var/i in 1 to list.len)
-The former is faster than the latter, as shown by the following profile results:
-https://file.house/zy7H.png
-Code used for the test in a readable format:
-https://pastebin.com/w50uERkG
-
-
-#### Istypeless for loops
-A name for a differing syntax for writing for-each style loops in DM. It's NOT DM's standard syntax, hence why this is considered a quirk. Take a look at this:
-```DM
-var/list/bag_of_items = list(sword, apple, coinpouch, sword, sword)
-var/obj/item/sword/best_sword
-for(var/obj/item/sword/S in bag_of_items)
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-The above is a simple proc for checking all swords in a container and returning the one with the highest damage, and it uses DM's standard syntax for a for-loop by specifying a type in the variable of the for's header that DM interprets as a type to filter by. It performs this filter using ```istype()``` (or some internal-magic similar to ```istype()``` - this is BYOND, after all). This is fine in its current state for ```bag_of_items```, but if ```bag_of_items``` contained ONLY swords, or only SUBTYPES of swords, then the above is inefficient. For example:
-```DM
-var/list/bag_of_swords = list(sword, sword, sword, sword)
-var/obj/item/sword/best_sword
-for(var/obj/item/sword/S in bag_of_swords)
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-specifies a type for DM to filter by. 
-
-With the previous example that's perfectly fine, we only want swords, but here the bag only contains swords? Is DM still going to try to filter because we gave it a type to filter by? YES, and here comes the inefficiency. Wherever a list (or other container, such as an atom (in which case you're technically accessing their special contents list, but that's irrelevant)) contains datums of the same datatype or subtypes of the datatype you require for your loop's body,
-you can circumvent DM's filtering and automatic ```istype()``` checks by writing the loop as such:
-```DM
-var/list/bag_of_swords = list(sword, sword, sword, sword)
-var/obj/item/sword/best_sword
-for(var/s in bag_of_swords)
-	var/obj/item/sword/S = s
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-Of course, if the list contains data of a mixed type then the above optimisation is DANGEROUS, as it will blindly typecast all data in the list as the specified type, even if it isn't really that type, causing runtime errors.
-
-#### Dot variable
-Like other languages in the C family, DM has a ```.``` or "Dot" operator, used for accessing variables/members/functions of an object instance.
-eg:
-```DM
-var/mob/living/carbon/human/H = YOU_THE_READER
-H.gib()
-```
-However, DM also has a dot variable, accessed just as ```.``` on its own, defaulting to a value of null. Now, what's special about the dot operator is that it is automatically returned (as in the ```return``` statement) at the end of a proc, provided the proc does not already manually return (```return count``` for example.) Why is this special?
-
-With ```.``` being everpresent in every proc, can we use it as a temporary variable? Of course we can! However, the ```.``` operator cannot replace a typecasted variable - it can hold data any other var in DM can, it just can't be accessed as one, although the ```.``` operator is compatible with a few operators that look weird but work perfectly fine, such as: ```.++``` for incrementing ```.'s``` value, or ```.[1]``` for accessing the first element of ```.```, provided that it's a list.
-
-## Globals versus static
-
-DM has a var keyword, called global. This var keyword is for vars inside of types. For instance:
-
-```DM
-mob
-	var
-		global
-			thing = TRUE
-```
-This does NOT mean that you can access it everywhere like a global var. Instead, it means that that var will only exist once for all instances of its type, in this case that var will only exist once for all mobs - it's shared across everything in its type. (Much more like the keyword `static` in other languages like PHP/C++/C#/Java)
-
-Isn't that confusing? 
-
-There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces suprise when reading BYOND code.
-
-## Pull Request Process
-
-There is no strict process when it comes to merging pull requests. Pull requests will sometimes take a while before they are looked at by a maintainer; the bigger the change, the more time it will take before they are accepted into the code. Every team member is a volunteer who is giving up their own time to help maintain and contribute, so please be courteous and respectful. Here are some helpful ways to make it easier for you and for the maintainers when making a pull request.
-
-* Make sure your pull request complies to the requirements outlined in [this guide](http://tgstation13.org/wiki/Getting_Your_Pull_Accepted)
-
-* You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data.
-
-* We ask that you use the changelog system to document your change, which prevents our players from being caught unaware by changes - you can find more information about this [on this wiki page](http://tgstation13.org/wiki/Guide_to_Changelogs).
-
-* If you are proposing multiple changes, which change many different aspects of the code, you are expected to section them off into different pull requests in order to make it easier to review them and to deny/accept the changes that are deemed acceptable.
-
-* If your pull request is accepted, the code you add no longer belongs exclusively to you but to everyone; everyone is free to work on it, but you are also free to support or object to any changes being made, which will likely hold more weight, as you're the one who added the feature. It is a shame this has to be explicitly said, but there have been cases where this would've saved some trouble.
-
-* Please explain why you are submitting the pull request, and how you think your change will be beneficial to the game. Failure to do so will be grounds for rejecting the PR.
-
+* Put spaces in-between your math, logic, & bitwise operators. Our host is colourblind and ergo is not reading your code with a decent mark-up. Please be kind to him.
+	
 ## Porting features/sprites/sounds/tools from other codebases
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
 
-Regarding sprites & sounds, you must credit the artist and possibly the codebase. All yogstation assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the yogstation codebase.
+Regarding sprites & sounds, you must credit the artist and possibly the codebase. All Barony 13 assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the Barony codebase.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:
