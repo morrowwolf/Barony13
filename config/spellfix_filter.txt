@@ -1,0 +1,39 @@
+# This file contains filters for spellchecking in supported speech systems, similar to config/pretty_filter.txt
+# Each line contains one pattern and one replacement. The patterns used are regular expression patterns.
+# If you don't know what those are, then please ask someone who does before you try editing this.
+#
+# Examples:
+# 
+# fuck=duck
+#     This would replace all instances of "fuck" with duck. So "fucking" would become "ducking".
+#
+# fu+ck=duck
+#    This would do the same as above, except it would accept one or more "u". So "fuuuuuck" would become "duck".
+#
+# Activate the ([\\S]+?)=use $1
+#    This would match a group, and use it in a pattern. So "Activate the probulator" would become "use probulator".
+# 
+# \\b[f]+[u]+\\b=fun you
+#    This would make any word with combinations of "f" followed by "u" be replaced with fun you. So "ffffffffuuuuuuuuuuu" becomes "fun you".
+ i = I 
+i've=I've
+ dont = don't 
+didnt=didn't
+ cant = can't 
+ lol = haha 
+ ahs = has 
+ ded = dead
+dnt =dn't 
+ ur = your
+ u = you
+ alot= a lot
+ thats= that's
+ isnt= isn't
+ dieing= dying
+could of=could've
+ arent= aren't
+thign=thing
+ alos = also 
+wtf=what the fuck
+youre=you're
+ teh = the 
