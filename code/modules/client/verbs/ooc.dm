@@ -7,6 +7,8 @@
 		return
 
 	if(!mob)
+		to_chat(usr,"<span class='danger'>You seem to not have a mob associated with your cilent!</span>")
+		message_admins("[key_name(usr)] apparently doesn't have a mob associated to their client or something? Go yell at a coder about it. Thanks.")
 		return
 
 	if(!holder)
@@ -34,7 +36,7 @@
 	msg = pretty_filter(msg) //yogs
 	msg = emoji_parse(msg)
 
-	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 5)), "say")))
+	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 6)), "say ")))
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
 

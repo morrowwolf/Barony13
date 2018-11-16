@@ -57,14 +57,11 @@ GLOBAL_VAR(command_name)
 
 /proc/station_name()
 	if(!GLOB.station_name)
-		var/newname
 		var/config_station_name = CONFIG_GET(string/stationname)
 		if(config_station_name)
-			newname = config_station_name
+			set_station_name(config_station_name)
 		else
-			newname = new_station_name()
-
-		set_station_name(newname)
+			set_station_name(new_station_name())
 
 	return GLOB.station_name
 
@@ -73,53 +70,28 @@ GLOBAL_VAR(command_name)
 
 	var/config_server_name = CONFIG_GET(string/servername)
 	if(config_server_name)
-		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : ": [GLOB.station_name]"]"
+		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : " | [GLOB.station_name]"]"
 	else
 		world.name = GLOB.station_name
 
 
-/proc/new_station_name()
-	var/random = rand(1,5)
-	var/name = ""
-	var/new_station_name = ""
-
-	//Rare: Pre-Prefix
-	if (prob(10))
-		name = pick(GLOB.station_prefixes)
-		new_station_name = name + " "
-		name = ""
-
-	// Prefix
-	for(var/holiday_name in SSevents.holidays)
-		if(holiday_name == "Friday the 13th")
-			random = 13
-		var/datum/holiday/holiday = SSevents.holidays[holiday_name]
-		name = holiday.getStationPrefix()
-		//get normal name
-	if(!name)
-		name = pick(GLOB.station_names)
-	if(name)
-		new_station_name += name + " "
-
-	// Suffix
-	name = pick(GLOB.station_suffixes)
-	new_station_name += name + " "
-
-	// ID Number
-	switch(random)
-		if(1)
-			new_station_name += "[rand(1, 99)]"
-		if(2)
-			new_station_name += pick(GLOB.greek_letters)
-		if(3)
-			new_station_name += "\Roman[rand(1,99)]"
-		if(4)
-			new_station_name += pick(GLOB.phonetic_alphabet)
-		if(5)
-			new_station_name += pick(GLOB.numbers_as_words)
-		if(13)
-			new_station_name += pick("13","XIII","Thirteen")
-	return new_station_name
+/proc/new_station_name() // Decides the name of the Barony
+//With a general structure of, uh, "The [Bulbous] Barony of [South] [Grueland]" or whatever
+	var/new_name = "The "
+	
+	// [Bulbous]
+	new_name += "[pick(GLOB.barony_prefixes)] Barony of "
+	//[South]
+	if(SSevents.holidays) // If there's a holiday going on
+		for(var/holiday_name in SSevents.holidays) // Holiday variations
+			var/datum/holiday/holiday = SSevents.holidays[holiday_name]
+			new_name += holiday.getStationPrefix()
+			break
+	else
+		new_name += "[pick(GLOB.location_prefixes)] "
+	//[Grueland]
+	new_name += pick(GLOB.location_names)
+	return new_name
 
 /proc/syndicate_name()
 	var/name = ""
