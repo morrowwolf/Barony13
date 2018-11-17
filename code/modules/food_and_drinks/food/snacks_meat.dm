@@ -7,7 +7,7 @@
 	name = "\improper Cuban carp"
 	desc = "A grifftastic sandwich that burns your tongue and then leaves it numb!"
 	icon_state = "cubancarp"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 1, "vitamin" = 4)
 	bitesize = 3
 	filling_color = "#CD853F"
@@ -79,7 +79,7 @@
 	name = "corned beef and cabbage"
 	desc = "Now you can feel like a real tourist vacationing in Ireland."
 	icon_state = "cornedbeef"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 1, "vitamin" = 4)
 	list_reagents = list("nutriment" = 5)
 	tastes = list("meat" = 1, "cabbage" = 1)
@@ -89,7 +89,7 @@
 	name = "Filet migrawr"
 	desc = "Because eating bear wasn't manly enough."
 	icon_state = "bearsteak"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 2, "vitamin" = 6)
 	list_reagents = list("nutriment" = 2, "vitamin" = 5, "manlydorf" = 5)
 	tastes = list("meat" = 1, "salmon" = 1)
@@ -209,7 +209,7 @@
 	name = "stewed soy meat"
 	desc = "Even non-vegetarians will LOVE this!"
 	icon_state = "stewedsoymeat"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 1)
 	list_reagents = list("nutriment" = 8)
 	filling_color = "#D2691E"
@@ -224,7 +224,7 @@
 	name = "boiled spider leg"
 	desc = "A giant spider's leg that's still twitching after being cooked. Gross!"
 	icon_state = "spiderlegcooked"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 1, "capsaicin" = 2, "vitamin" = 2)
 	list_reagents = list("nutriment" = 3, "capsaicin" = 2)
 	filling_color = "#000000"
@@ -235,7 +235,7 @@
 	name = "green eggs and ham"
 	desc = "Would you eat them on a train? Would you eat them on a plane? Would you eat them on a state of the art corporate deathtrap floating through space?"
 	icon_state = "spidereggsham"
-	trash = /obj/item/trash/plate
+	
 	bonus_reagents = list("nutriment" = 1, "vitamin" = 3)
 	list_reagents = list("nutriment" = 6)
 	bitesize = 4
