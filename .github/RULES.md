@@ -3,7 +3,7 @@ Hi. Thanks a lot for reading these.
 
 The **TL;DR** of this whole sheet is that ultimately, as long as you follow the big rule 0.0, and all the core rules surrounding it, you should pretty much never get into trouble. That being said, the admins will still enforce all of these rules as they are written here, so knowing what they are is likely a very good idea.
 
-These rules are generally ordered by priority, with lower-number rules being more important and having harder punishments.
+These rules are generally ordered by priority, with lower-number rules being more important and having harsher punishments.
 ## Core Rules
 These apply to the Github, Discord, and Server.
 
@@ -48,6 +48,11 @@ Remember that the all rules above still apply when you are an Antagonist.
 **1.1.1: Don't teamkill when part of a team,** such as when you are skeleton serving a Witch. "Lone wolf" antagonists do not need to follow this rule.
 
 ## Discord Rules
+Core Rules still apply on Discord.
 
 **2.0: Keep discussion where it should be.** Keep your discussion related to the topic of the channel you're talking in. Keep degenerate or otherwise vaguely-NSFW discussion in `#off-topic` and `#memes`.
 
+## Github Rules
+Core Rules still apply on Github.
+
+**3.0: Follow the [Contribution guide](https://github.com/morrowwolf/Barony13/blob/master/.github/CONTRIBUTING.md)**.
