@@ -47,10 +47,12 @@ Remember that the all rules above still apply when you are an Antagonist.
 
 **1.1.1: Don't teamkill when part of a team,** such as when you are skeleton serving a Witch. "Lone wolf" antagonists do not need to follow this rule.
 
+
 ## Discord Rules
 Core Rules still apply on Discord.
 
 **2.0: Keep discussion where it should be.** Keep your discussion related to the topic of the channel you're talking in. Keep degenerate or otherwise vaguely-NSFW discussion in `#off-topic` and `#memes`.
+
 
 ## Github Rules
 Core Rules still apply on Github.
