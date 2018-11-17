@@ -14,11 +14,11 @@ These apply to the Github, Discord, and Server.
 
 **0.4: Do not abuse bugs.** If you see a bug, report it [here](https://github.com/morrowwolf/Barony13/issues).
 
-* **0.5: Do not mix IC (in character) and OOC (out of character) knowledge.** 
+**0.5: Do not mix IC (in character) and OOC (out of character) knowledge.** 
 	
-	* **A** Do not post information related to a round in progress in the OOC chat or anywhere on the Github or Discord. A person reading the OOC chat should not be able to know what's happening in a round, whether anyone is dead, etc. Do not use information your character would have no way of knowing in game. We have a zero-tolerance policy on this. 
+* **A** Do not post information related to a round in progress in the OOC chat or anywhere on the Github or Discord. A person reading the OOC chat should not be able to know what's happening in a round, whether anyone is dead, etc. Do not use information your character would have no way of knowing in game. We have a zero-tolerance policy on this. 
 	
-	* **B** Do not use OOC terminology, slang, slurs, or "netspeak" IC.  If helping someone or necessary use LOOC to communicate.  Abusing OOC, LOOC, or discord to insult others or create a toxic environment will result in an OOC/LOOC/discord ban.
+* **B** Do not use OOC terminology, slang, slurs, or "netspeak" IC.  If helping someone or necessary use LOOC to communicate.  Abusing OOC, LOOC, or discord to insult others or create a toxic environment will result in an OOC/LOOC/discord ban.
 
 **0.6: Do not spam or advertise.**
 
