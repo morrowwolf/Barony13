@@ -170,16 +170,16 @@
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/wikiurl
-	config_entry_value = "https://discord.gg/CqrVvRZ" // yogs - Old Tickets
+	config_entry_value = "https://github.com/morrowwolf/Barony13/wiki" // yogs - Old Tickets
 
 /datum/config_entry/string/forumurl
-	config_entry_value = "https://discord.gg/CqrVvRZ" // yogs - Old Tickets
+	config_entry_value = "https://discord.gg/rbvCtP7" // yogs - Old Tickets
 
 /datum/config_entry/string/rulesurl
-	config_entry_value = "https://discord.gg/CqrVvRZ" // yogs - Old Tickets
+	config_entry_value = "https://github.com/morrowwolf/Barony13/blob/master/.github/RULES.md" // yogs - Old Tickets
 
 /datum/config_entry/string/githuburl
-	config_entry_value = "https://discord.gg/CqrVvRZ" // yogs - Old Tickets
+	config_entry_value = "https://github.com/morrowwolf/Barony13" // yogs - Old Tickets
 
 /datum/config_entry/string/roundstatsurl
 
