@@ -78,6 +78,9 @@
 		..()
 
 /obj/structure/medieval/oven/CtrlClick(mob/user)
+	if(!(user in range(1, src)))
+		return
+
 	if(operating)
 		turnOff()
 	else
