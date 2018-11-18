@@ -47,7 +47,6 @@
 			amount += 1
 	to_chat(user, "The oven has [amount] logs left.")
 	to_chat(user, "Turn the oven on or off by control-clicking.")
-	to_chat(user, "GAS IS AT [gas]")
 
 /obj/structure/medieval/oven/attack_hand(mob/user)
 	if(user.a_intent == INTENT_HARM)
