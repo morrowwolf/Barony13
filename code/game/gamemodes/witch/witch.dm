@@ -2,7 +2,7 @@
 
 /datum/game_mode
 	var/list/datum/mind/witches = list()
-	var/list/datum/mind/witchcultists = list()
+	var/list/datum/mind/witch_cultists = list()
 	
 /datum/game_mode/witch
 	name = "witch"
@@ -27,11 +27,21 @@
 	witch.restricted_roles = restricted_jobs			
 	witches += witch
 	
+	var/num_cult = round(num_players() / 8)
+
+	for(var/i = 0, i < num_cult, i++)
+		var/datum/mind/witch_cultist = antag_pick(antag_candidates)
+		witch_cultist.special_role = "witch cult"
+		witch_cultist.restricted_roles = restricted_jobs
+		witch_cultists += witch_cultist
+
 	return 1
 	
 /datum/game_mode/witch/post_setup()
 	for(var/datum/mind/witchbrain in witches)
 		witchbrain.add_antag_datum(/datum/antagonist/witch_cult/witch)			//actually sets the antag stuff
+	for(var/datum/mind/witch_cultbrain in witch_cultists)
+		witch_cultbrain.add_antag_datum(/datum/antagonist/witch_cult)
 	return ..()
 	
 /datum/game_mode/witch/are_special_antags_dead()
