@@ -12,7 +12,8 @@
 	var/operating = FALSE // Holds whether it's on or not
 	var/max_items = 10 // How many non-wood things fit in the oven
 	var/datum/looping_sound/oven/soundloop // The WOOSH and WoOoOOOo fire noises :D
-	var/efficiency = 0 // Some vestige of how microwave_act() works. REMOVE THIS WHEN YOU WRITE cook_act() SHIT!
+	var/dirty = 0 // Some vestige of how microwave_act() works. REMOVE THIS WHEN YOU WRITE cook_act() SHIT!
+	var/efficiency = 0 // DITTO!!
 	
 /obj/structure/medieval/oven/Initialize()
 	. = ..()
