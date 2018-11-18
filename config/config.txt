@@ -47,7 +47,7 @@ ADMIN_LEGACY_SYSTEM
 #LOAD_LEGACY_RANKS_ONLY
 
 ## Comment this out if you want to use the SQL based banning system. The legacy systems use the files in the data folder. You need to set up your database to use the SQL based system.
-BAN_LEGACY_SYSTEM
+#BAN_LEGACY_SYSTEM
 
 ## Comment this out to stop locally connected clients from being given the almost full access !localhost! admin rank
 ENABLE_LOCALHOST_RANK
@@ -74,7 +74,7 @@ ENABLE_LOCALHOST_RANK
 ## Unhash this to enable playtime requirements for certain non-head jobs, like Engineer and Scientist.
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
-#USE_EXP_RESTRICTIONS_ADMIN_BYPASS
+USE_EXP_RESTRICTIONS_ADMIN_BYPASS
 
 ## log OOC channel
 LOG_OOC
@@ -180,7 +180,7 @@ NORESPAWN
 # DONT_DEL_NEWMOB
 
 ## set a hosted by name for unix platforms
-HOSTEDBY Yournamehere
+HOSTEDBY Morrow
 
 ## Set to jobban "Guest-" accounts from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Set to 1 to jobban them from those positions, set to 0 to allow them.
