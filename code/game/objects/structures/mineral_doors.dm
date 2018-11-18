@@ -10,6 +10,8 @@
 	icon = 'icons/obj/doors/mineral_doors.dmi'
 	icon_state = "metal"
 
+	var/damage_deflection = 15
+
 	var/initial_state
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
@@ -174,6 +176,11 @@
 		to_chat(user, "This door is locked.")
 	else if(req_access)
 		to_chat(user, "This door is unlocked")
+
+/obj/structure/mineral_door/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+	if(damage_flag == "melee" && damage_amount < damage_deflection)
+		return 0
+	. = ..()
 
 /obj/structure/mineral_door/iron
 	name = "iron door"
