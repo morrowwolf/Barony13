@@ -108,13 +108,13 @@
 			var/obj/item/stack/O = wood[1]
 			O.amount -= 1
 			if(O.amount <= 0)
-				wood.Remove(wood[1])
 				qdel(wood[1])
+				wood.Remove(wood[1])
 			gas = 100
 			return TRUE
 		else
-			wood.Remove(wood[1])
 			qdel(wood[1])
+			wood.Remove(wood[1])
 			gas = 100
 			return TRUE
 
