@@ -27,13 +27,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 
-/datum/crafting_recipe/oar
-	name = "Goliath Bone Oar"
-	result = /obj/item/oar
-	reqs = list(/obj/item/stack/sheet/bone = 2)
-	time = 15
-	category = CAT_PRIMAL
-
 /datum/crafting_recipe/boat
 	name = "Goliath Hide Boat"
 	result = /obj/vehicle/ridden/lavaboat
