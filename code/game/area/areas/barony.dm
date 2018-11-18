@@ -14,6 +14,12 @@
 	atmos = FALSE
 	has_gravity = TRUE
 
+/area/barony/armory
+	name = "Barony Armory"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	atmos = FALSE
+	has_gravity = TRUE
+
 /area/barony/edge
 	name = "Barony Edge"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
