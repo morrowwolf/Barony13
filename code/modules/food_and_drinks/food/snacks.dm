@@ -268,11 +268,14 @@
 		else
 			initialize_cooked_food(S, 1)
 		SSblackbox.record_feedback("tally", "food_made", 1, type)
+		qdel(src)
+		return S
 	else
-		new /obj/item/reagent_containers/food/snacks/badrecipe(src)
+		var/obj/item/reagent_containers/food/snacks/badrecipe/bad = new /obj/item/reagent_containers/food/snacks/badrecipe(src)
 		if(M && M.dirty < 100)
 			M.dirty++
-	qdel(src)
+		qdel(src)
+		return bad
 
 /obj/item/reagent_containers/food/snacks/Destroy()
 	if(contents)
