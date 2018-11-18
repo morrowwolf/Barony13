@@ -284,8 +284,8 @@ SUBSYSTEM_DEF(ticker)
 	round_start_time = world.time
 	SSdbcore.SetRoundStart()
 
-	to_chat(world, "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>")
-	SEND_SOUND(world, sound('sound/ai/welcome.ogg'))
+	//to_chat(world, "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>")
+	//SEND_SOUND(world, sound('sound/ai/welcome.ogg'))
 
 	current_state = GAME_STATE_PLAYING
 	webhook_send_roundstatus("ingame") //yogs - webhook support
