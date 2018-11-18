@@ -1254,9 +1254,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_others = GHOST_OTHERS_SIMPLE
 
 				if("name")
-					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
-					if(new_name)
-						real_name = new_name
+					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null ) // First lets just process the shittiness of the characters of the name, themselves
+					if(new_name) // If the characters themselves are fine
+						if(isnotpretty(new_name)) //If they tried to name themselves Turboniggertron 9000 or something
+							to_chat(user, "<font color='red'>Please do not use bigoted or otherwise banned language in your character\'s name.</font>")
+							message_admins("[key_name(user)] just tripped a pretty filter while creating their character's name: '[new_name]'.")
+						else
+							real_name = new_name
 					else
 						to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
