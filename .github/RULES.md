@@ -1,7 +1,7 @@
 # The Rules
 Hi. Thanks a lot for reading these.  The admin team attempts to make the game as enjoyable as possible while staying as hands-off as possible.  It's a difficult balance to both foster a good experience and not be seen as overbearing.  If you have any questions on any of the rules do not hesitate to adminhelp (using F1 in-game) or message a member of staff/leadership on discord.
 
-### These are currently a work in progress and as such expect changes and extreme lenience on the rules until farther finalized.
+### These are currently a work in progress and as such expect changes and extreme lenience on the rules until further finalized.
 
 ## Core Rules
 These apply to the Github, Discord, and Server.
@@ -16,11 +16,7 @@ These apply to the Github, Discord, and Server.
 
 **0.4: Do not abuse bugs.** If you see a bug, report it [here](https://github.com/morrowwolf/Barony13/issues).
 
-**0.5: Do not mix IC (in character) and OOC (out of character) knowledge.** 
-	
-* **A** Do not post information related to a round in progress in the OOC chat or anywhere on the Github or Discord. A person reading the OOC chat should not be able to know what's happening in a round, whether anyone is dead, etc. Do not use information your character would have no way of knowing in game. We have a zero-tolerance policy on this. 
-	
-* **B** Do not use OOC terminology, slang, slurs, or "netspeak" IC.  If helping someone or necessary use LOOC to communicate.  Abusing OOC, LOOC, or discord to insult others or create a toxic environment will result in an OOC/LOOC/discord ban.
+**0.5: Do not mix IC (in character) and OOC (out of character) knowledge.** Do not post information related to a round in progress in the OOC chat or anywhere on the Github or Discord. A person reading the OOC chat should not be able to know what's happening in a round, whether anyone is dead, etc. Do not use information your character would have no way of knowing in game. We have a zero-tolerance policy on this. 
 
 **0.6: Do not spam or advertise.**
 
@@ -36,9 +32,11 @@ Core Rules still apply on the server.
 
 **1.2: Do not metagame.** Your character does not know everything you do. If you die and return as a new character, act as a new character. Do not use knowledge you learned in previous lives.
 
-**1.3: Use a realistic name.** Human characters should have at least a first and last name. Obscene names or names that are similar in look or pronunciation to obscene phrases are forbidden. Avoid using famous names or names of other fictional characters. Do not include honorifics in your name. Some roles may be exempt from this rule; contact your local admin for more information.
+**1.3: Do not use OOC terminology, slang, slurs, or "netspeak" IC.**  If helping someone or necessary use LOOC to communicate.  Abusing OOC, LOOC, or discord to insult others or create a toxic environment will result in an OOC/LOOC/discord ban.
 
-**1.4: Pick roles that you actually intend to play.**  Do not repeatedly commit suicide at roundstart when playing any job with limited slots. Peasants are exempt from this rule.
+**1.4: Use a realistic name.** Human characters should have at least a first and last name. Obscene names or names that are similar in look or pronunciation to obscene phrases are forbidden. Avoid using famous names or names of other fictional characters. Do not include honorifics in your name. Some roles may be exempt from this rule; contact your local admin for more information.
+
+**1.5: Pick roles that you actually intend to play.**  Do not repeatedly commit suicide at roundstart when playing any job with limited slots. Peasants are exempt from this rule.
 
 ### Antagonist Rules
 Remember that the all rules above still apply when you are an Antagonist.
