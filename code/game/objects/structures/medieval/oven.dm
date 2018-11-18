@@ -43,7 +43,7 @@
 	soundloop.stop()
 
 /obj/structure/medieval/oven/proc/startcook()
-	if(!wood) // If it's broken or there ain't no wood
+	if(wood < 1) // If it's broken or there ain't no wood
 		return FALSE// Naw
 	start()
 	cook()
@@ -58,7 +58,7 @@
 /obj/structure/medieval/oven/proc/cook()
 	visible_message("<span class='notice'>[src] is set alight and begins cooking.</span>")
 	for(var/obj/item/O in contents)
-		if(!wood)
+		if(!wood || !operating)
 			return
 		sleep(75) // 75 deciseconds per thing
 		O.microwave_act(src)
@@ -66,13 +66,21 @@
 		wood -= 1
 
 /obj/structure/medieval/oven/AltClick(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE) && anchored && wood)
-		startcook()
-		
+	if(operating)
+		to_chat(user,"You cover the flame. It begins to extinguish.")
+		operating = FALSE
+	if(user.canUseTopic(src, BE_CLOSE) && anchored)
+		if(!startcook())
+			to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
+
 /obj/structure/medieval/oven/attack_hand(mob/user)
-	if(!startcook()) // Starts cooking. If it fails, it warns there ain't enough wood.
-		to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
-		
+	if(operating)
+		to_chat(user,"You cover the flame, extinguishing it.")
+		operating = FALSE
+	if(anchored)
+		if(!startcook()) // Starts cooking. If it fails, it warns there ain't enough wood.
+			to_chat(user,"<span class='warning'>There's not enough wood in [src] to start cooking!</span>")
+
 /obj/structure/medieval/oven/attackby(obj/item/O, mob/user, params)
 	if(operating)
 		..()
@@ -93,7 +101,10 @@
 		//Delete the log from their hand
 		qdel(O)
 		//Add 1 Wood unit to the oven
-		wood += 1
+		if(wood < 0)
+			wood = 1
+		else
+			wood += 1
 		to_chat(user, "<span class='notice'>You insert \the [O] into [src], for burning.</span>")
 	else if(istype(O, /obj/item/stack/sheet/mineral/wood)) // If it's some sheets of wood
 		//(Which has to be treated a bit special compared to the logs because we're not 100% sure how much of the sheets the user wants to put into the oven)
@@ -126,6 +137,8 @@
 		return
 	if(QDELETED(O) || QDELETED(user) || QDELETED(src)) // If anything magically disappeared or goofed while we were waiting on input
 		return
+	if(wood < 0)
+		wood = 0
 	requested_amount = min(requested_amount, O.amount, max_wood - wood) // If they try to take out more than is in the stack, or put more wood than the oven can fit at the moment, then truncate
 	//Now on to the real bidness
 	if(O.use(requested_amount))
