@@ -96,6 +96,7 @@
 	operating = TRUE
 	soundloop.start()
 	visible_message("[src] bursts to life.")
+	set_light(5)
 
 /obj/structure/medieval/oven/proc/turnOff()
 	icon_state = "oven"
@@ -103,6 +104,7 @@
 	operating = FALSE
 	soundloop.stop()
 	visible_message("[src]'s flames die down.")
+	set_light(0)
 
 /obj/structure/medieval/oven/proc/handleGas()
 	if(wood && wood.len)
