@@ -8,7 +8,7 @@ Arena guys
 	faction = "Arena"
 	total_positions = 20
 	spawn_positions = 20
-	supervisors = "N/A"
+	supervisors = "the Baron and their Knights"
 	selection_color = "#dddddd"
 	outfit = /datum/outfit/job/peasant
 	
