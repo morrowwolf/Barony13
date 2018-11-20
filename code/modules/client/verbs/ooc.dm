@@ -33,7 +33,9 @@
 	if(!msg)
 		return
 
-	msg = pretty_filter(msg) //yogs
+	
+	if(CONFIG_GET(flag/pretty_ooc))
+		msg = pretty_filter(msg)
 	msg = emoji_parse(msg)
 
 	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 6)), "say ")))
