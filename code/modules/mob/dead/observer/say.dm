@@ -2,7 +2,7 @@
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if (!message)
 		return
-	if(CONFIG_GET(flag/pretty_ooc)
+	if(CONFIG_GET(flag/pretty_ooc))
 		message = pretty_filter(message)
 	
 	var/message_mode = get_message_mode(message)
