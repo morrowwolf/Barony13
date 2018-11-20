@@ -11,7 +11,7 @@
 	hud_type = "witch"
 	
 /datum/antagonist/witch_cult/proc/equip_antag()
-	var/datum/objective/protect/protect_witch = new /datum/objective/protect
+	var/datum/objective/protect/protect_witch = new /datum/objective/protect("Protect the witch and serve them no matter the cost.")
 	for(var/mob/living/carbon/human/mob in GLOB.player_list)
 		if(cmptext(mob.mind.special_role, "witch"))
 			protect_witch.target = mob.mind
