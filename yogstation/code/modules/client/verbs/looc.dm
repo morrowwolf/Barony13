@@ -35,9 +35,11 @@
 	if(!msg)
 		return
 
-	msg = pretty_filter(msg)
+	if(CONFIG_GET(flag/pretty_ooc))
+		msg = pretty_filter(msg)
+	
 	//msg = emoji_parse(msg)
-
+	
 	if(!holder)
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
