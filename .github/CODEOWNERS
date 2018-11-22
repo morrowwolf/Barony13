@@ -9,6 +9,9 @@
 #/code/world.dm @GithubNameHere
 #/maps/ @GithubNameHere
 
+#DLCaboose
+/.github/RULES.md @DLCabbose
+
 #Parune
 /barony/icons/ @Parune
 /icons/ @Parune
