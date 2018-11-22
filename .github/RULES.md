@@ -43,7 +43,7 @@ Remember that the all rules above still apply when you are an Antagonist.
 
 **1.1.0: Be active.** Do not hide in a closet somewhere for the entire game. If you have to leave the game, adminhelp so we can replace you and keep the game going.
 
-**1.1.1: Don't teamkill when part of a team,** such as when you are skeleton serving a Witch. "Lone wolf" antagonists do not need to follow this rule.
+**1.1.1: Don't teamkill when part of a team,** such as when you are skeleton serving a Witch. "Lone wolf" antagonists do not need to follow this rule, nor do leaders of group antagonists (such as the Witch).
 
 
 ## Discord Rules
