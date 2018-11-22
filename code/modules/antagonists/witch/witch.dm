@@ -9,6 +9,7 @@
 	name = "Witch"
 	job_rank = ROLE_WITCH
 	hud_type = "witch"
+	var/power = 0
 	
 /datum/antagonist/witch_cult/proc/equip_antag()
 	var/datum/objective/protect/protect_witch = new /datum/objective/protect("Protect the witch and serve them no matter the cost.")
