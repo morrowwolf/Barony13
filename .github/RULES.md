@@ -1,8 +1,6 @@
 # The Rules
 Hi. Thanks a lot for reading these.  The admin team attempts to make the game as enjoyable as possible while staying as hands-off as possible.  It's a difficult balance to both foster a good experience and not be seen as overbearing.  If you have any questions on any of the rules do not hesitate to adminhelp (using F1 in-game) or message a member of staff/leadership on discord.
 
-### These are currently a work in progress and as such expect changes and extreme lenience on the rules until further finalized.
-
 ## Core Rules
 These apply to the Github, Discord, and Server.
 
