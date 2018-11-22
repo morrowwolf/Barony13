@@ -6,7 +6,8 @@
 
 	var/list/dat = list()
 
-	for(var/mob/player in GLOB.player_list)
+	for(var/T in GLOB.player_list)
+		var/mob/player = T
 		if(player.client)
 			var/list/related_accounts = list()
 			if(!cmptext(player.client.related_accounts_cid, ""))
