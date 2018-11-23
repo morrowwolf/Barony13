@@ -84,6 +84,9 @@
 	if(..())
 		return
 
+/turf/open/floor/grass/MakeSlippery() //Slipping on grass is silly
+	return
+
 /turf/open/floor/grass/snow
 	gender = PLURAL
 	name = "snow"
