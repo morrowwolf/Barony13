@@ -167,9 +167,12 @@
 	if(last_char_group == 1)
 		t_out = copytext(t_out,1,length(t_out))	//removes the last character (in this case a space)
 
-	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai"))	//prevents these common metagamey names
-		if(cmptext(t_out,bad_name))
-			return	//(not case sensitive)
+	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai","sir","dame","baron","baroness","king","queen","prince","princess"))	//prevents these common metagamey names
+		var/list/parts = splittext(bad_name, "=")
+		var/pattern = parts[1]
+		var/regex/R = new(pattern, "ig")
+		if(R.Find(t_out))
+			return
 
 	return t_out
 
