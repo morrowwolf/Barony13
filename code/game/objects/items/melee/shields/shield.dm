@@ -33,9 +33,11 @@
 				user.blocking = TRUE
 				break
 
+		if(!user.blocking)
+			user.block_dir = null
+
 		blocking = FALSE
 		icon_state = icon_state_down
-		user.block_dir = null
 		user.update_icons()
 		to_chat(user, "You lower \the [src].")
 	else
@@ -55,9 +57,11 @@
 				user.blocking = TRUE
 				break
 
+		if(!user.blocking)
+			user.block_dir = null
+
 		blocking = FALSE
 		icon_state = icon_state_down
-		user.block_dir = null
 		user.update_icons()
 	return ..(user)
 
@@ -72,9 +76,11 @@
 					user.blocking = TRUE
 					break
 
+			if(!user.blocking)
+				user.block_dir = null
+
 			blocking = FALSE
 			icon_state = icon_state_down
-			user.block_dir = null
 			user.update_icons()
 	return ..(destination)
 
