@@ -28,7 +28,7 @@
 	if(blocking)
 		user.blocking = FALSE
 
-		for(var/obj/item/shields/medieval/S in owner.held_items)
+		for(var/obj/item/shields/medieval/S in user.held_items)
 			if(S != src && S.blocking)
 				user.blocking = TRUE
 				break
@@ -50,7 +50,7 @@
 	if(blocking)
 		user.blocking = FALSE
 
-		for(var/obj/item/shields/medieval/S in owner.held_items)
+		for(var/obj/item/shields/medieval/S in user.held_items)
 			if(S != src && S.blocking)
 				user.blocking = TRUE
 				break
@@ -64,10 +64,10 @@
 /obj/item/shields/medieval/doMove(atom/destination)
 	if(istype(loc, /mob/))
 		var/mob/user = loc
-		if(user.blocking)
+		if(blocking)
 			user.blocking = FALSE
 
-			for(var/obj/item/shields/medieval/S in owner.held_items)
+			for(var/obj/item/shields/medieval/S in user.held_items)
 				if(S != src && S.blocking)
 					user.blocking = TRUE
 					break
