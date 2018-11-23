@@ -134,10 +134,10 @@
 		log_combat(owner, projhitby, "blocked")
 		return TRUE
 
-		/obj/item/shields/medieval/wooden
-			name = "wooden shield"
-			desc = "A sturdy wooden shield."
-			armor = list("melee" = 40, "bullet" = 40, "laser" = 40, "energy" = 0, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50)
-			force = 8
-			throwforce = 12
-			icon_state = "wooden shield"		//when creating a new shield end the "up" icon with "-up" and then "down" icon with "-down"
+/obj/item/shields/medieval/wooden
+	name = "wooden shield"
+	desc = "A sturdy wooden shield."
+	armor = list("melee" = 40, "bullet" = 40, "laser" = 40, "energy" = 0, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50)
+	force = 8
+	throwforce = 12
+	icon_state = "wooden shield"		//when creating a new shield end the "up" icon with "-up" and then "down" icon with "-down"
