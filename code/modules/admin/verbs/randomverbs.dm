@@ -1248,11 +1248,16 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	if(!check_rights(R_FUN))
 		return
 	var prev_state = CONFIG_GET(flag/chatter)
-	if( !prev_state && length(GLOB.player_list) > 20) // If the badmin is trying to make this happen when it'd lag the server to hell
-		to_chat(usr,"<span class='warning'>There are too many players to activate Chatter!</span>")
-		return
+	if(!prev_state) // If it was previously off, so the badmin is trying to turn it on
+		if(length(GLOB.player_list) > 20) // If the badmin is trying to make this happen when it'd lag the server to hell
+			to_chat(usr,"<span class='warning'>There are too many players to activate Chatter!</span>")
+			return
+		else if(length(GLOB.player_list) > 10 && alert("Activing Chatter may cause a notable amount of lag. Are you sure?",, "Yes", "No") == "No")
+			return
 	CONFIG_SET(flag/chatter,!prev_state)
-	log_admin("[key_name(usr)] has [!prev_state ? "enabled" : "disabled"] Global Chatter.")
+	var msg = "[key_name(usr)] has [prev_state ? "disabled" : "enabled"] Global Chatter."
+	log_admin(msg)
+	message_admins(msg)
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
