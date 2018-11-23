@@ -1242,7 +1242,17 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a filewall is blocking incoming connections.")
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggled Hub Visibility", "[GLOB.hub_visibility ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+/client/proc/chatter_toggle()
+	set name = "Toggle Global Chatter"
+	set category = "Fun"
+	if(!check_rights(R_FUN))
+		return
+	var prev_state = CONFIG_GET(flag/chatter)
+	if( !prev_state && length(GLOB.player_list) > 20) // If the badmin is trying to make this happen when it'd lag the server to hell
+		to_chat(usr,"<span class='warning'>There are too many players to activate Chatter!</span>")
+		return
+	CONFIG_SET(flag/chatter,!prev_state)
+	log_admin("[key_name(usr)] has [!prev_state ? "enabled" : "disabled"] Global Chatter.")
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
