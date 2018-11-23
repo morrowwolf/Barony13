@@ -16,6 +16,7 @@
 	var/icon_state_down
 
 	var/block_sides = TRUE
+	var/blocking = FALSE
 
 /obj/item/shields/medieval/Initialize()
 	..()
@@ -24,22 +25,37 @@
 	icon_state = icon_state_down
 
 /obj/item/shields/medieval/attack_self(mob/living/carbon/user)
-	if(user.blocking)
+	if(blocking)
 		user.blocking = FALSE
+
+		for(var/obj/item/shields/medieval/S in owner.held_items)
+			if(S != src && S.blocking)
+				user.blocking = TRUE
+				break
+
+		blocking = FALSE
 		icon_state = icon_state_down
 		user.block_dir = null
 		user.update_icons()
 		to_chat(user, "You lower \the [src].")
 	else
 		user.blocking = TRUE
+		blocking = TRUE
 		icon_state = icon_state_up
 		user.block_dir = user.dir
 		user.update_icons()
 		to_chat(user, "You raise \the [src].")
 
 /obj/item/shields/medieval/dropped(mob/user)
-	if(user.blocking)
+	if(blocking)
 		user.blocking = FALSE
+
+		for(var/obj/item/shields/medieval/S in owner.held_items)
+			if(S != src && S.blocking)
+				user.blocking = TRUE
+				break
+
+		blocking = FALSE
 		icon_state = icon_state_down
 		user.block_dir = null
 		user.update_icons()
@@ -50,13 +66,20 @@
 		var/mob/user = loc
 		if(user.blocking)
 			user.blocking = FALSE
+
+			for(var/obj/item/shields/medieval/S in owner.held_items)
+				if(S != src && S.blocking)
+					user.blocking = TRUE
+					break
+
+			blocking = FALSE
 			icon_state = icon_state_down
 			user.block_dir = null
 			user.update_icons()
 	return ..(destination)
 
 /obj/item/shields/medieval/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	if(!owner.blocking)
+	if(!blocking)
 		return FALSE
 
 	if(attack_type == MELEE_ATTACK || attack_type == UNARMED_ATTACK)
