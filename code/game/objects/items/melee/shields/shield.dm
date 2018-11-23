@@ -15,6 +15,8 @@
 	var/icon_state_up
 	var/icon_state_down
 
+	var/block_sides = TRUE
+
 /obj/item/shields/medieval/Initialize()
 	..()
 	icon_state_up = "[icon_state]-up"
@@ -71,14 +73,22 @@
 		if(owner.block_dir == 1)			//checks if mobhitby above src
 			if(mobhitby.y - 1 == owner.y)
 				blocked = TRUE
+			else if(block_sides && mobhitby.y == owner.y)
+				blocked = TRUE
 		else if(owner.block_dir == 2)		//checks if mobhitby below src
 			if(mobhitby.y + 1 == owner.y)
+				blocked = TRUE
+			else if(block_sides && mobhitby.y == owner.y)
 				blocked = TRUE
 		else if(owner.block_dir == 4)		//checks if mobhitby right of src
 			if(mobhitby.x - 1 == owner.x)
 				blocked = TRUE
+			else if(block_sides && mobhitby.x == owner.x)
+				blocked = TRUE
 		else if(owner.block_dir == 8)		//checks if mobhitby left of src
 			if(mobhitby.x + 1 == owner.x)
+				blocked = TRUE
+			else if(block_sides && mobhitby.x == owner.x)
 				blocked = TRUE
 
 		if(!blocked)
@@ -115,14 +125,22 @@
 		if(owner.block_dir == 2)
 			if(hitFrom == NORTH || hitFrom == NORTHEAST || hitFrom == NORTHWEST)
 				blocked = TRUE
+			else if(block_sides && hitFrom == WEST || hitFrom == EAST)
+				blocked = TRUE
 		else if(owner.block_dir == 1)
 			if(hitFrom == SOUTH || hitFrom == SOUTHEAST || hitFrom == SOUTHWEST)
+				blocked = TRUE
+			else if(block_sides && hitFrom == WEST || hitFrom == EAST)
 				blocked = TRUE
 		else if(owner.block_dir == 8)
 			if(hitFrom == EAST || hitFrom == NORTHEAST || hitFrom == SOUTHEAST)
 				blocked = TRUE
+			else if(block_sides && hitFrom == NORTH || hitFrom == SOUTH)
+				blocked = TRUE
 		else if(owner.block_dir == 4)
 			if(hitFrom == WEST || hitFrom == NORTHWEST || hitFrom == SOUTHWEST)
+				blocked = TRUE
+			else if(block_sides && hitFrom == NORTH || hitFrom == SOUTH)
 				blocked = TRUE
 
 		if(!blocked)
@@ -137,7 +155,9 @@
 /obj/item/shields/medieval/wooden
 	name = "wooden shield"
 	desc = "A sturdy wooden shield."
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 40, "energy" = 0, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50)
+	armor = list("melee" = 25, "bullet" = 25, "laser" = 25, "energy" = 0, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 50)
 	force = 8
 	throwforce = 12
 	icon_state = "wooden shield"		//when creating a new shield end the "up" icon with "-up" and then "down" icon with "-down"
+
+	block_sides = FALSE
