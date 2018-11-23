@@ -12,7 +12,7 @@
 #define DEBUG
 // END_PREFERENCES
 
-// BEGIN_INCLUDE
+// BEGIN_INCLUDEasdfadf
 #include "_maps\_basemap.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
