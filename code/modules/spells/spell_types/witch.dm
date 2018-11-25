@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton
 	name = "Summon Skeleton"
-	desc = "This spell uses the bones nearby to summon servants from the afterlife."
+	desc = "This spell uses five power to summon skeleton servants."
 
 	school = "necromancy"
 	charge_max = 50
@@ -74,3 +74,46 @@
 	W.power -= 5
 
 	log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
+
+/obj/effect/proc_holder/spell/targeted/heal
+	name = "Self Heal"
+	desc = "This spell uses two power to heal yourself."
+
+	school = "necromancy"
+	charge_max = 20
+	clothes_req = 0
+	invocation = "Athghiniúint!"
+	invocation_type = "whisper"
+	range = -1
+	cooldown_min = 10
+
+	action_icon_state = "blink"
+
+/obj/effect/proc_holder/spell/targeted/heal/cast(list/targets,mob/user = usr)
+
+	if(!user || !user.mind || !user.mind.antag_datums)
+		return
+
+	var/datum/antagonist/witch_cult/witch/W
+
+	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
+		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
+			W = user.mind.antag_datums[i]
+
+	if(!W)
+		return
+
+	if(W.power < 2)
+		to_chat(user, "Not enough power to heal yourself!")
+		return
+
+	if(!istype(/mob/living, user))
+		return
+
+	var/mob/living/L = user
+
+	L.adjustOxyLoss(-15)
+	L.adjustBruteLoss(-15)
+	L.adjustFireLoss(-15)
+
+	W.power -= 2

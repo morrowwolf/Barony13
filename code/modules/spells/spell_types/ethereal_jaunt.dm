@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
 	name = "Ethereal Jaunt"
-	desc = "This spell creates your ethereal form, temporarily making you invisible and able to pass through walls."
+	desc = "This spell creates your ethereal form using three power, temporarily making you invisible and able to pass through walls."
 
 	school = "transmutation"
 	charge_max = 300
@@ -18,9 +18,28 @@
 	action_icon_state = "jaunt"
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/cast(list/targets,mob/user = usr) //magnets, so mostly hardcoded
+
+	if(!user || !user.mind || !user.mind.antag_datums)
+		return
+
+	var/datum/antagonist/witch_cult/witch/W
+
+	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
+		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
+			W = user.mind.antag_datums[i]
+
+	if(!W)
+		return
+
+	if(W.power < 3)
+		to_chat(user, "Not enough power to jaunt!")
+		return
+
 	playsound(get_turf(user), 'sound/magic/ethereal_enter.ogg', 50, 1, -1)
 	for(var/mob/living/target in targets)
 		INVOKE_ASYNC(src, .proc/do_jaunt, target)
+
+	W.power -= 3
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/proc/do_jaunt(mob/living/target)
 	target.notransform = 1
