@@ -14,14 +14,15 @@
 
 /obj/structure/flora/tree/attackby(obj/item/W, mob/user, params)
 	if(log_amount && (!(flags_1 & NODECONSTRUCT_1)))
-		if(W.sharpness && W.force > 0)
+		if(istype(W, /obj/item/twohanded/fireaxe/fellingaxe))
 			if(W.hitsound)
 				playsound(get_turf(src), W.hitsound, 100, 0, 0)
 			user.visible_message("<span class='notice'>[user] begins to cut down [src] with [W].</span>","<span class='notice'>You begin to cut down [src] with [W].</span>", "You hear the sound of sawing.")
 			if(do_after(user, 1000/W.force, target = src)) //5 seconds with 20 force, 8 seconds with a hatchet, 20 seconds with a shard.
 				user.visible_message("<span class='notice'>[user] fells [src] with the [W].</span>","<span class='notice'>You fell [src] with the [W].</span>", "You hear the sound of a tree falling.")
 				playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , 0, 0)
-				for(var/i=1 to log_amount)
+				var/real_log_amount = rand(max(1, (log_amount-2)), (log_amount+2)) //Add a little variety
+				for(var/i=1 to real_log_amount)
 					new /obj/item/grown/log/tree(get_turf(src))
 
 				var/obj/structure/flora/stump/S = new(loc)
@@ -34,11 +35,42 @@
 
 /obj/structure/flora/stump
 	name = "stump"
-	desc = "This represents our promise to the crew, and the station itself, to cut down as many trees as possible." //running naked through the trees
+	desc = "The remains of a once-beautiful tree. Dig it up to be able to harvest wood from it." //running naked through the trees
 	icon = 'icons/obj/flora/pinetrees.dmi'
 	icon_state = "tree_stump"
 	density = FALSE
 	pixel_x = -16
+	var/dug_up = FALSE
+	var/log_amount = 3
+
+	/obj/structure/flora/stump/attackby(obj/item/W, mob/user, params)
+		if((flags_1 & NODECONSTRUCT_1))
+			return
+		if(istype(W, /obj/item/shovel))
+			if(dug_up)
+				to_chat(user, "\The [src] has already been dug up.")
+			else
+				if(W.hitsound)
+					playsound(get_turf(src), W.hitsound, 100, 0, 0)
+				user.visible_message("<span class='notice'>[user] begins to dig up [src] with [W].</span>","<span class='notice'>You begin to dig up [src] with [W].</span>", "You hear the sound of digging.")
+				if(do_after(user, 30, target = src)) //5 seconds with 20 force, 8 seconds with a hatchet, 20 seconds with a shard.
+					user.visible_message("<span class='notice'>[user] digs up [src] with the [W].</span>","<span class='notice'>You dig up [src] with the [W].</span>", "You hear the sound of stump being dug up.")
+					dug_up = TRUE
+		else if(W.sharpness && W.force > 0)
+			if(!dug_up)
+				to_chat(user, "You need to dig up \the [src] with a shovel first.")
+				return
+			if(W.hitsound)
+				playsound(get_turf(src), W.hitsound, 100, 0, 0)
+			user.visible_message("<span class='notice'>[user] begins to chop up \the [src] with [W].</span>","<span class='notice'>You begin to chop up \the [src] with [W].</span>", "You hear the sound of chopping.")
+			if(do_after(user, 500/W.force, target = src))
+				user.visible_message("<span class='notice'>[user] chops up [src] with \the [W].</span>","<span class='notice'>You chop [src] with \the [W].</span>", "You hear the sound of chopping.")
+				var/real_log_amount = rand(max(1, (log_amount-1)), (log_amount+1)) //Add a little variety
+				for(var/i=1 to real_log_amount)
+					new /obj/item/grown/log/tree(get_turf(src))
+				qdel(src)
+		else
+			return ..()
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"
