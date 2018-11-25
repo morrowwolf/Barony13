@@ -258,6 +258,16 @@
 			var/obj/structure/grille/G = A
 			G.take_damage(40, BRUTE, "melee", 0)
 
+/obj/item/twohanded/fireaxe/fellingaxe
+	icon_state = "fellingaxe0"
+	name = "felling axe"
+	desc = "An axe for felling trees; or, if necessary, men."
+	armor = list("melee" = 15, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	resistance_flags = NONE
+
+/obj/item/twohanded/fireaxe/fellingaxe/update_icon()  //Currently only here to fuck with the on-mob icons.
+	icon_state = "fellingaxe[wielded]"
+	return
 
 /*
  * Double-Bladed Energy Swords - Cheridan
@@ -808,7 +818,7 @@
 
 /obj/item/twohanded/steelspear/update_icon()
 	icon_state = "spearsteel[wielded]"
-	
+
 /*
  * Bone Spear
  */
@@ -852,7 +862,7 @@
 	if(!wielded)
 		return
 	if(QDELETED(mobhook))
-		mobhook = user.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/unwield, user)))	
+		mobhook = user.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/unwield, user)))
 	else
 		user.TakeComponent(mobhook)
 	user.visible_message("[user] holds [src] up to [user.p_their()] eyes.","You hold [src] up to your eyes.")
