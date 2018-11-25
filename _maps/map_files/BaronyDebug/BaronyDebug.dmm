@@ -2,12 +2,11 @@
 "ab" = (/turf/open/space/basic,/area/space)
 "ac" = (/turf/open/floor/grass,/area/barony/outside)
 "ad" = (/turf/closed/wall/mineral/wood/nonmetal,/area/barony/inside)
-"ae" = (/obj/structure/table/wood,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/turf/open/floor/wood,/area/barony/inside)
+"ae" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/turf/open/floor/wood,/area/barony/inside)
 "af" = (/turf/open/floor/wood,/area/barony/inside)
 "ag" = (/obj/structure/table/wood,/turf/open/floor/wood,/area/barony/inside)
 "ah" = (/obj/structure/chair/wood/normal{dir = 8},/turf/open/floor/wood,/area/barony/inside)
 "ai" = (/obj/structure/chair/wood/normal,/turf/open/floor/wood,/area/barony/inside)
-"aj" = (/obj/structure/table/wood,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/rum,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/vodka,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/obj/item/reagent_containers/food/drinks/bottle/whiskey,/turf/open/floor/wood,/area/barony/inside)
 "ak" = (/obj/structure/chair/wood/normal{dir = 4},/turf/open/floor/wood,/area/barony/inside)
 "al" = (/obj/structure/mineral_door/wood,/turf/open/floor/wood,/area/barony/inside)
 "am" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/grass,/area/barony/outside)
@@ -84,7 +83,7 @@ ababababababababaaacaBacacacacacaxacacacacacacacacacacacacacacacamadadadadadamaa
 ababababababababaaacacacamamamamamamamamamamamamamamamacacacacacamadakaoahadamaa
 ababababababababaaacacamadadadadadadadadadadadadadadadamacacacacamadafafafadamaa
 ababababababababaaacacamadafbbbbbbadaeafafafafafaiafadamacacacacamalafafafadamaa
-ababababababababaaaUacamalafafafafadajafagahafakagahadamacacacacamadafafafadamaa
+ababababababababaaaUacamalafafafafadaeafagahafakagahadamacacacacamadafafafadamaa
 ababababababababaaacacamadafbcbdafalafafagahafakaoahadamacacacacamadaDagaDadamaa
 ababababababababaaacacamadafaoagafadafafagahapapapapalamacacacacamadadadadadamaa
 ababababababababaaacacamadafananafadagagaqahapapapapalamacacacacacamamamamamacaa
