@@ -73,4 +73,7 @@
 	
 /mob/living/simple_animal/hostile/goblin/death(gibbed)
 	new /obj/effect/decal/cleanable/blood/splatter(get_turf(src), get_static_viruses())
+	if(prob(10)) // 10% chance of dropping loots
+		var/newthing = pick(/obj/item/melee/medieval/blade/shortsword,/obj/item/shields/medieval/wooden)
+		newthing = new newthing(loc)
 	return ..()
