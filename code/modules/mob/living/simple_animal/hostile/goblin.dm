@@ -33,6 +33,8 @@
 
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/bone = 2)
 	
+	var/potential_drops = list(/obj/item/melee/medieval/blade/shortsword, /obj/item/shields/medieval/wooden)
+	
 	
 /mob/living/simple_animal/hostile/goblin/Initialize()
 	..()
@@ -74,6 +76,6 @@
 /mob/living/simple_animal/hostile/goblin/death(gibbed)
 	new /obj/effect/decal/cleanable/blood/splatter(get_turf(src), get_static_viruses())
 	if(prob(10)) // 10% chance of dropping loots
-		var/newthing = pick(/obj/item/melee/medieval/blade/shortsword,/obj/item/shields/medieval/wooden)
-		newthing = new newthing(loc)
+		var/drop = pick(potential_drops)
+		drop = new drop(loc)
 	return ..()
