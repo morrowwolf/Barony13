@@ -21,7 +21,7 @@
 			if(do_after(user, 1000/W.force, target = src)) //5 seconds with 20 force, 8 seconds with a hatchet, 20 seconds with a shard.
 				user.visible_message("<span class='notice'>[user] fells [src] with the [W].</span>","<span class='notice'>You fell [src] with the [W].</span>", "You hear the sound of a tree falling.")
 				playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , 0, 0)
-				var/real_log_amount = rand(max(0, (log_amount-2)), (log_amount+2)) //Add a little variety
+				var/real_log_amount = rand(max(1, (log_amount-2)), (log_amount+2)) //Add a little variety
 				for(var/i=1 to real_log_amount)
 					new /obj/item/grown/log/tree(get_turf(src))
 
@@ -65,7 +65,7 @@
 			user.visible_message("<span class='notice'>[user] begins to chop up \the [src] with [W].</span>","<span class='notice'>You begin to chop up \the [src] with [W].</span>", "You hear the sound of chopping.")
 			if(do_after(user, 500/W.force, target = src))
 				user.visible_message("<span class='notice'>[user] chops up [src] with \the [W].</span>","<span class='notice'>You chop [src] with \the [W].</span>", "You hear the sound of chopping.")
-				var/real_log_amount = rand(max(0, (log_amount-1)), (log_amount+1)) //Add a little variety
+				var/real_log_amount = rand(max(1, (log_amount-1)), (log_amount+1)) //Add a little variety
 				for(var/i=1 to real_log_amount)
 					new /obj/item/grown/log/tree(get_turf(src))
 				qdel(src)
