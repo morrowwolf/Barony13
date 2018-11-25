@@ -9,6 +9,7 @@
 	name = "Witch"
 	job_rank = ROLE_WITCH
 	hud_type = "witch"
+	var/power = 0
 	
 /datum/antagonist/witch_cult/proc/equip_antag()
 	var/datum/objective/protect/protect_witch = new /datum/objective/protect("Protect the witch and serve them no matter the cost.")
@@ -21,9 +22,9 @@
 
 	
 /datum/antagonist/witch_cult/witch/equip_antag()
-	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile(null))
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton(null))
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/heal(null))
 	objectives += new /datum/objective/kill_everyone(null)
 	owner.objectives += new /datum/objective/kill_everyone(null)
 

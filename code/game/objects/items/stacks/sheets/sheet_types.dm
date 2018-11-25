@@ -507,6 +507,28 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	grind_results = list("carbon" = 10)
 	merge_type = /obj/item/stack/sheet/bone
 
+/obj/item/stack/sheet/bone/attack_self(mob/living/carbon/user)
+	
+	if(!user || !user.mind || !user.mind.antag_datums)
+		return
+
+	var/datum/antagonist/witch_cult/witch/W
+
+	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
+		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
+			W = user.mind.antag_datums[i]
+
+	if(!W)
+		return
+
+	W.power += 1
+	to_chat(user, "You crack the bone and consume it's power.")
+
+	if(amount <= 1)
+		qdel(src)
+	else
+		amount -= 1
+
 GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 5, one_per_turf = TRUE, on_floor = TRUE, time = 40), \
 	new /datum/stack_recipe("water bottle", /obj/item/reagent_containers/glass/beaker/waterbottle/empty), \
