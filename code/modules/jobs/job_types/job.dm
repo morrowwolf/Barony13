@@ -51,6 +51,9 @@
 	//The amount of good boy points playing this role will earn you towards a higher chance to roll antagonist next round
 	//can be overridden by antag_rep.txt config
 	var/antag_rep = 10
+	
+	//Determines if the guy has a job-dependent voice. If FALSE, does not use proc/chatter(). See the /sound/chatter folder and proc/chatter() for details.
+	var/chatter_voice = FALSE
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it

@@ -23,6 +23,13 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return
 	if(message == "" || !message)
 		return
+	
+	if(CONFIG_GET(flag/chatter)) // If adminbus'd in chatter
+		chatter(message,usr.gender == FEMALE ? "griffin" : "owl",usr)
+	/*
+	if(usr.job && usr.job.chatter_voice)
+		chatter(message,usr.job.chatter_voice,usr)
+	*/
 	var/list/spans = get_spans()
 	if(!language)
 		language = get_default_language()
