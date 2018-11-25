@@ -24,6 +24,7 @@
 /datum/antagonist/witch_cult/witch/equip_antag()
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton(null))
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/heal(null))
 	objectives += new /datum/objective/kill_everyone(null)
 	owner.objectives += new /datum/objective/kill_everyone(null)
 

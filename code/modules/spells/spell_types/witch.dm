@@ -85,30 +85,33 @@
 	invocation = "Athghiniúint!"
 	invocation_type = "whisper"
 	range = -1
+	include_user = 1 // Note for the future: All spells that require mob/user as a param need this set to TRUE.
 	cooldown_min = 10
 
 	action_icon_state = "blink"
+	
+	var/bones_required = 2
 
-/obj/effect/proc_holder/spell/targeted/heal/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/heal/cast(list/targets,mob/living/user = usr)
 
-	if(!user || !user.mind || !user.mind.antag_datums)
+	if(!user || !user.mind || !user.mind.antag_datums) // Your proc was dying here, Morrow. See above.
 		return
+	
 
 	var/datum/antagonist/witch_cult/witch/W
-
 	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
 		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
 			W = user.mind.antag_datums[i]
+			break
 
 	if(!W)
+		to_chat(user,"Only a witch can cast such a spell!")
 		return
 
-	if(W.power < 2)
+	if(W.power < bones_required)
 		to_chat(user, "Not enough power to heal yourself!")
 		return
 
-	if(!istype(/mob/living, user))
-		return
 
 	var/mob/living/L = user
 
