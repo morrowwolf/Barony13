@@ -135,7 +135,7 @@
 
 /turf/closed/wall/mineral/wood/attackby(obj/item/W, mob/user)
 	if(W.sharpness && W.force)
-		if(istype(W, /obj/item/hatchet) || istype(W, /obj/item/twohanded/fireaxe))
+		if(istype(W, /obj/item/hatchet))		//eventually but definitely not now, shit is fucky
 			var/duration = (12/W.force) * 2 //In seconds, for now.
 			if(do_after(user, duration*10, target=src)) //Into deciseconds.
 				dismantle_wall(FALSE,FALSE)

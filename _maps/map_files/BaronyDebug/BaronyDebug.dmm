@@ -11,6 +11,7 @@
 "ak" = (/obj/structure/chair/wood/normal{dir = 4},/turf/open/floor/wood,/area/barony/inside)
 "al" = (/obj/structure/mineral_door/wood,/turf/open/floor/wood,/area/barony/inside)
 "am" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/grass,/area/barony/outside)
+"an" = (/obj/structure/table/wood,/obj/item/twohanded/fireaxe/fellingaxe,/turf/open/floor/wood,/area/barony/inside)
 "ao" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/turf/open/floor/wood,/area/barony/inside)
 "ap" = (/turf/open/floor/carpet,/area/barony/inside)
 "aq" = (/obj/item/flashlight/lantern{on = 1},/obj/structure/table/wood,/turf/open/floor/wood,/area/barony/inside)
@@ -86,7 +87,7 @@ ababababababababaaacacamadafbbbbbbadaeafafafafafaiafadamacacacacamalafafafadamaa
 ababababababababaaaUacamalafafafafadajafagahafakagahadamacacacacamadafafafadamaa
 ababababababababaaacacamadafbcbdafalafafagahafakaoahadamacacacacamadaDagaDadamaa
 ababababababababaaacacamadafaoagafadafafagahapapapapalamacacacacamadadadadadamaa
-ababababababababaaacacamadafagagafadagagaqahapapapapalamacacacacacamamamamamacaa
+ababababababababaaacacamadafananafadagagaqahapapapapalamacacacacacamamamamamacaa
 ababababababababaaacaxamadafafafafadararafafafafafafadamacacacacacacacacacaxacaa
 ababababababababaaacacamadadadadadadafafafafasafafaiadamacacacacacacacazacacacaa
 ababababababababaaacacacamamamamamadakaoahakaoahakaoadamacacacaUacacacacacacacaa
