@@ -68,6 +68,7 @@
 	broken_states = list("sand")
 	flags_1 = NONE
 	bullet_bounce_sound = null
+	baseturfs = /turf/open/floor/plating/dirt
 	var/ore_type = /obj/item/stack/ore/glass
 	var/turfverb = "uproot"
 
