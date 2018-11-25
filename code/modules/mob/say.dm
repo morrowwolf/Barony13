@@ -13,7 +13,7 @@
 	message = spellfix_filter(message)
 	if(message)
 		if(CONFIG_GET(flag/chatter))
-			chatter(message,"griffin",usr)
+			chatter(message,usr.gender == FEMALE ? "griffin" : "owl",usr)
 		say(message)
 
 
