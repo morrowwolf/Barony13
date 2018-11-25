@@ -224,7 +224,7 @@
 	force = 5
 	throwforce = 15
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BACK
 	force_unwielded = 5
 	force_wielded = 24
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
@@ -264,6 +264,7 @@
 	desc = "An axe for felling trees; or, if necessary, men."
 	armor = list("melee" = 15, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	resistance_flags = NONE
+	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/twohanded/fireaxe/fellingaxe/update_icon()  //Currently only here to fuck with the on-mob icons.
 	icon_state = "fellingaxe[wielded]"
