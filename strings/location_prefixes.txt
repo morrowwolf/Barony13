@@ -15,4 +15,8 @@ Grey
 Dark
 Lesser
 Greater
+Elder
+Older
+Frankish
+Basque
 Ancient
