@@ -6,6 +6,9 @@
 #Ignore byond config folder.
 /cfg/**/*
 
+#Ignore changes to dbconfig, to prevent Morrow from committing the passwords to master.
+/config/dbconfig.txt
+
 #Ignore compiled files and other files generated during compilation.
 *.mdme
 *.dmb
