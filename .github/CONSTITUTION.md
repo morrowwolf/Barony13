@@ -11,8 +11,6 @@ The hosts have full control over the server, Discord, and Github, and have final
 
 All head ranks are given through the mutual approval of these two people. There is no set process for this; ask one of these people if you are interested in taking on a vacant head role.
 
-The hosts must each make a minimum of one Pull Request per month.
-
 ### Host: *MorrowWolf*
 
 ### Co-host: *Altoids*
@@ -30,7 +28,7 @@ The **Head Admin** has full control over not only who is given administration ra
 The **Head Designer** has full control over all decisions regarding art (sprites, music, etc) added to the game. He also is a major participant in discussions on the general game design.
 
 ## The Development Department
-The most important department. Applications for dev ranks (when open) can be done on the Github here: https://github.com/morrowwolf/Barony13/issues , and are handled by either the Head Developer or the hosts.
+The development team handles gameplay design and implementation of all systems into the game.  Applications for dev ranks (when open) can be done on the Github here: https://github.com/morrowwolf/Barony13/issues , and are handled by either the Head Developer or the hosts.
 
 ### Head Developer
 The **Head Developer** has full control over the Github, and has host-level authority on all matters related to the Github.
@@ -49,4 +47,4 @@ Developers must make a minimum of one Pull Request per month.
 
 
 ### Freelancers
-Freelancers are people who have somehow contributed or shown a desire to contribute *something* to the repository. They may participate in staff meetings if they want, and have greater say in how the server is operated than the regular player.
+Freelancers are people who have shown to have some sort of apt for spriting, mapping, or coding.  They are acknowledged as having knowledge via a rank on discord, gain full access to #dev-coders, and can view the discussions in #dev-developers chat.  From this pool people can be selected to join in on meetings and give input.
