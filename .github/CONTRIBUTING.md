@@ -1,4 +1,4 @@
-# CONTRIBUTING
+# Contributing to The Barony
 
 ## Reporting Issues
 
@@ -6,21 +6,27 @@ Even if you can't code, we do really appreciate you filing any bugs or other iss
 
 ## Introduction
 
-Hi. If you are here because you are curious or interested in contributing - holy fucking shit THANK YOU!! You're totally free to contribute to this project as long as they follow the simple guidelines and specifications below. They're nothing too complex, just something to keep code quality at a tolerable level; it's in everyone's best interests - including yours! - if the same bug doesn't have to be fixed twice or thrice or daily because of your shitty duplicated code.
+Hi. If you are here because you are curious or interested in contributing - holy fucking shit THANK YOU!! You're totally free to contribute to this project, as long as they follow the simple guidelines and specifications below. They're nothing too complex, just something to keep code quality at a tolerable level; it's in our best interests - and yours too! - if the same bug doesn't have to be fixed twice or thrice or daily because of your shitty duplicated code.
 
-First things first, we want to make it clear how you can contribute (if you've never contributed before), as well as the kinds of powers the team has over your additions, to avoid any unpleasant surprises if your pull request is closed for a reason you didn't foresee.
+First things first, we want to make it clear how you can contribute (if you've never contributed before), as well as the kinds of powers the team has over your additions, to avoid any unpleasant surprises if your pull request is closed for no obvious reason.
+
+## ***A Warning Before You Spend 200 Hours on Stuff We Won't Accept***
+Generally, you are free to work on whatever you want to. You're giving us your skilled labour for free and we're not really going to be too picky about what you give us. We're just happy someone's helping.
+
+However, we do maintain the right to say no to shitty code or bad ideas. Before you start working on a big project, please ask the Host/Co-Host if they'd actually even accept such a big change. Keep in mind that most of the time they won't give a straight no, and will just bring it up at the next staff meeting, to see everyone else's opinion.
 
 ## Getting Started
 
-Ultimately you can make any change you want to this video game, provided you're coding for it. Keep in mind that the staff can close PRs that they deem to be not suited for the game, so it's a very good idea to ask about what you want to do ahead of time, before you've spent hours coding it.
+### If You're New To Github
+Our co-host has created a dashing [guide in this repo's Wiki](https://github.com/morrowwolf/Barony13/wiki/How-to-Github) for how to operate Github, which is made to be short and easy to follow.
 
-If you want to contribute the first thing you'll need to do is [set up Git](https://wiki.yogstation.net/wiki/Setting_up_git) so you can download the source code.
-
-We have a [list of guides on the wiki](https://wiki.yogstation.net/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to the Barony with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. Ask around if there's any trivial bug or tweak that could be done, just so you can familiarize yourself with using Github and touching the code. 
+Alternatively, we allow recommend reading the Yogstation guides on [setting up Git](https://wiki.yogstation.net/wiki/Setting_up_git) and [other things](https://wiki.yogstation.net/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to the Barony with Git and Dream Maker.
 
 ### If You're New To Programming
 Tell us you're new to coding on the [Discord](https://discord.gg/rbvCtP7). We'll hold your hand the whole way through your first PR, if you want.
 If you need other help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
+
+For beginners, it is recommended you work on small projects like bugfixes at first. Ask around if there's any trivial bug or tweak that could be done, just so you can familiarize yourself with using Github and touching the code.
 
 
 ## Meet the Team
@@ -49,6 +55,8 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * Please explain why you are submitting the pull request, and how you think your change will be beneficial to the game. Failure to do so will be grounds for rejecting the PR.
 
+
+
 ## How to not Shitcode
 
 You are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thanks, babe.
@@ -56,7 +64,7 @@ You are expected to follow these specifications in order to make everyone's live
 ### Object Oriented Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, you should probably look that up.
 
-The TLDR is: If you have a thing A that has a proc ``Foo`` and ``Bar``, and a thing B that has a proc ``Foo`` and ``Oof``, do not do:
+The **TLDR** is: If you have a thing A that has a proc ``Foo`` and ``Bar``, and a thing B that has a proc ``Foo`` and ``Oof``, do not do:
 ```DM
 /obj/thingA/proc/Foo()
 	codecodecode
@@ -109,8 +117,9 @@ datum
 				..()
 				code
 ```
+Doesn't that look like utter ass?
 
-Coding for this game involves doing a lot of file searching for the definitions of specific procs and objects. Doing this means that if you need to search the entire 500-file codebase for ``datum/datum1/proc/proc1()``, it's pretty much next to impossible. The only exception is the variables of an object may be nested to the object, but must not nest further.
+Worse yet, coding for this game involves doing a lot of file searching for the definitions of specific procs and objects. Doing this tabbing nonsense means that if you need to search the entire 1000-file codebase for ``datum/datum1/proc/proc1()``, it's pretty much next to impossible. The only exception is the variables of an object may be nested to the object, but must not nest further.
 
 The previous code made compliant:
 
@@ -170,18 +179,7 @@ You can avoid hacky code by using object-oriented methodologies, such as overrid
 ### No duplicated code
 Copying code from one place to another may be suitable for small, short-time projects, but Barony 13 is a long-term project and highly discourages this.
 
-Instead you can use object orientation, or simply placing repeated code in a function, to obey this specification easily.
-
-### Startup/Runtime tradeoffs with lists and the "hidden" init proc
-First, read the comments in [this BYOND thread](http://www.byond.com/forum/?post=2086980&page=2#comment19776775), starting where the link takes you.
-
-There are two key points here:
-
-1) Defining a list in the variable's definition calls a hidden proc - init. If you have to define a list at startup, do so in New() (or preferably Initialize()) and avoid the overhead of a second call (Init() and then New())
-
-2) It also consumes more memory to the point where the list is actually required, even if the object in question may never use it!
-
-Remember: although this tradeoff makes sense in many cases, it doesn't cover them all. Think carefully about your addition before deciding if you need to use it.
+Instead you can use object orientation, or place repeated code in a function, to obey this specification easily.
 
 ### Prefer `Initialize()` over `New()` for atoms
 Our game controller is pretty good at handling long operations and lag, but it can't control what happens when the map is loaded, which calls `New` for all atoms on the map. If you're creating a new atom, use the `Initialize` proc to do what you would normally do in `New`. This cuts down on the number of proc calls needed when the world is loaded. See here for details on `Initialize`: https://github.com/tgstation/tgstation/blob/master/code/game/atoms.dm#L49
@@ -290,6 +288,8 @@ This prevents nesting levels from getting deeper then they need to be.
 * Changes to the `/config` tree must be made in a way that allows for updating server deployments while preserving previous behaviour. This is due to the fact that the config tree is to be considered owned by the user and not necessarily updated alongside the remainder of the code. The code to preserve previous behaviour may be removed at some point in the future given the OK by maintainers.
 
 * Put spaces in-between your math, logic, & bitwise operators. Our host is colourblind and ergo is not reading your code with a decent mark-up. Please be kind to him.
+
+* Yes, we know that the files have a tonne of mixed Windows and Linux line endings. Attempts to fix this have been met with less than stellar success, and as such we have decided to give up caring until there comes a time when it matters. Therefore, EOF settings of main repo are forbidden territory one must avoid wandering into, at risk of losing body and/or mind to the Git gods.
 	
 ## Porting features/sprites/sounds/tools from other codebases
 
@@ -302,9 +302,4 @@ Do not add any of the following in a Pull Request or risk getting the PR closed:
 * National Socialist Party of Germany content, National Socialist Party of Germany related content, or National Socialist Party of Germany references
 * Code where one line of code is split across mutiple lines (except for multiple, separate strings and comments; in those cases, existing longer lines must not be split up)
 
-Just because something isn't on this list doesn't mean that it's acceptable. Use common sense above all else.
-
-## A word on Git
-Yes, we know that the files have a tonne of mixed Windows and Linux line endings. Attempts to fix this have been met with less than stellar success, and as such we have decided to give up caring until there comes a time when it matters.
-
-Therefore, EOF settings of main repo are forbidden territory one must avoid wandering into, at risk of losing body and/or mind to the Git gods.
+Just because something isn't on this list or guide doesn't mean that it's acceptable. Use common sense above all else.
