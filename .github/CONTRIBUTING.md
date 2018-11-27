@@ -13,7 +13,7 @@ First things first, we want to make it clear how you can contribute (if you've n
 ## ***A Warning Before You Spend 200 Hours on Stuff We Won't Accept***
 Generally, you are free to work on whatever you want to. You're giving us your skilled labour for free and we're not really going to be too picky about what you give us. We're just happy someone's helping.
 
-However, we do maintain the right to say no to shitty code or bad ideas. Before you start working on a big project, please ask the Host/Co-Host if they'd actually even accept such a big change. Keep in mind that most of the time they won't give a straight no, and will just bring it up at the next staff meeting, to see everyone else's opinion.
+However, it is very possible that even if your code is good and the idea isn't bad it will be rejected as not what we're looking for.  If you're going to work on a big project you should consult with the development team or a host and wait for a conclusion on if such an idea would most likely be added.  On top of this, expect to have your PRs changed by a dev or host to keep it within what we're looking for.
 
 ## Getting Started
 
@@ -117,7 +117,6 @@ datum
 				..()
 				code
 ```
-Doesn't that look like utter ass?
 
 Worse yet, coding for this game involves doing a lot of file searching for the definitions of specific procs and objects. Doing this tabbing nonsense means that if you need to search the entire 1000-file codebase for ``datum/datum1/proc/proc1()``, it's pretty much next to impossible. The only exception is the variables of an object may be nested to the object, but must not nest further.
 
