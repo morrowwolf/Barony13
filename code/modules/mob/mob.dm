@@ -34,6 +34,9 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	nutrition = rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX)
+	hunger_factor = CONFIG_GET(number/hunger_factor)
+	if(!isnum(hunger_factor))
+		hunger_factor = 0.1
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -325,7 +328,7 @@
 		return FALSE
 
 	new /obj/effect/temp_visual/point(A,invisibility)
-	
+
 	// yogs start
 	for(var/atom/on_tile in A.contents + A)
 		on_tile.pointed_at(src)

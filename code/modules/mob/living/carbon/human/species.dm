@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/obj/item/organ/liver/mutantliver
 	var/obj/item/organ/stomach/mutantstomach
 	var/override_float = FALSE
-	
+
 	var/list/species_butcher_results
 
 ///////////
@@ -334,7 +334,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		dynamic_fhair_suffix = M.dynamic_fhair_suffix //mask > head in terms of facial hair
 		if(M.flags_inv & HIDEFACIALHAIR)
 			facialhair_hidden = TRUE
-			
+
 	if(H.wear_neck)
 		var/obj/item/clothing/neck/N = H.wear_neck
 		dynamic_fhair_suffix = N.dynamic_fhair_suffix //hood > mask > head in terms of facial hair
@@ -392,7 +392,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			dynamic_hair_suffix = M.dynamic_hair_suffix
 		if(M.flags_inv & HIDEHAIR)
 			hair_hidden = TRUE
-			
+
 	if(H.wear_neck)
 		var/obj/item/clothing/neck/N = H.wear_neck
 		dynamic_hair_suffix = N.dynamic_hair_suffix		//hood > head > mask in terms of head hair
@@ -977,7 +977,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// nutrition decrease and satiety
 	if (H.nutrition > 0 && H.stat != DEAD && !H.has_trait(TRAIT_NOHUNGER))
 		// THEY HUNGER
-		var/hunger_rate = HUNGER_FACTOR
+		var/hunger_rate = H.hunger_factor
 		GET_COMPONENT_FROM(mood, /datum/component/mood, H)
 		if(mood && mood.sanity > SANITY_DISTURBED)
 			hunger_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
@@ -988,7 +988,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.satiety++
 			if(prob(round(-H.satiety/40)))
 				H.Jitter(5)
-			hunger_rate = 3 * HUNGER_FACTOR
+			hunger_rate = 3 * H.hunger_factor
 		hunger_rate *= H.physiology.hunger_mod
 		H.nutrition = max(0, H.nutrition - hunger_rate)
 
@@ -1219,7 +1219,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		target.lastattacker = user.real_name
 		target.lastattackerckey = user.ckey
-				
+
 		var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
 
 		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
@@ -1251,9 +1251,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.forcesay(GLOB.hit_appends)
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	
+
 	return  //IT'S SIMPLE, WE KILL THE DISARM, this is a temporary fix
-	
+
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>")
 		return 0
