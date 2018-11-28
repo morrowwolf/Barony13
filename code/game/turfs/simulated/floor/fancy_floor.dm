@@ -12,6 +12,7 @@
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	broken_states = list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
+	baseturfs = /turf/open/floor/plating/dirt
 
 /turf/open/floor/wood/examine(mob/user)
 	..()
@@ -68,6 +69,7 @@
 	broken_states = list("sand")
 	flags_1 = NONE
 	bullet_bounce_sound = null
+	baseturfs = /turf/open/floor/plating/dirt
 	var/ore_type = /obj/item/stack/ore/glass
 	var/turfverb = "uproot"
 

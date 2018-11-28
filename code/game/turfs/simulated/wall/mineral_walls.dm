@@ -147,6 +147,7 @@
 	girder_type = /obj/structure/barricade/wooden
 	hardness = 50
 	canSmoothWith = list(/turf/closed/wall/mineral/wood, /obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood/nonmetal)
+	baseturfs = /turf/open/floor/plating/dirt
 
 /turf/closed/wall/mineral/iron
 	name = "rough metal wall"
