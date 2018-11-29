@@ -5,7 +5,7 @@
 	icon_state = "mug"
 	item_state = "mug"
 
-	possible_transfer_amounts = list(5, 10)
+	possible_transfer_amounts = list(2, 5, 10)
 	volume = 10
 
 /obj/item/reagent_containers/glass/beaker/mug/update_icon()
