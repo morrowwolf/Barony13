@@ -1,6 +1,6 @@
 /datum/admins/proc/togglelooc()
 	set category = "Server"
-	set desc = "can you even see verb descriptions anywhere?"
+	set desc = "Toggles LOOC for all players."
 	set name = "Toggle LOOC"
 
 	toggle_looc()
@@ -10,7 +10,7 @@
 
 /datum/admins/proc/toggleloocdead()
 	set category = "Server"
-	set desc = "seriously, why do we even bother"
+	set desc = "Toggles LOOC for dead players."
 	set name = "Toggle Dead LOOC"
 
 	toggle_dlooc()
