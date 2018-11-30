@@ -52,6 +52,7 @@
 	var/jitteriness = 0//Carbon
 	var/nutrition = NUTRITION_LEVEL_START_MIN // randomised in Initialize
 	var/satiety = 0//Carbon
+	var/hunger_factor //Set in Initialize
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 	var/a_intent = INTENT_HELP//Living
@@ -78,15 +79,15 @@
 
 	var/list/faction = list("neutral") //A list of factions that this mob is currently in, for hostile mob targetting, amongst other things
 	var/move_on_shuttle = 1 // Can move on the shuttle.
-	
+
 	var/double_click_cooldown
-	
+
 	var/charging = FALSE
 	var/charge_cooldown
-	
+
 	var/parrying = FALSE
 	var/parry_cooldown
-	
+
 	var/blocking = FALSE
 	var/block_dir
 
