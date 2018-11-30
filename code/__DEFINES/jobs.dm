@@ -46,8 +46,6 @@
 
 #define PEASANT			(1<<0)
 #define KNIGHT			(1<<1)
-#define FIGHTER			(1<<2)
-#define ARCHER			(1<<3)
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1
