@@ -89,6 +89,12 @@
 /turf/open/floor/grass/MakeSlippery() //Slipping on grass is silly
 	return
 
+/turf/open/floor/grass/crowbar_act(mob/living/user, obj/item/I)
+	return
+
+/turf/open/floor/grass/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	return
+
 /turf/open/floor/grass/snow
 	gender = PLURAL
 	name = "snow"
@@ -101,12 +107,10 @@
 	initial_gas_mix = "o2=22;n2=82;TEMP=180"
 	slowdown = 2
 	bullet_sizzle = TRUE
+	var/turf/turf_before_weather
 
-/turf/open/floor/grass/snow/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
-	return
-
-/turf/open/floor/grass/snow/crowbar_act(mob/living/user, obj/item/I)
-	return
+/turf/open/floor/grass/snow/proc/switch_back()
+	ChangeTurf(turf_before_weather)
 
 /turf/open/floor/grass/snow/basalt //By your powers combined, I am captain planet
 	gender = NEUTER
