@@ -7,7 +7,7 @@
 	var/limit = 10
 	var/list/holdingitems = list()
 
-	//GOTTA GO BACK AND ADD TIMERS TO SHIT
+	//TODO: GOTTA GO BACK AND ADD TIMERS TO SHIT
 
 /obj/item/reagent_containers/glass/beaker/mortar/update_icon()
 	if(reagents.total_volume)
