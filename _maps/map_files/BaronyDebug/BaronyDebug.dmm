@@ -17,6 +17,7 @@
 "aq" = (/obj/item/flashlight/lantern{on = 1},/obj/structure/table/wood,/turf/open/floor/wood,/area/barony/inside)
 "ar" = (/obj/structure/chair/wood/normal{dir = 1},/turf/open/floor/wood,/area/barony/inside)
 "as" = (/obj/effect/landmark/observer_start,/obj/effect/landmark/latejoin,/turf/open/floor/wood,/area/barony/inside)
+"at" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/rag,/obj/item/reagent_containers/glass/rag,/turf/open/floor/wood,/area/barony/inside)
 "au" = (/obj/effect/landmark/start/knight,/turf/open/floor/grass,/area/barony/outside)
 "av" = (/turf/open/floor/grass,/area/barony/outside)
 "aw" = (/obj/effect/landmark/start/peasant,/turf/open/floor/grass,/area/barony/outside)
@@ -83,7 +84,7 @@ ababababababababaaavavavamamamamamamamamamamamamamamamavavavavavamadakaoahadamaa
 ababababababababaaavavamadadadadadadadadadadadadadadadamavavavavamadafafafadamaa
 ababababababababaaavavamadajbbbbbbadaeafafafafafaiafadamavavavavamalafafafadamaa
 ababababababababaaaUavamalafafafafadaeafagahafakagahadamavavavavamadafafafadamaa
-ababababababababaaavavamadafbcagafalafafagahafakaoahadamavavavavamadaDagaDadamaa
+ababababababababaaavavamadafbcatafalafafagahafakaoahadamavavavavamadaDagaDadamaa
 ababababababababaaavavamadafaoacafadafafagahapapapapalamavavavavamadadadadadamaa
 ababababababababaaavavamadafananafadagagaqahapapapapalamavavavavavamamamamamavaa
 ababababababababaaavaxamadafafafafadararafafafafafafadamavavavavavavavavavaxavaa
