@@ -53,11 +53,11 @@
 		var/obj/item/pestle/P = I
 
 		if(cmptext(P.action, "grind"))
-			grind()
+			grind(user)
 		else if(cmptext(P.action, "juice"))
-			juice()
+			juice(user)
 		else
-			mix()
+			mix(user)
 
 		return FALSE
 
@@ -84,7 +84,7 @@
 		O.forceMove(drop_location())
 		holdingitems -= O
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/juice()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/juice(mob/user)
 	if(reagents.total_volume >= reagents.maximum_volume)
 		return
 
@@ -93,6 +93,7 @@
 			break
 		var/obj/item/I = i
 		if(I.juice_results)
+			to_chat(user,"You juice the [I.name].")
 			juice_item(I)
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/juice_item(obj/item/I) //Juicing results can be found in respective object definitions
@@ -102,7 +103,7 @@
 	reagents.add_reagent_list(I.juice_results)
 	remove_object(I)
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/grind()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/grind(mob/user)
 	if(reagents.total_volume >= reagents.maximum_volume)
 		return
 
@@ -111,6 +112,7 @@
 			break
 		var/obj/item/I = i
 		if(I.grind_results)
+			to_chat(user,"You grind the [I.name].")
 			grind_item(i)
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/grind_item(obj/item/I) //Grind results can be found in respective object definitions
