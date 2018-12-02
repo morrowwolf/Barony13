@@ -2373,6 +2373,7 @@
 #include "code\modules\reagents\chemistry\machinery\pandemic.dm"
 #include "code\modules\reagents\chemistry\machinery\reagentgrinder.dm"
 #include "code\modules\reagents\chemistry\machinery\smoke_machine.dm"
+#include "code\modules\reagents\chemistry\medieval\mortar_pestle.dm"
 #include "code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\blob_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\drink_reagents.dm"
