@@ -756,9 +756,13 @@
 /mob/proc/can_interact_with(atom/A)
 	return IsAdminGhost(src) || Adjacent(A)
 
-//Can the mob see reagents inside of containers?
+//Can the mob see the exact values for what's in the reagent container?
 /mob/proc/can_see_reagents()
-	return 1			//everyone can see into it for now because there's no other way to check and having an item for "scanning" would be dumb
+	if(stat == DEAD) //Ghosts and such can always see reagents
+		return 1
+	if(has_unlimited_silicon_privilege) //Silicons or whatever can automatically view reagents
+		return 1
+	return 0
 
 //Can the mob use Topic to interact with machines
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE)
