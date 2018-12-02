@@ -126,17 +126,20 @@
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/mix(mob/user)
 	//For butter and other things that would change upon shaking or mixing
-	mix_complete()
+	mix_complete(user)
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/mix_complete()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/mix_complete(mob/user)
 	if(reagents.total_volume)
 		//Recipe to make Butter
 		var/butter_amt = FLOOR(reagents.get_reagent_amount("milk") / MILK_TO_BUTTER_COEFF, 1)
-		reagents.remove_reagent("milk", MILK_TO_BUTTER_COEFF * butter_amt)
-		for(var/i in 1 to butter_amt)
-			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
+		if(butter_amt)
+			to_chat(user,"You mix together some butter.")
+			reagents.remove_reagent("milk", MILK_TO_BUTTER_COEFF * butter_amt)
+			for(var/i in 1 to butter_amt)
+				new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		//Recipe to make Mayonnaise
 		if (reagents.has_reagent("eggyolk"))
+			to_chat(user,"You mix together some mayonnaise.")
 			var/amount = reagents.get_reagent_amount("eggyolk")
 			reagents.remove_reagent("eggyolk", amount)
 			reagents.add_reagent("mayonnaise", amount)
