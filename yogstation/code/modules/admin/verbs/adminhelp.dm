@@ -106,7 +106,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //
 //TICKET DATUM
 //
-
+/*
+Note that this definition for /datum/admin_help just completely fuckin' blanks the /tg/ version. 
+If a proc or var or whatever is defined there and not here, there will a compiler error saying it's not defined. Just a heads up.
+*/
 /datum/admin_help
 	var/id
 	var/name
@@ -204,10 +207,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
-	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=wiki'>WIKI</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -348,64 +349,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		else
 			message_admins("All tickets have been closed, round can be restarted")
 
-//Close and return ahelp verb, use if ticket is incoherent
-/datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
-		return
-
-	if(initiator)
-		initiator.giveadminhelpverb()
-
-		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
-
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>")
-		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
-
-	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
-	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
-	message_admins(msg)
-	log_admin_private(msg)
-	AddInteraction("Rejected by [usr.ckey].")
-	Close(silent = TRUE)
-
-//Resolve ticket with IC Issue message
-/datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
-		return
-
-	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as an IC issue! -</b></font><br>"
-	msg += "<font color='red'><b>Losing is part of the game!</b></font><br>"
-	msg += "<font color='red'>Your character will frequently die, sometimes without even a possibility of avoiding it. Events will often be out of your control. No matter how good or prepared you are, sometimes you just lose.</font>"
-
-	if(initiator)
-		to_chat(initiator, msg)
-
-	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "IC")
-	msg = "Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
-	message_admins(msg)
-	log_admin_private(msg)
-	AddInteraction("Marked as an IC issue by [usr.ckey]")
-	Resolve(silent = TRUE)
-
-//Resolve ticket with wiki message
-/datum/admin_help/proc/WikiIssue(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
-		return
-
-	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as a Wiki issue! -</b></font><br>"
-	msg += "<font color='red'><b>Go look at the wiki!</b></font><br>"
-	msg += "<font color='red'>[CONFIG_GET(string/wikiurl)]</font>"
-	if(initiator)
-		to_chat(initiator, msg)
-
-	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "WIKI")
-	msg = "Ticket [TicketHref("#[id]")] marked as WIKI by [key_name]"
-	message_admins(msg)
-	log_admin_private(msg)
-	AddInteraction("Marked as WIKI issue by [usr.ckey]")
-	Resolve(silent = TRUE)
-
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
 	var/reply_link = "<a href='?_src_=holder;[HrefToken(TRUE)];user=[REF(usr)];ahelp=[REF(src)];ahelp_action=reply'><img border='0' width='16' height='16' class='uiIcon16 icon-comment' /> Reply</a>"
@@ -434,9 +377,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 					<a href='?_src_=holder;[HrefToken(TRUE)];secretsadmin=check_antagonist'><img border='0' width='16' height='16' class='uiIcon16 icon-clipboard' /> CA</a>
 					<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(src)];ahelp_action=administer' class='admin-button'><img border='0' width='16' height='16' class='uiIcon16 icon-flag' /> <span>Administer</span></a>
 					<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(src)];ahelp_action=resolve' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>[state == AHELP_ACTIVE ? "" : "Un"]Resolve</span></a>
-					<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(src)];ahelp_action=reject' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Reject</span></a>
 					<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(src)];ahelp_action=close' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Close</span></a>
-					<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(src)];ahelp_action=icissue' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>IC</span></a>
 				</p>"}
 		if(initiator && initiator.mob)
 			if(initiator.mob.mind && initiator.mob.mind.assigned_role)
@@ -507,19 +448,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	message_admins(msg)
 	log_admin_private(msg)
 
-
-//Forwarded action from admin/Topic
+//Forwarded from datum.admins.Topic
 /datum/admin_help/proc/Action(action)
 	testing("Ahelp action: [action]")
 	switch(action)
 		if("ticket")
 			TicketPanel()
-		if("reject")
-			Reject()
 		if("reply")
 			usr.client.cmd_ahelp_reply(initiator)
-		if("icissue")
-			ICIssue()
 		if("close")
 			Close()
 		if("resolve")
@@ -528,10 +464,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Reopen()
 		if("administer")
 			Administer()
-		if("wiki")
-			WikiIssue()
-
-
+	
 //
 // CLIENT PROCS
 //
@@ -623,9 +556,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 						<b>Owner:</b> <b>[T.initiator_ckey] (DC)</b>
 						[T.TicketHref("<img border='0' width='16' height='16' class='uiIcon16 icon-search' /> View")]
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=resolve' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>[T.state == AHELP_ACTIVE ? "" : "Un"]Resolve</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=reject' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Reject</span></a>
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=close' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Close</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=icissue' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>IC</span></a>
 						</p>"}
 				else
 					var/ai_found = (T.initiator && isAI(T.initiator_ckey))
@@ -648,9 +579,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 							"}
 					content += {"
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=resolve' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>[T.state == AHELP_ACTIVE ? "" : "Un"]Resolve</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=reject' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Reject</span></a>
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=close' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Close</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=icissue' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>IC</span></a>
 						</p>"}
 
 		if(resolved.len > 0)
@@ -664,9 +593,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 						<b>Owner:</b> <b>[T.initiator_ckey] (DC)</b>
 						[T.TicketHref("<img border='0' width='16' height='16' class='uiIcon16 icon-search' /> View")]
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=resolve' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>[T.state == AHELP_ACTIVE ? "" : "Un"]Resolve</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=reject' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Reject</span></a>
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=close' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Close</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=icissue' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>IC</span></a>
 						</p>"}
 				else
 					var/ai_found = (T.initiator && isAI(T.initiator_ckey))
@@ -689,9 +616,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 								"}
 					content += {"
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=resolve' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>[T.state == AHELP_ACTIVE ? "" : "Un"]Resolve</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=reject' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Reject</span></a>
 						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=close' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>Close</span></a>
-						<a href='?_src_=holder;[HrefToken(TRUE)];ahelp=[REF(T)];ahelp_action=icissue' class='resolve-button'><img border='0' width='16' height='16' class='uiIcon16 icon-check' /> <span>IC</span></a>
 						</p>"}
 	else
 		content += "<p class='info-bar'><a href='?_src_=holder;[HrefToken(TRUE)];action=refresh_admin_ticket_list;flag=[flag]'>Refresh List</a></p>"

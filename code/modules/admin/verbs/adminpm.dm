@@ -222,7 +222,7 @@
 
 
 
-#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|reopen \[ticket #\]|list>"
+#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|reopen \[ticket #\]|list>"
 /proc/IrcPm(target,msg,sender)
 	target = ckey(target)
 	var/client/C = GLOB.directory[target]
@@ -243,14 +243,6 @@
 				if(ticket)
 					ticket.Resolve(irc_tagged)
 					return "Ticket #[ticket.id] successfully resolved"
-			if("icissue")
-				if(ticket)
-					ticket.ICIssue(irc_tagged)
-					return "Ticket #[ticket.id] successfully marked as IC issue"
-			if("reject")
-				if(ticket)
-					ticket.Reject(irc_tagged)
-					return "Ticket #[ticket.id] successfully rejected"
 			if("reopen")
 				if(ticket)
 					return "Error: [target] already has ticket #[ticket.id] open"
