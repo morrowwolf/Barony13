@@ -27,3 +27,37 @@
 /datum/weather/snow_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(15,30))
 
+/datum/weather/snow_storm/start()
+	..()
+
+	/*
+	for(var/i in impacted_areas)
+		var/turf/T = i
+		if(istype(T, /turf/open))
+			var/temp_turf_before = T.type
+			var/turf/open/floor/grass/snow/S = T.ChangeTurf(/turf/open/floor/grass/snow)
+			S.turf_before_weather = temp_turf_before
+			continue
+	*/
+
+/datum/weather/snow_storm/wind_down()
+	..()
+
+	for(var/i in impacted_areas)
+		var/turf/T = i
+		for(var/C in T.contents)
+			if(istype(C, /obj/effect/decal/cleanable))
+				qdel(C)
+
+
+/datum/weather/snow_storm/end()
+	..()
+
+	/*
+	for(var/i in impacted_areas)
+		var/turf/T = i
+		if(istype(T, /turf/open/floor/grass/snow))
+			var/turf/open/floor/grass/snow/S = T
+			if(S.turf_before_weather)
+				addtimer(CALLBACK(S, /turf/open/floor/grass/snow.proc/switch_back), rand(10, 100))
+	*/
