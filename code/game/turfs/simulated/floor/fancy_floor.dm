@@ -70,7 +70,7 @@
 	flags_1 = NONE
 	bullet_bounce_sound = null
 	baseturfs = /turf/open/floor/plating/dirt
-	var/ore_type = /obj/item/stack/ore/glass
+	var/ore_type
 	var/turfverb = "uproot"
 
 /turf/open/floor/grass/Initialize()
@@ -79,10 +79,13 @@
 
 /turf/open/floor/grass/attackby(obj/item/C, mob/user, params)
 	if((C.tool_behaviour == TOOL_SHOVEL) && params)
-		new ore_type(src, 2)
-		user.visible_message("[user] digs up [src].", "<span class='notice'>You [turfverb] [src].</span>")
-		playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
-		make_plating()
+		user.visible_message("[user] starts to [turfverb] \the [src].", "<span class='notice'>You start to [turfverb] \the [src].</span>")
+		if(do_after(user, 20, target=src))
+			if(ore_type)
+				new ore_type(src, 2)
+			user.visible_message("[user] digs up \the [src].", "<span class='notice'>You [turfverb] \the [src].</span>")
+			playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
+			make_plating()
 	if(..())
 		return
 
