@@ -53,11 +53,11 @@
 		var/obj/item/pestle/P = I
 
 		if(cmptext(P.action, "grind"))
-			grind()
+			grind(user)
 		else if(cmptext(P.action, "juice"))
-			juice()
+			juice(user)
 		else
-			mix()
+			mix(user)
 
 		return FALSE
 
@@ -84,7 +84,7 @@
 		O.forceMove(drop_location())
 		holdingitems -= O
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/juice()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/juice(mob/user)
 	if(reagents.total_volume >= reagents.maximum_volume)
 		return
 
@@ -93,6 +93,7 @@
 			break
 		var/obj/item/I = i
 		if(I.juice_results)
+			to_chat(user,"You juice the [I.name].")
 			juice_item(I)
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/juice_item(obj/item/I) //Juicing results can be found in respective object definitions
@@ -102,7 +103,7 @@
 	reagents.add_reagent_list(I.juice_results)
 	remove_object(I)
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/grind()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/grind(mob/user)
 	if(reagents.total_volume >= reagents.maximum_volume)
 		return
 
@@ -111,6 +112,7 @@
 			break
 		var/obj/item/I = i
 		if(I.grind_results)
+			to_chat(user,"You grind the [I.name].")
 			grind_item(i)
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/grind_item(obj/item/I) //Grind results can be found in respective object definitions
@@ -124,17 +126,20 @@
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/mix(mob/user)
 	//For butter and other things that would change upon shaking or mixing
-	mix_complete()
+	mix_complete(user)
 
-/obj/item/reagent_containers/glass/beaker/mortar/proc/mix_complete()
+/obj/item/reagent_containers/glass/beaker/mortar/proc/mix_complete(mob/user)
 	if(reagents.total_volume)
 		//Recipe to make Butter
 		var/butter_amt = FLOOR(reagents.get_reagent_amount("milk") / MILK_TO_BUTTER_COEFF, 1)
-		reagents.remove_reagent("milk", MILK_TO_BUTTER_COEFF * butter_amt)
-		for(var/i in 1 to butter_amt)
-			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
+		if(butter_amt)
+			to_chat(user,"You mix together some butter.")
+			reagents.remove_reagent("milk", MILK_TO_BUTTER_COEFF * butter_amt)
+			for(var/i in 1 to butter_amt)
+				new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		//Recipe to make Mayonnaise
 		if (reagents.has_reagent("eggyolk"))
+			to_chat(user,"You mix together some mayonnaise.")
 			var/amount = reagents.get_reagent_amount("eggyolk")
 			reagents.remove_reagent("eggyolk", amount)
 			reagents.add_reagent("mayonnaise", amount)
