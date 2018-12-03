@@ -140,9 +140,9 @@
 			playsound(get_turf(src), W.hitsound, 100, 0, 0)
 			user.visible_message("<span class='notice'>[user] begins hacking at \the [src] with [W].</span>","<span class='notice'>You begin to hack at \the [src] with [W].</span>", "You hear the sound of chopping.")
 			if(do_after(user, duration*10, target=src)) //Into deciseconds.
-				playsound(get_turf(src), W.hitsound, 100, 0, 0)
+				//playsound(get_turf(src), W.hitsound, 100, 0, 0)
 				user.visible_message("<span class='notice'>[user] destroys \the [src] with the [W].</span>","<span class='notice'>You destroy \the [src] with the [W].</span>", "You hear the sound of smashing.")
-				dismantle_wall(FALSE,FALSE,TRUE)
+				dismantle_wall(FALSE,FALSE,W.hitsound)
 				return
 	return ..()
 
