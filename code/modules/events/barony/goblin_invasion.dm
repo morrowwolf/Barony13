@@ -54,12 +54,13 @@
 		SEND_SOUND(player, 'sound/effects/goblin_horde.ogg')
 
 	for(var/i = 0, i < spawns, i++)
-		playsound(spawnpoint, 'sound/effects/goblin_spawn.ogg', 60)
-		new type(spawnpoint)
-
-		CHECK_TICK
+		addtimer(CALLBACK(src, .proc/do_spawn, spawnpoint, type), 10)
 
 	spawned = TRUE
+
+/datum/round_event/goblin_invasion/proc/do_spawn(var/spawnpoint, var/type)
+	playsound(spawnpoint, 'sound/effects/goblin_spawn.ogg', 60)
+	new type(spawnpoint)
 
 /datum/round_event/goblin_invasion/proc/getSpawnAmount()
 	var/players = GLOB.player_list.len
