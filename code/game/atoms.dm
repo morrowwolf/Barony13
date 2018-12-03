@@ -260,14 +260,13 @@
 		if(container_type & TRANSPARENT)
 			to_chat(user, "It contains:")
 			if(reagents.reagent_list.len)
-				if(user.can_see_reagents()) //Show each individual reagent
+				if(user.can_see_reagents()) //Show each individual reagent exactly (for ghosts and what have you)
 					for(var/datum/reagent/R in reagents.reagent_list)
 						to_chat(user, "[R.volume] units of [R.name]")
-				else //Otherwise, just show the total volume
-					var/total_volume = 0
+				else //Otherwise, just give a vaguer description
+					var/list/metrics = list("unces","lathers","shills","rounds") // random medieval-ish names of units
 					for(var/datum/reagent/R in reagents.reagent_list)
-						total_volume += R.volume
-					to_chat(user, "[total_volume] units of various reagents")
+						to_chat(user, "About [round(R.volume,0.5)] [pick(metrics)] of [R.name]")
 			else
 				to_chat(user, "Nothing.")
 		else if(container_type & AMOUNT_VISIBLE)
