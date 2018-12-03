@@ -66,7 +66,7 @@ Arena guys
 	l_hand = /obj/item/shields/medieval
 	belt = /obj/item/melee/medieval/blade/shortsword
 	back = /obj/item/melee/medieval/blade/sword
-	neck = /obj/item/clothing/neck/cloak/medieval
+	neck = null
 	id = /obj/item/key/armory
 	ears = null
 
