@@ -54,7 +54,7 @@
 		SEND_SOUND(player, 'sound/effects/goblin_horde.ogg')
 
 	for(var/i = 0, i < spawns, i++)
-		addtimer(CALLBACK(src, .proc/do_spawn, spawnpoint, type), 10)
+		addtimer(CALLBACK(src, .proc/do_spawn, spawnpoint, type), (10+(i*10)))
 
 	spawned = TRUE
 
