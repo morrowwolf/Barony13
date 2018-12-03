@@ -915,7 +915,8 @@
 
 /obj/machinery/hydroponics/soil/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/shovel) && !istype(O, /obj/item/shovel/spade)) //Doesn't include spades because of uprooting plants
-		to_chat(user, "<span class='notice'>You clear up [src]!</span>")
-		qdel(src)
+		if(do_after(user, 50, target=src))
+			to_chat(user, "<span class='notice'>You clear up [src]!</span>")
+			qdel(src)
 	else
 		return ..()
