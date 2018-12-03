@@ -127,6 +127,9 @@
 	school = "restoration"
 
 /obj/effect/proc_holder/spell/self/see_power/cast(mob/living/carbon/user)
-	var/powah = get_witch_power(user)
+	var/powah = 0
+	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
+	if(W)
+		powah = W.power
 	to_chat(user,"<span='notice'>You have [powah] bones' worth of power inside you.</span>")
 
