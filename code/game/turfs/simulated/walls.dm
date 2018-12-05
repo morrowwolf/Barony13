@@ -52,11 +52,11 @@
 	P.setAngle(new_angle_s)
 	return TRUE
 
-/turf/closed/wall/proc/dismantle_wall(devastated=0, explode=0)
+/turf/closed/wall/proc/dismantle_wall(devastated=0, explode=0, wall_sound='sound/items/welder.ogg')
 	if(devastated)
 		devastate_wall()
 	else
-		playsound(src, 'sound/items/welder.ogg', 100, 1)
+		playsound(src, wall_sound, 100, 1)
 		var/newgirder = break_wall()
 		if(newgirder) //maybe we don't /want/ a girder!
 			transfer_fingerprints_to(newgirder)

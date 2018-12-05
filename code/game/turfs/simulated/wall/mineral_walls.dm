@@ -135,10 +135,14 @@
 
 /turf/closed/wall/mineral/wood/attackby(obj/item/W, mob/user)
 	if(W.sharpness && W.force)
-		if(istype(W, /obj/item/hatchet))		//eventually but definitely not now, shit is fucky
+		if(istype(W, /obj/item/twohanded/fireaxe/fellingaxe))
 			var/duration = (12/W.force) * 2 //In seconds, for now.
+			playsound(get_turf(src), W.hitsound, 100, 0, 0)
+			user.visible_message("<span class='notice'>[user] begins hacking at \the [src] with [W].</span>","<span class='notice'>You begin to hack at \the [src] with [W].</span>", "You hear the sound of chopping.")
 			if(do_after(user, duration*10, target=src)) //Into deciseconds.
-				dismantle_wall(FALSE,FALSE)
+				//playsound(get_turf(src), W.hitsound, 100, 0, 0)
+				user.visible_message("<span class='notice'>[user] destroys \the [src] with the [W].</span>","<span class='notice'>You destroy \the [src] with the [W].</span>", "You hear the sound of smashing.")
+				dismantle_wall(FALSE,FALSE,W.hitsound)
 				return
 	return ..()
 
