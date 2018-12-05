@@ -19,7 +19,7 @@
 
 	action_icon_state = "skeleton"
 	
-	var/bones_required = 5
+	var/bones_required = 4
 	
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton/cast(list/targets,mob/user = usr)
 			
@@ -91,7 +91,7 @@
 
 	action_icon_state = "blink"
 	
-	var/bones_required = 2
+	var/bones_required = 1
 
 /obj/effect/proc_holder/spell/targeted/heal/cast(list/targets,mob/living/user = usr)
 

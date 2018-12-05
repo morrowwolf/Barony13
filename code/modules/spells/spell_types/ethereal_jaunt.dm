@@ -31,7 +31,7 @@
 	if(!W)
 		return
 
-	if(W.power < 3)
+	if(W.power < 2)
 		to_chat(user, "Not enough power to jaunt!")
 		return
 

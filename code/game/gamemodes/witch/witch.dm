@@ -27,7 +27,7 @@
 	witch.restricted_roles = restricted_jobs			
 	witches += witch
 	
-	var/num_cult = round(num_players() / 8)
+	var/num_cult = round(num_players() / 7)
 
 	for(var/i = 0, i < num_cult, i++)
 		var/datum/mind/witch_cultist = antag_pick(antag_candidates)
