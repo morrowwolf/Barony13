@@ -3,6 +3,7 @@
 	desc = "Used with a pestle to grind, juice, or mix reagents."
 	icon = 'yogstation/icons/obj/medieval.dmi'
 	icon_state = "mortar"
+	item_state = "mortar"
 
 	var/limit = 10
 	var/list/holdingitems = list()
@@ -10,16 +11,16 @@
 	//TODO: GOTTA GO BACK AND ADD TIMERS TO SHIT
 
 /obj/item/reagent_containers/glass/beaker/mortar/update_icon()
-	if(reagents.total_volume)
-		var/percent = round((reagents.total_volume / volume) * 100) + (holdingitems.len * 10)
+	var/percent = round((reagents.total_volume / volume) * 100) + (holdingitems.len * 10)
 
-		if(percent >= 50)
-			icon_state = "mortar-misc"
-		else
-			icon_state = "mortar"
+	if(percent >= 50)
+		icon_state = "mortar-misc"
+	else
+		icon_state = "mortar"
 
-/obj/item/reagent_containers/glass/beaker/mortar/throw_at()
+/obj/item/reagent_containers/glass/beaker/mortar/after_throw(datum/callback/callback)
 	..()
+	drop_all_items()
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/mortar/Destroy()
@@ -46,6 +47,7 @@
 				dat += "[O.name], "
 
 	to_chat(user, "The mortar contains the following for processing: [dat]")
+	to_chat(user, "Alt-Click to remove items.")
 	
 
 /obj/item/reagent_containers/glass/beaker/mortar/attackby(obj/item/I, mob/user, params)
@@ -58,6 +60,8 @@
 			juice(user)
 		else
 			mix(user)
+
+		update_icon()
 
 		return FALSE
 
@@ -74,15 +78,11 @@
 	if(user.transferItemToLoc(I, src))
 		to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
 		holdingitems[I] = TRUE
+		update_icon()
 		return FALSE
 
 /obj/item/reagent_containers/glass/beaker/mortar/AltClick(mob/user)
-	if(!length(holdingitems))
-		return
-	for(var/i in holdingitems)
-		var/obj/item/O = i
-		O.forceMove(drop_location())
-		holdingitems -= O
+	drop_all_items()
 
 /obj/item/reagent_containers/glass/beaker/mortar/proc/juice(mob/user)
 	if(reagents.total_volume >= reagents.maximum_volume)
@@ -153,6 +153,7 @@
 	desc = "Used with a mortar to grind, juice, or mix reagents."
 	icon = 'yogstation/icons/obj/medieval.dmi'
 	icon_state = "pestle"
+	w_class = WEIGHT_CLASS_SMALL
 
 	var/action = "grind"
 	var/list/action_types = list("grind", "juice", "mix")
