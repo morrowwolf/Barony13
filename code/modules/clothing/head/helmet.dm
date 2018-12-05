@@ -331,3 +331,47 @@
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
+
+/obj/item/clothing/head/helmet/greathelm
+	name = "great helm"
+	desc = "A single piece steel helmet that protects all parts of the head."
+	icon_state = "greathelm"
+	item_state = "greathelm"
+	armor = list("melee" = 35, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	strip_delay = 60
+	resistance_flags = NONE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
+	
+/obj/item/clothing/head/helmet/casquemail
+	name = "casque with mail"
+	desc = "A conical leather helmet is held together with steel. It has a mail mask attached to the lining."
+	icon_state = "casquemail"
+	item_state = "casquemail"
+	armor = list("melee" = 25, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 50)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	strip_delay = 30
+	resistance_flags = NONE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
+	
+/obj/item/clothing/head/helmet/casque
+	name = "casque"
+	desc = "A conical leather helmet is held together with steel."
+	icon_state = "casque"
+	item_state = "casque"
+	armor = list("melee" = 20, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 50)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	strip_delay = 20
+	resistance_flags = NONE
+	flags_inv = HIDEEARS|HIDEHAIR
