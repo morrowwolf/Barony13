@@ -69,6 +69,7 @@ Arena guys
 	neck = null
 	id = /obj/item/key/armory
 	ears = null
+	head = /obj/item/clothing/head/helmet/greathelm
 
 /datum/outfit/job/knight/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	return
