@@ -52,13 +52,15 @@
 
 		to_chat(player, "<span class='big'><span class='boldannounce'><span class='red'>You hear shrieks and warhorns to the [text_dir]!</span></span></span>")
 		SEND_SOUND(player, 'sound/effects/goblin_horde.ogg')
-		
+
 	for(var/i = 0, i < spawns, i++)
-		sleep(10)
-		new type(spawnpoint)
-		playsound(spawnpoint, 'sound/effects/goblin_spawn.ogg', 60)
+		addtimer(CALLBACK(src, .proc/do_spawn, spawnpoint, type), (10+(i*10)))
 
 	spawned = TRUE
+
+/datum/round_event/goblin_invasion/proc/do_spawn(var/spawnpoint, var/type)
+	playsound(spawnpoint, 'sound/effects/goblin_spawn.ogg', 60)
+	new type(spawnpoint)
 
 /datum/round_event/goblin_invasion/proc/getSpawnAmount()
 	var/players = GLOB.player_list.len
