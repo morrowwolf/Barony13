@@ -115,21 +115,3 @@
 
 	W.power -= 2
 	
-/obj/effect/proc_holder/spell/self/see_power
-	name = "See Power"
-	desc = "Informs you of how much power you have available. Takes no power to cast."
-	human_req = 1
-	clothes_req = 0
-	charge_max = 25
-	cooldown_min = 5
-	invocation = "Vide ossa!"
-	invocation_type = "whisper"
-	school = "restoration"
-
-/obj/effect/proc_holder/spell/self/see_power/cast(mob/living/carbon/user)
-	var/powah = 0
-	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
-	if(W)
-		powah = W.power
-	to_chat(user,"<span='notice'>You have [powah] bones' worth of power inside you.</span>")
-

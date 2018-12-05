@@ -594,6 +594,12 @@
 	add_spells_to_statpanel(mob_spell_list)
 
 /mob/proc/add_spells_to_statpanel(list/spells)
+	if(mind && mind.antag_datums)
+		for(var/i = 1 to mind.antag_datums.len)
+			if(istype(mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
+				statpanel("Spells", "[mind.antag_datums[i].power]", "Power")
+				break
+
 	for(var/obj/effect/proc_holder/spell/S in spells)
 		if(S.can_be_cast_by(src))
 			switch(S.charge_type)
