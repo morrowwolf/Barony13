@@ -343,46 +343,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		message_admins(msg)
 		log_admin_private(msg)
 
-//Close and return ahelp verb, use if ticket is incoherent
-/datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
-		return
-
-	if(initiator)
-		initiator.giveadminhelpverb()
-
-		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
-
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>")
-		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
-
-	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
-	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
-	message_admins(msg)
-	log_admin_private(msg)
-	AddInteraction("Rejected by [key_name].")
-	Close(silent = TRUE)
-
-//Resolve ticket with IC Issue message
-/datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
-		return
-
-	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
-	msg += "<font color='red'><b>Losing is part of the game!</b></font><br>"
-	msg += "<font color='red'>Your character will frequently die, sometimes without even a possibility of avoiding it. Events will often be out of your control. No matter how good or prepared you are, sometimes you just lose.</font>"
-
-	if(initiator)
-		to_chat(initiator, msg)
-
-	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "IC")
-	msg = "Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
-	message_admins(msg)
-	log_admin_private(msg)
-	AddInteraction("Marked as IC issue by [key_name]")
-	Resolve(silent = TRUE)
-
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
 	var/list/dat = list("<html><head><title>Ticket #[id]</title></head>")
@@ -433,12 +393,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			TicketPanel()
 		if("retitle")
 			Retitle()
-		if("reject")
-			Reject()
 		if("reply")
 			usr.client.cmd_ahelp_reply(initiator)
-		if("icissue")
-			ICIssue()
 		if("close")
 			Close()
 		if("resolve")

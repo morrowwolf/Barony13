@@ -38,6 +38,6 @@
 		if(has_trait(TRAIT_NOHUNGER))
 			nutrition = NUTRITION_LEVEL_FED - 1	//just less than feeling vigorous
 		else if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/10
+			nutrition -= hunger_factor/10
 			if(m_intent == MOVE_INTENT_RUN)
-				nutrition -= HUNGER_FACTOR/10
+				nutrition -= hunger_factor/10

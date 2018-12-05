@@ -34,6 +34,9 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	nutrition = rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX)
+	hunger_factor = CONFIG_GET(number/hunger_factor)
+	if(!isnum(hunger_factor))
+		hunger_factor = 0.1
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -325,7 +328,7 @@
 		return FALSE
 
 	new /obj/effect/temp_visual/point(A,invisibility)
-	
+
 	// yogs start
 	for(var/atom/on_tile in A.contents + A)
 		on_tile.pointed_at(src)
@@ -753,24 +756,12 @@
 /mob/proc/can_interact_with(atom/A)
 	return IsAdminGhost(src) || Adjacent(A)
 
-//Can the mob see reagents inside of containers?
+//Can the mob see the exact values for what's in the reagent container?
 /mob/proc/can_see_reagents()
 	if(stat == DEAD) //Ghosts and such can always see reagents
 		return 1
-	if(has_unlimited_silicon_privilege) //Silicons can automatically view reagents
+	if(has_unlimited_silicon_privilege) //Silicons or whatever can automatically view reagents
 		return 1
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(H.head && istype(H.head, /obj/item/clothing))
-			var/obj/item/clothing/CL = H.head
-			if(CL.scan_reagents)
-				return 1
-		if(H.wear_mask && H.wear_mask.scan_reagents)
-			return 1
-		if(H.glasses && istype(H.glasses, /obj/item/clothing))
-			var/obj/item/clothing/CL = H.glasses
-			if(CL.scan_reagents)
-				return 1
 	return 0
 
 //Can the mob use Topic to interact with machines

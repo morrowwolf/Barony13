@@ -350,3 +350,8 @@
 /datum/config_entry/number/monkeycap
 	config_entry_value = 64
 	min_val = 0
+
+/datum/config_entry/number/hunger_factor
+	config_entry_value = 0.1
+	integer = FALSE
+	min_val = 0

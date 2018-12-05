@@ -12,6 +12,7 @@
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	broken_states = list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
+	baseturfs = /turf/open/floor/plating/dirt
 
 /turf/open/floor/wood/examine(mob/user)
 	..()
@@ -68,6 +69,7 @@
 	broken_states = list("sand")
 	flags_1 = NONE
 	bullet_bounce_sound = null
+	baseturfs = /turf/open/floor/plating/dirt
 	var/ore_type = /obj/item/stack/ore/glass
 	var/turfverb = "uproot"
 
@@ -87,6 +89,12 @@
 /turf/open/floor/grass/MakeSlippery() //Slipping on grass is silly
 	return
 
+/turf/open/floor/grass/crowbar_act(mob/living/user, obj/item/I)
+	return
+
+/turf/open/floor/grass/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	return
+
 /turf/open/floor/grass/snow
 	gender = PLURAL
 	name = "snow"
@@ -94,17 +102,13 @@
 	desc = "Looks cold."
 	icon_state = "snow"
 	ore_type = /obj/item/stack/sheet/mineral/snow
-	planetary_atmos = TRUE
 	floor_tile = null
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
 	slowdown = 2
 	bullet_sizzle = TRUE
+	var/turf/turf_before_weather
 
-/turf/open/floor/grass/snow/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
-	return
-
-/turf/open/floor/grass/snow/crowbar_act(mob/living/user, obj/item/I)
-	return
+/turf/open/floor/grass/snow/proc/switch_back()
+	ChangeTurf(turf_before_weather)
 
 /turf/open/floor/grass/snow/basalt //By your powers combined, I am captain planet
 	gender = NEUTER

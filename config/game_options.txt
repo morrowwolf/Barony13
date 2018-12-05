@@ -3,6 +3,9 @@
 ##Damage multiplier, effects both weapons and healing on all mobs. For example, 1.25 would result in 25% higher damage.
 DAMAGE_MULTIPLIER 1
 
+##Affects rate of nutrition loss. Default value 0.1
+HUNGER_FACTOR 0.1
+
 ## REVIVAL ###
 
 ## whether pod plants work or not
@@ -43,7 +46,7 @@ WALK_DELAY 4
 
 ## The variables below affect the movement of specific mob types. THIS AFFECTS ALL SUBTYPES OF THE TYPE YOU CHOOSE!
 ## Entries completely override all subtypes. Later entries have precedence over earlier entries.
-## This means if you put /mob 0 on the last entry, it will null out all changes, while if you put /mob as the first entry and 
+## This means if you put /mob 0 on the last entry, it will null out all changes, while if you put /mob as the first entry and
 ## /mob/living/carbon/human on the last entry, the last entry will override the first.
 ##MULTIPLICATIVE_MOVESPEED /mob/living/carbon/human 0
 ##MULTIPLICATIVE_MOVESPEED /mob/living/silicon/robot 0
@@ -141,10 +144,10 @@ MIDROUND_ANTAG CHANGELING
 MIDROUND_ANTAG WIZARD
 #MIDROUND_ANTAG  MONKEY
 
-## Uncomment these for overrides of the minimum / maximum number of players in a round type. 
+## Uncomment these for overrides of the minimum / maximum number of players in a round type.
 ## If you set any of these occasionally check to see if you still need them as the modes
 ## will still be actively rebalanced around the SUGGESTED populations, not your overrides.
-## Notes: For maximum number of players a value of -1 means no maximum. Setting minimums to 
+## Notes: For maximum number of players a value of -1 means no maximum. Setting minimums to
 ## VERY low numbers (< 5) can lead to errors if the roundtypes were not designed for that.
 
 #MIN_POP TRAITOR 0

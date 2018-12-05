@@ -29,7 +29,6 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	/datum/verbs/menu/Admin/verb/playerpanel,
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
-	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead,	/*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/togglelooc,		/*toggles looc on/off for everyone*/ // yogs - LOOC
@@ -74,7 +73,6 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/datum/admins/proc/open_borgopanel,
 	/datum/admins/proc/restart, //yogs - moved from +server
 	/client/proc/admin_pick_random_player, //yogs
-	/client/proc/get_law_history, //yogs
 	/client/proc/check_alts
 	)
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -105,7 +103,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/rejuv_all, // yogs - Revive All
-	/client/proc/admin_away
+	/client/proc/admin_away,
+	/client/proc/make_it_snow
 	))
 GLOBAL_PROTECT(admin_verbs_spawn)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character))
@@ -619,12 +618,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		togglebuildmode(src.mob)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/check_ai_laws()
-	set name = "Check AI Laws"
-	set category = "Admin"
-	if(holder)
-		src.holder.output_ai_laws()
-
 /client/proc/deadmin()
 	set name = "Deadmin"
 	set category = "Admin"
@@ -703,9 +696,9 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			while (!area && --j > 0)
 
 /client/proc/toggle_AI_interact()
-	set name = "Toggle Admin AI Interact"
+	set name = "Toggle Admin Interact"
 	set category = "Admin"
-	set desc = "Allows you to interact with most machines as an AI would as a ghost"
+	set desc = "Allows you to interact with most machines and dohickeys as if you weren't a ghost"
 
 	AI_Interact = !AI_Interact
 	if(mob && IsAdminGhost(mob))

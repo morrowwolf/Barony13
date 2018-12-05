@@ -1,3 +1,10 @@
+/obj/effect/proc_holder/spell/proc/get_witch_datum(mob/user = usr)
+	var/datum/antagonist/witch_cult/witch/W
+	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
+		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
+			W = user.mind.antag_datums[i]
+	return W
+
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton
 	name = "Summon Skeleton"
 	desc = "This spell uses five power to summon skeleton servants."
@@ -19,15 +26,9 @@
 	if(!user || !user.mind || !user.mind.antag_datums)
 		return
 
-	var/datum/antagonist/witch_cult/witch/W
-
-	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
-		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
-			W = user.mind.antag_datums[i]
-
+	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
 	if(!W)
 		return
-
 	if(W.power < bones_required)
 		to_chat(user, "Not enough power to summon an undead minion!")
 		return
@@ -97,17 +98,9 @@
 	if(!user || !user.mind || !user.mind.antag_datums) // Your proc was dying here, Morrow. See above.
 		return
 	
-
-	var/datum/antagonist/witch_cult/witch/W
-	for(var/i = 1, i <= user.mind.antag_datums.len, i++)
-		if(istype(user.mind.antag_datums[i], /datum/antagonist/witch_cult/witch))
-			W = user.mind.antag_datums[i]
-			break
-
+	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
 	if(!W)
-		to_chat(user,"Only a witch can cast such a spell!")
 		return
-
 	if(W.power < bones_required)
 		to_chat(user, "Not enough power to heal yourself!")
 		return
@@ -115,8 +108,28 @@
 
 	var/mob/living/L = user
 
+	to_chat(user,"<span='notice'>You feel yourself be restored.</span>")
 	L.adjustOxyLoss(-15)
 	L.adjustBruteLoss(-15)
 	L.adjustFireLoss(-15)
 
 	W.power -= 2
+	
+/obj/effect/proc_holder/spell/self/see_power
+	name = "See Power"
+	desc = "Informs you of how much power you have available. Takes no power to cast."
+	human_req = 1
+	clothes_req = 0
+	charge_max = 25
+	cooldown_min = 5
+	invocation = "Vide ossa!"
+	invocation_type = "whisper"
+	school = "restoration"
+
+/obj/effect/proc_holder/spell/self/see_power/cast(mob/living/carbon/user)
+	var/powah = 0
+	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
+	if(W)
+		powah = W.power
+	to_chat(user,"<span='notice'>You have [powah] bones' worth of power inside you.</span>")
+

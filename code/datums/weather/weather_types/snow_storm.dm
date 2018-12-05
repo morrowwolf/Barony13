@@ -27,3 +27,39 @@
 /datum/weather/snow_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(15,30))
 
+/datum/weather/snow_storm/start()
+	..()
+
+	for(var/i in impacted_areas)
+		var/list/area_turfs = get_area_turfs(i)
+		CHECK_TICK
+		for(var/turf/open/O in area_turfs)
+			var/temp_turf_before = O.type
+			O.ChangeTurf(/turf/open/floor/grass/snow)
+			var/turf/open/floor/grass/snow/S = O
+			S.turf_before_weather = temp_turf_before
+			CHECK_TICK
+
+
+/datum/weather/snow_storm/wind_down()
+	..()
+
+	for(var/i in impacted_areas)
+		var/list/area_turfs = get_area_turfs(i)
+		CHECK_TICK
+		for(var/X in area_turfs) //Hey we can actually be typeless here...
+			var/turf/T = X
+			for(var/obj/effect/decal/cleanable/C in T.contents)
+				qdel(C)
+			CHECK_TICK
+
+/datum/weather/snow_storm/end()
+	..()
+
+	for(var/i in impacted_areas)
+		var/list/area_turfs = get_area_turfs(i)
+		CHECK_TICK
+		for(var/turf/open/floor/grass/snow/S in area_turfs)
+			if(S.turf_before_weather)
+				addtimer(CALLBACK(S, /turf/open/floor/grass/snow.proc/switch_back), rand(10, 100))
+			CHECK_TICK

@@ -230,18 +230,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/depsec/science
 	name = "science_sec"
-	
+
 /obj/effect/landmark/start/peasant
 	name = "Peasant"
-	
+
 /obj/effect/landmark/start/knight
 	name = "Knight"
-	
-/obj/effect/landmark/start/fighter
-	name = "Fighter"
-	
-/obj/effect/landmark/start/archer
-	name = "Archer"
 
 /obj/effect/landmark/start/wizard
 	name = "wizard"
