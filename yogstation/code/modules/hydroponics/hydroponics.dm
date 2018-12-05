@@ -6,6 +6,7 @@
 
 /obj/machinery/hydroponics/soil/medieval
 	desc = "Be a part of soil!" // https://www.youtube.com/watch?v=Eg6NIxS7jpM
+	obj_flags = null
 
 /obj/machinery/hydroponics/soil/medieval/applyChemicals(datum/reagents/S, mob/user)
 	//Alright, Morrow wants this shit to be super simple, so it's super simple.
