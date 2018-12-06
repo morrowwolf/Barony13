@@ -207,7 +207,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/sheet/mineral/wood
 	novariants = TRUE
-	grind_results = list("carbon" = 20)
+	//grind_results = list("carbon" = 20)
 
 /obj/item/stack/sheet/mineral/wood/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.wood_recipes
@@ -501,7 +501,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 1
 	throw_range = 3
-	grind_results = list("carbon" = 10)
+	//grind_results = list("carbon" = 10)
 	merge_type = /obj/item/stack/sheet/bone
 
 /obj/item/stack/sheet/bone/attack_self(mob/living/carbon/user)
