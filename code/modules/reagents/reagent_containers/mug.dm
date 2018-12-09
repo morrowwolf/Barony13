@@ -16,3 +16,7 @@
 			icon_state = "mug-full"
 		else
 			icon_state = "mug"
+
+/obj/item/reagent_containers/glass/beaker/mug/after_throw(datum/callback/callback)
+	..()
+	update_icon()
