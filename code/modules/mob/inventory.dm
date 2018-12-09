@@ -180,19 +180,6 @@
 			dropItemToGround(get_item_for_held_index(hand_index), force = TRUE)
 		I.forceMove(src)
 		held_items[hand_index] = I
-
-		for(var/i in contents)
-			var/obj/item/firstLevelItem = i
-			if(firstLevelItem.contents)
-				for(var/j in firstLevelItem.contents)
-					var/obj/item/secondLevelItem = j
-					if(secondLevelItem.contents)
-						for(var/k in secondLevelItem.contents)
-							var/obj/item/thirdLevelItem = k
-							thirdLevelItem.somethingPutInHand(src)
-					secondLevelItem.somethingPutInHand(src)
-			firstLevelItem.somethingPutInHand(src)
-
 		I.layer = ABOVE_HUD_LAYER
 		I.plane = ABOVE_HUD_PLANE
 		I.equipped(src, SLOT_HANDS)
@@ -334,17 +321,6 @@
 	if(hand_index)
 		held_items[hand_index] = null
 		update_inv_hands()
-		for(var/i in contents)
-			var/obj/item/firstLevelItem = i
-			if(firstLevelItem.contents)
-				for(var/j in firstLevelItem.contents)
-					var/obj/item/secondLevelItem = j
-					if(secondLevelItem.contents)
-						for(var/k in secondLevelItem.contents)
-							var/obj/item/thirdLevelItem = k
-							thirdLevelItem.somethingDropped(src)
-					secondLevelItem.somethingDropped(src)
-			firstLevelItem.somethingDropped(src)
 	if(I)
 		if(client)
 			client.screen -= I

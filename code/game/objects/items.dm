@@ -293,12 +293,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(!allow_attack_hand_drop(user) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 
+	pickup(user)
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src, FALSE, FALSE))
 		user.dropItemToGround(src)
-		return
-
-	pickup(user)
 
 /obj/item/proc/allow_attack_hand_drop(mob/user)
 	return TRUE
@@ -316,13 +314,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(loc == user)
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
-	
+
+	pickup(user)
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src, FALSE, FALSE))
 		user.dropItemToGround(src)
-		return
-
-	pickup(user)
 
 /obj/item/attack_alien(mob/user)
 	var/mob/living/carbon/alien/A = user
@@ -774,7 +770,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	return 0
 
 /obj/item/doMove(atom/destination)
-	if(ismob(loc))
+	if (ismob(loc))
 		var/mob/M = loc
 		var/hand_index = M.get_held_index_of_item(src)
 		if(hand_index)
@@ -786,29 +782,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			plane = initial(plane)
 			appearance_flags &= ~NO_CLIENT_COLOR
 			dropped(M)
-	
-			for(var/i in M.contents)
-				var/obj/item/firstLevelItem = i
-				if(firstLevelItem.contents)
-					for(var/j in firstLevelItem.contents)
-						var/obj/item/secondLevelItem = j
-						if(secondLevelItem.contents)
-							for(var/k in secondLevelItem.contents)
-								var/obj/item/thirdLevelItem = k
-								thirdLevelItem.somethingMoved(M)
-						secondLevelItem.somethingMoved(M)
-				firstLevelItem.somethingMoved(M)
-
-	..()
-
-/obj/item/proc/somethingMoved(mob/user)	//called when any item moved
-	return
-
-/obj/item/proc/somethingPutInHand(mob/user)	//called when any item put in your hand
-	return
-
-/obj/item/proc/somethingDropped(mob/user)	//called when any item is dropped
-	return
+	return ..()
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, var/datum/callback/callback)
 	if (item_flags & NODROP)
