@@ -55,7 +55,6 @@
 "bc" = (/obj/structure/table/wood,/obj/item/clothing/head/chefhat,/turf/open/floor/wood,/area/barony/inside)
 "bd" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/obj/item/seeds/tobacco,/obj/item/seeds/tobacco,/obj/item/seeds/tobacco,/obj/item/seeds/tobacco,/obj/item/seeds/apple,/obj/item/seeds/apple,/obj/item/seeds/apple,/turf/open/floor/wood,/area/barony/inside)
 "be" = (/obj/structure/table/wood,/obj/item/seeds/potato,/obj/item/seeds/potato,/obj/item/seeds/potato,/obj/item/seeds/potato,/obj/item/seeds/potato,/turf/open/floor/wood,/area/barony/inside)
-"bf" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/obj/item/shovel,/turf/open/floor/wood,/area/barony/inside)
 
 (1,1,1) = {"
 ababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -74,7 +73,7 @@ ababababababababaaavavavavavavavamadafafadamamamamavamadadadadalaladadadadamavaa
 ababababababababaaavaAavavavavavamadafafadadadafafamavamamamamamamamamamamavavaa
 ababababababababaaavavavavavaBavamadafafaKbdafafafamavavavavavavavavavavavavavaa
 ababababababababaaavavavavavavavamadaLafafafafafadamavavavavaUavavavavavavavavaa
-ababababababababaaavavavavavavavamadaoaMaCaCbebfadamavaVavavavavavavavaWavavavaa
+ababababababababaaavavavavavavavamadaoaMaCaCbeaoadamavaVavavavavavavavaWavavavaa
 ababababababababaaavavavbaavavavamadadadadadadadadamavavavavavavavavavavavavavaa
 ababababababababaaavavavavavavavavamamamamamamamamavavavavavavavavavavavavavavaa
 ababababababababaaavaAavavavavavavavavavavavavavavavavavavavavavaUavavavavavavaa
