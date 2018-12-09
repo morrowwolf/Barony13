@@ -4,7 +4,7 @@
 DAMAGE_MULTIPLIER 1
 
 ##Affects rate of nutrition loss. Default value 0.1
-HUNGER_FACTOR 0.1
+HUNGER_FACTOR 0.3
 
 ## REVIVAL ###
 
