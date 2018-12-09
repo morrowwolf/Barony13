@@ -46,7 +46,7 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
 
-/obj/item/clothing/neck/cloak/medieval/somethingMoved(mob/user)		//So this shit *would* be good enough but held_items isn't set until after forcemove which calls this and moving it around fucked everything, so uuuh... yeah, probably a better way to do it
+/obj/item/clothing/neck/cloak/medieval/somethingMoved(mob/user)		//So this shit *would* be good enough but held_items isn't set until after forcemove which calls this and moving it around fucked everything, so uuuh... yeah, there's probably a better way to do it
 	..()
 	update_icon()
 	for(var/X in actions)
