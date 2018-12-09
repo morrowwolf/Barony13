@@ -7,7 +7,7 @@
 
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton
 	name = "Summon Skeleton"
-	desc = "This spell uses five power to summon skeleton servants."
+	desc = "This spell uses four power to summon skeleton servants."
 
 	school = "necromancy"
 	charge_max = 50
@@ -72,13 +72,13 @@
 	if(skeleton.mind != Mind)			//something has gone wrong!
 		throw EXCEPTION("Skeleton created with incorrect mind")
 
-	W.power -= 5
+	W.power -= bones_required
 
 	log_game("[skeleton.key] was spawned as a skeleton by [user.key]/ ([user])")
 
 /obj/effect/proc_holder/spell/targeted/heal
 	name = "Self Heal"
-	desc = "This spell uses two power to heal yourself."
+	desc = "This spell uses one power to heal yourself."
 
 	school = "necromancy"
 	charge_max = 20
@@ -113,5 +113,5 @@
 	L.adjustBruteLoss(-15)
 	L.adjustFireLoss(-15)
 
-	W.power -= 2
+	W.power -= bones_required
 	
