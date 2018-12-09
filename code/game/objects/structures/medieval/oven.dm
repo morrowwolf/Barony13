@@ -45,8 +45,8 @@
 			amount += S.amount
 		else
 			amount += 1
-	to_chat(user, "The oven has [amount] logs left.")
-	to_chat(user, "Turn the oven on or off by control-clicking.")
+	to_chat(user, "The [src] has [amount] logs left.")
+	to_chat(user, "Turn the [src] on or off by control-clicking.")
 
 /obj/structure/medieval/oven/attack_hand(mob/user)
 	if(user.a_intent == INTENT_HARM)
@@ -70,7 +70,7 @@
 		O.forceMove(src)
 	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O, /obj/item/storage))
 		if(itemInside)
-			to_chat(user, "An item is already in the oven!")
+			to_chat(user, "An item is already in the [src]!")
 			return
 		itemInside = O
 		O.forceMove(src)
@@ -86,7 +86,7 @@
 	else
 		if(!gas)
 			if(!handleGas())
-				to_chat(user, "Not enough gas!  Feed the oven logs or wood.")
+				to_chat(user, "Not enough gas!  Feed the [src] logs or wood.")
 				return
 		turnOn()
 
@@ -133,8 +133,11 @@
 
 	if(itemInside)
 		cookProgress += 10
-
 	if(cookProgress >= 100)
-		itemInside = itemInside.microwave_act()
-		itemInside.forceMove(src)
+		cook()
 		cookProgress = 0
+
+/obj/structure/medieval/oven/proc/cook()
+	itemInside = itemInside.microwave_act()
+	itemInside.forceMove(src)
+	itemInside = null

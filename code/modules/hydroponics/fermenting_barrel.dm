@@ -50,6 +50,21 @@
 		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
 		addtimer(CALLBACK(src, .proc/makeWine, fruit), rand(80, 120) * speed_multiplier)
 		return TRUE
+	if(istype(I, /obj/item/tool_head))
+		var/obj/item/tool_head/H = I
+		if(!H.heated)
+			to_chat(user,"<span class='warning'>\The [H] doesn't need to be quenched!</span>")
+			return TRUE
+		if(!open)
+			to_chat(user, "<span class='warning'>\The [src] is closed you fool!</span>")
+		if(!reagents.has_reagent("water", 10))
+			to_chat(user, "<span class='warning'>\The [src] has insufficient water for quenching!</span>")
+			return TRUE
+		H.quench()
+		reagents.remove_reagent("water", 10)
+		to_chat(user, "<span class='notice'>You quench \the [H].</span>")
+		return TRUE
+
 	else
 		return ..()
 
