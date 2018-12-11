@@ -23,6 +23,8 @@
 
 	barometer_predictable = TRUE
 
+	var/list/things_to_melt = list()
+
 
 /datum/weather/snow_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(15,30))
@@ -63,3 +65,8 @@
 			if(S.turf_before_weather)
 				addtimer(CALLBACK(S, /turf/open/floor/grass/snow.proc/switch_back), rand(10, 100))
 			CHECK_TICK
+
+	for(var/atom/thing in things_to_melt)
+		things_to_melt -= thing
+		QDEL_IN(thing, (rand(300, 900)))
+		CHECK_TICK

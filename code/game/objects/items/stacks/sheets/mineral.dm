@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
 /obj/item/stack/sheet/mineral/plastitanium/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.plastitanium_recipes
 	. = ..()
-
+//
 
 /*
  * Snow
@@ -341,6 +341,8 @@ GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
 	grind_results = list("ice" = 20)
 	merge_type = /obj/item/stack/sheet/mineral/snow
 
+
+
 GLOBAL_LIST_INIT(snow_recipes, list ( \
 	new/datum/stack_recipe("Snow Wall", /turf/closed/wall/mineral/snow, 5, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("Snowman", /obj/structure/statue/snow/snowman, 5, one_per_turf = 1, on_floor = 1), \
@@ -350,6 +352,35 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 /obj/item/stack/sheet/mineral/snow/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.snow_recipes
 	. = ..()
+
+GLOBAL_LIST_INIT(snowstorm_recipes, list ( \
+	new/datum/stack_recipe("Snow Wall", /turf/closed/wall/mineral/snow/snow_storm, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Snowman", /obj/structure/statue/snow/snowman/snow_storm, 5, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("Snowball", /obj/item/toy/snowball/snow_storm, 1), \
+	))
+
+/obj/item/stack/sheet/mineral/snow/snow_storm/Initialize(mapload, new_amount, merge = TRUE)
+	. = ..()
+	recipes = GLOB.snowstorm_recipes
+
+/obj/item/stack/sheet/mineral/snow/snow_storm
+	desc = "It'll melt after the storm."
+
+/obj/item/stack/sheet/mineral/snow/snow_storm/Initialize(mapload, new_amount, merge = TRUE)
+	. = ..()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			S.things_to_melt += src
+			break
+
+/obj/item/stack/sheet/mineral/snow/snow_storm/Destroy()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			if(src in S.things_to_melt)
+				S.things_to_melt -= src
+	return ..()
 
 /****************************** Others ****************************/
 

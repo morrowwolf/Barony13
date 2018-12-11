@@ -282,3 +282,22 @@
 	desc = "Several lumps of snow put together to form a snowman."
 	icon_state = "snowman"
 	anchored = TRUE
+
+/obj/structure/statue/snow/snowman/snow_storm
+	desc = "Several lumps of snow put together to form a snowman. It'll melt after the storm."
+
+/obj/structure/statue/snow/snowman/snow_storm/Initialize()
+	. = ..()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			S.things_to_melt += src
+			break
+
+/obj/structure/statue/snow/snowman/snow_storm/Destroy()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			if(src in S.things_to_melt)
+				S.things_to_melt -= src
+	return ..()

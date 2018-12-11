@@ -56,7 +56,8 @@
 	if(devastated)
 		devastate_wall()
 	else
-		playsound(src, wall_sound, 100, 1)
+		if(wall_sound)
+			playsound(src, wall_sound, 100, 1)
 		var/newgirder = break_wall()
 		if(newgirder) //maybe we don't /want/ a girder!
 			transfer_fingerprints_to(newgirder)

@@ -174,6 +174,33 @@
 	girder_type = null
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
+	baseturfs = /turf/open/floor/plating/dirt
+
+/turf/closed/wall/mineral/snow/deconstruction_hints(mob/user)
+	return
+
+/turf/closed/wall/mineral/snow/snow_storm
+	desc = "A wall made of densely packed snow blocks. It'll melt after the storm."
+
+/turf/closed/wall/mineral/snow/snow_storm/Initialize()
+	. = ..()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			S.things_to_melt += src
+			break
+
+/turf/closed/wall/mineral/snow/snow_storm/Destroy()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			if(src in S.things_to_melt)
+				S.things_to_melt -= src
+	ScrapeAway()
+	return ..()
+
+/turf/closed/wall/mineral/snow/snow_storm/devastate_wall(devastated=1, explode=0, wall_sound=null)
+	return
 
 /turf/closed/wall/mineral/abductor
 	name = "alien wall"
