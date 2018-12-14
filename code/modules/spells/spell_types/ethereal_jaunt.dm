@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
 	name = "Ethereal Jaunt"
-	desc = "This spell creates your ethereal form using three power, temporarily making you invisible and able to pass through walls."
+	desc = "This spell creates your ethereal form using two power, temporarily making you invisible and able to pass through walls."
 
 	school = "transmutation"
 	charge_max = 300
@@ -11,6 +11,7 @@
 	cooldown_min = 100 //50 deciseconds reduction per rank
 	include_user = 1
 	nonabstract_req = 1
+	var/bones_required = 2
 	var/jaunt_duration = 50 //in deciseconds
 	var/jaunt_in_time = 5
 	var/jaunt_in_type = /obj/effect/temp_visual/wizard
@@ -31,7 +32,7 @@
 	if(!W)
 		return
 
-	if(W.power < 2)
+	if(W.power < bones_required)
 		to_chat(user, "Not enough power to jaunt!")
 		return
 
@@ -39,7 +40,7 @@
 	for(var/mob/living/target in targets)
 		INVOKE_ASYNC(src, .proc/do_jaunt, target)
 
-	W.power -= 3
+	W.power -= bones_required
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/proc/do_jaunt(mob/living/target)
 	target.notransform = 1
