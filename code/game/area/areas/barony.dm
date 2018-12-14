@@ -18,7 +18,7 @@
 
 /area/barony/armory
 	name = "Barony Armory"
-	icon_state "barony_armory" // I hope you're happy I didn't spell it as "armoury," Morrow
+	icon_state = "barony_armory" // I hope you're happy I didn't spell it as "armoury," Morrow
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	atmos = FALSE
 	has_gravity = TRUE
