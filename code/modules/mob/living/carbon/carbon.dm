@@ -48,11 +48,11 @@
 		held_index = (active_hand_index % held_items.len)+1
 
 	var/obj/item/item_in_hand = src.get_active_held_item()
-	
-	if(item_in_hand) 
+
+	if(item_in_hand)
 		if(item_in_hand.on_swap_hand(src))
 			return
-		
+
 		var/obj/item/twohanded/TH = item_in_hand	//this segment checks if the item in your hand is twohanded.
 		if(istype(TH))
 			if(TH.wielded == 1)
@@ -232,11 +232,9 @@
 				if(do_mob(usr, src, POCKET_STRIP_DELAY))
 					if(internal)
 						internal = null
-						update_internals_hud_icon(0)
 					else if(ITEM && istype(ITEM, /obj/item/tank))
 						if((wear_mask && (wear_mask.clothing_flags & MASKINTERNALS)) || getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 							internal = ITEM
-							update_internals_hud_icon(1)
 
 					visible_message("<span class='danger'>[usr] [internal ? "opens" : "closes"] the valve on [src]'s [ITEM.name].</span>", \
 									"<span class='userdanger'>[usr] [internal ? "opens" : "closes"] the valve on [src]'s [ITEM.name].</span>")
@@ -720,10 +718,6 @@
 		else
 			hud_used.healths.icon_state = "health7"
 
-/mob/living/carbon/proc/update_internals_hud_icon(internal_state = 0)
-	if(hud_used && hud_used.internals)
-		hud_used.internals.icon_state = "internal[internal_state]"
-
 /mob/living/carbon/update_stat()
 	if(status_flags & GODMODE)
 		return
@@ -801,7 +795,7 @@
 			O.forceMove(drop_location())
 	if(organs_amt)
 		to_chat(user, "<span class='notice'>You retrieve some of [src]\'s internal organs!</span>")
-		
+
 	for(var/obj/item/I in contents)
 		if(I.contents)
 			for(var/obj/item/J in contents)

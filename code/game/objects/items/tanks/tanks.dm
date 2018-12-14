@@ -30,7 +30,6 @@
 	if(H.internal == src)
 		to_chat(H, "<span class='notice'>You close [src] valve.</span>")
 		H.internal = null
-		H.update_internals_hud_icon(0)
 	else
 		if(!H.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			if(!H.wear_mask)
@@ -47,7 +46,6 @@
 		else
 			to_chat(H, "<span class='notice'>You open [src] valve.</span>")
 		H.internal = src
-		H.update_internals_hud_icon(1)
 	H.update_action_buttons_icon()
 
 

@@ -274,9 +274,6 @@
 	rest_icon.screen_loc = ui_above_movement
 	static_inventory += rest_icon
 
-	internals = new /obj/screen/internals()
-	infodisplay += internals
-
 	healths = new /obj/screen/healths()
 	infodisplay += healths
 
