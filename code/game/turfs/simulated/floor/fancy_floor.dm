@@ -79,13 +79,26 @@
 
 /turf/open/floor/grass/attackby(obj/item/C, mob/user, params)
 	if((C.tool_behaviour == TOOL_SHOVEL) && params)
-		user.visible_message("[user] starts to [turfverb] \the [src].", "<span class='notice'>You start to [turfverb] \the [src].</span>")
+		//People were turning large swaths of grass into dirt...
+		/*user.visible_message("[user] starts to [turfverb] \the [src].", "<span class='notice'>You start to [turfverb] \the [src].</span>")
 		if(do_after(user, 20, target=src))
 			if(ore_type)
 				new ore_type(src, 2)
 			user.visible_message("[user] digs up \the [src].", "<span class='notice'>You [turfverb] \the [src].</span>")
 			playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
-			make_plating()
+			make_plating()*/
+
+		//...so we'll just turn it into soil for now
+		if(locate(/obj/machinery/hydroponics/soil) in get_turf(src))
+			to_chat(user, "This has already been cultivated.")
+			return
+		user.visible_message("[user] starts to cultivate \the [src].", "<span class='notice'>You start to cultivate \the [src].</span>")
+		if(do_after(user, 50, target=src))
+			user.visible_message("[user] cultivates \the [src].", "<span class='notice'>You cultivate \the [src].</span>")
+			playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
+			var/obj/machinery/hydroponics/soil/medieval/S = new(get_turf(src))
+			S.waterlevel = rand(25, 50)
+
 	if(..())
 		return
 
@@ -104,11 +117,25 @@
 	icon = 'icons/turf/snow.dmi'
 	desc = "Looks cold."
 	icon_state = "snow"
-	ore_type = /obj/item/stack/sheet/mineral/snow
+	ore_type = /obj/item/stack/sheet/mineral/snow/snow_storm
 	floor_tile = null
 	slowdown = 2
 	bullet_sizzle = TRUE
+	turfverb = "shovel"
 	var/turf/turf_before_weather
+
+/turf/open/floor/grass/snow/attackby(obj/item/C, mob/user, params)
+	if((C.tool_behaviour == TOOL_SHOVEL) && params)
+		user.visible_message("[user] starts to [turfverb] \the [src].", "<span class='notice'>You start to [turfverb] \the [src].</span>")
+		if(do_after(user, 20, target=src))
+			if(ore_type)
+				new ore_type(src, 2)
+			user.visible_message("[user] shovels \the [src].", "<span class='notice'>You [turfverb] \the [src].</span>")
+			playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
+			if(turf_before_weather)
+				ChangeTurf(turf_before_weather)
+			else
+				ChangeTurf(/turf/open/floor/grass)
 
 /turf/open/floor/grass/snow/proc/switch_back()
 	ChangeTurf(turf_before_weather)

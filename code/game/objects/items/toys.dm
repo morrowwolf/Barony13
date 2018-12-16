@@ -1044,6 +1044,25 @@
 		playsound(src, 'sound/effects/pop.ogg', 20, 1)
 		qdel(src)
 
+/obj/item/toy/snowball/snow_storm
+	desc = "A compact ball of snow. Good for throwing at people. It'll melt after the storm."
+
+/obj/item/toy/snowball/snow_storm/Initialize()
+	. = ..()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			S.things_to_melt += src
+			break
+
+/obj/item/toy/snowball/snow_storm/Destroy()
+	for(var/V in SSweather.processing)
+		if(istype(V, /datum/weather/snow_storm))
+			var/datum/weather/snow_storm/S = V
+			if(src in S.things_to_melt)
+				S.things_to_melt -= src
+	return ..()
+
 /*
  * Beach ball
  */
