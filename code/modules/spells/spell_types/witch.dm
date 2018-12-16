@@ -18,11 +18,11 @@
 	cooldown_min = 20 //20 deciseconds reduction per rank
 
 	action_icon_state = "skeleton"
-	
+
 	var/bones_required = 4
-	
+
 /obj/effect/proc_holder/spell/aoe_turf/summon_skeleton/cast(list/targets,mob/user = usr)
-			
+
 	if(!user || !user.mind || !user.mind.antag_datums)
 		return
 
@@ -32,13 +32,14 @@
 	if(W.power < bones_required)
 		to_chat(user, "Not enough power to summon an undead minion!")
 		return
-	
+
 	notify_ghosts("A necromancer summons servants!", source = user, action=NOTIFY_ORBIT, flashwindow = FALSE)
-	
-	sleep(50)
-	
+
+	addtimer(CALLBACK(src, .proc/spawn_skeleton, W, user), 50)
+
+/obj/effect/proc_holder/spell/aoe_turf/summon_skeleton/proc/spawn_skeleton(var/datum/antagonist/witch_cult/witch/W, mob/user)
 	var/list/candidates = user.orbiters
-	
+
 	if(!candidates || !candidates.len)
 		to_chat(user, "No undead to summon!")
 		return
@@ -46,13 +47,14 @@
 
 	var/mob/dead/selected_candidate = pick_n_take(candidates).orbiter
 	var/key = selected_candidate.key
-		
+
 	var/datum/mind/Mind = new /datum/mind(key)
 	Mind.assigned_role = ROLE_WITCH_CULT
 	Mind.special_role = ROLE_WITCH_CULT
 	Mind.active = 1
 
 	var/mob/living/carbon/human/skeleton = new(user.loc)
+	playsound(skeleton.loc, 'sound/effects/summon_noise.ogg', 60)
 	var/datum/preferences/A = new()
 	A.real_name = "Undead Servant"
 	A.underwear = "Nude"
@@ -63,12 +65,12 @@
 	A.copy_to(skeleton)
 	skeleton.set_species(/datum/species/skeleton)
 	skeleton.dna.update_dna_identity()
-		
-		
+
+
 	Mind.transfer_to(skeleton)
 	var/datum/antagonist/witch_cult/skeletondatum = new
 	Mind.add_antag_datum(skeletondatum)
-		
+
 	if(skeleton.mind != Mind)			//something has gone wrong!
 		throw EXCEPTION("Skeleton created with incorrect mind")
 
@@ -90,14 +92,14 @@
 	cooldown_min = 10
 
 	action_icon_state = "blink"
-	
+
 	var/bones_required = 1
 
 /obj/effect/proc_holder/spell/targeted/heal/cast(list/targets,mob/living/user = usr)
 
 	if(!user || !user.mind || !user.mind.antag_datums) // Your proc was dying here, Morrow. See above.
 		return
-	
+
 	var/datum/antagonist/witch_cult/witch/W = get_witch_datum(user)
 	if(!W)
 		return
@@ -114,4 +116,3 @@
 	L.adjustFireLoss(-15)
 
 	W.power -= bones_required
-	
