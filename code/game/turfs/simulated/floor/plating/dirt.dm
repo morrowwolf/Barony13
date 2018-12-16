@@ -4,6 +4,7 @@
 	desc = "Upon closer examination, it's still dirt."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "dirt"
+	attachment_holes = FALSE
 	baseturfs = /turf/open/floor/plating/dirt
 
 /turf/open/floor/plating/dirt/dark
