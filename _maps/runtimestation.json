@@ -3,6 +3,6 @@
     "map_path": "map_files/debug",
     "map_file": "runtimestation.dmm",
 	"shuttles": {
-	    "cargo": "cargo_delta"
+
     }
 }
