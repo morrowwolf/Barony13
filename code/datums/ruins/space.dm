@@ -209,14 +209,6 @@
 	description = "Listening stations form the backbone of the syndicate's information gathering operations. \
 	Assignment to these stations is dreaded by most agents, as it entails long and lonely shifts listening to nearby stations chatter incessently about the most meaningless things."
 
-/datum/map_template/ruin/space/oldAIsat
-	id = "oldAIsat"
-	suffix = "oldAIsat.dmm"
-	name = "Abandoned Telecommunications Satellite"
-	description = "When the inspector told the employees that they were all fired, and that their jobs \"could be done by trained lizards anyway\", they reacted badly. \
-	This event and others is the reason why Central always sends an ERT squad with their competent inspectors. Incompetent inspectors are told they can \"do it alone\" because they're \"that pro\". \
-	Incompetent inspectors believe this."
-
 /datum/map_template/ruin/space/oldteleporter
 	id = "oldteleporter"
 	suffix = "oldteleporter.dmm"
