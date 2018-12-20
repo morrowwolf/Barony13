@@ -29,15 +29,15 @@
 	..()
 	if(itemInside)
 		if(cookProgress <= 0)
-			to_chat(user, "It has [itemInside.name] inside it ready to cook.")
+			to_chat(user, "It has <span class='notice'><strong>[itemInside.name]</strong></span> inside it ready to cook.")
 		else if(cookProgress < 25)
-			to_chat(user, "[itemInside] looks as if it just started being cooked.")
+			to_chat(user, "<span class='notice'><strong>[itemInside]</strong></span> looks as if it just started being cooked.")
 		else if(cookProgress < 50)
-			to_chat(user, "[itemInside] looks as if it is a little less than halfway done.")
+			to_chat(user, "<span class='notice'><strong>[itemInside]</strong></span> looks as if it is a little less than halfway done.")
 		else if(cookProgress < 75)
-			to_chat(user, "[itemInside] looks as if it is over half way done.")
+			to_chat(user, "<span class='notice'><strong>[itemInside]</strong></span> looks as if it is over half way done.")
 		else if(cookProgress < 100)
-			to_chat(user, "[itemInside] looks as if it is almost done.")
+			to_chat(user, "<span class='notice'><strong>[itemInside]</strong></span> looks as if it is almost done.")
 	var/amount = 0
 	for(var/obj/item/I in wood)
 		if(istype(I, /obj/item/stack))
@@ -45,8 +45,8 @@
 			amount += S.amount
 		else
 			amount += 1
-	to_chat(user, "The oven has [amount] logs left.")
-	to_chat(user, "Turn the oven on or off by control-clicking.")
+	to_chat(user, "The oven has <strong>[amount]</strong> log\s left.")
+	to_chat(user, "<span class='notice'>Turn the oven on or off by control-clicking.</span>")
 
 /obj/structure/medieval/oven/attack_hand(mob/user)
 	if(user.a_intent == INTENT_HARM)
@@ -70,7 +70,7 @@
 		O.forceMove(src)
 	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O, /obj/item/storage))
 		if(itemInside)
-			to_chat(user, "An item is already in the oven!")
+			to_chat(user, "<span class='warning'>An item is already in the oven!</span>")
 			return
 		itemInside = O
 		O.forceMove(src)
@@ -86,7 +86,7 @@
 	else
 		if(!gas)
 			if(!handleGas())
-				to_chat(user, "Not enough gas!  Feed the oven logs or wood.")
+				to_chat(user, "<span class='warning'>Not enough gas!  Feed the oven logs or wood.</span>")
 				return
 		turnOn()
 
