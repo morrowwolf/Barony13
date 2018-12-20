@@ -100,7 +100,8 @@
 		oocmsg = "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'>[is_donator(src) ? "(Donator)" : ""]<span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>"
 		oocmsg_toadmins = oocmsg
 	
-	for(var/client/C in GLOB.clients)
+	for(var/c in GLOB.clients)
+		var/client/C = c // God bless typeless for-loops
 		if( (C.prefs.chat_toggles & CHAT_OOC) && (holder || !(key in C.prefs.ignoring)) )
 			var/sentmsg // The message we're sending to this specific person
 			if(C.holder) // If they're an admin-ish
