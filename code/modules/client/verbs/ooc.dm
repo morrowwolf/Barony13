@@ -58,10 +58,10 @@
 
 	var/regex/ping = regex("@(\\w*)","g")//Now lets check if they pinged anyone
 	if(ping.Find(msg))
-		if((world.time - src.last_ping_time) < 30)
+		if((world.time - last_ping_time) < 30)
 			to_chat(src,"<span class='danger'>You are pinging too much! Please wait before pinging again.</span>")
 			return
-		src.last_ping_time = world.time
+		last_ping_time = world.time
 	var/list/pinged = ping.group
 
 	///////////////////////////////////////////////////////
@@ -82,8 +82,8 @@
 	var/oocmsg = ""; // The message sent to normal people
 	var/oocmsg_toadmins = FALSE; // The message sent to admins. A value of FALSE should default to the loop giving admins $oocmsg instead.
 	if(holder) // If the speaker is an admin or something
-		if(CONFIG_GET(flag/allow_admin_ooccolor) && check_rights_for(src, R_ADMIN)) // If they're supposed to have their own admin OOC colour
-			oocmsg += "<span class='adminooc'>[ prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>[find_admin_rank(src)]" // The header for an Admin's OOC.
+		if(check_rights_for(src, R_ADMIN)) // If they're supposed to have their own admin OOC colour
+			oocmsg += "<span class='adminooc'>[(CONFIG_GET(flag/allow_admin_ooccolor) && prefs.ooccolor) ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>[find_admin_rank(src)]" // The header for an Admin's OOC.
 		else // Else if they're an AdminObserver
 			oocmsg += "<span class='adminobserverooc'><span class='prefix'>[find_admin_rank(src)]" // The header for an AO's OOC.
 		//Check yogstation\code\module\client\verbs\ooc for the find_admin_rank definition.
