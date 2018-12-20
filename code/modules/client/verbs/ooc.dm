@@ -38,7 +38,7 @@
 	if(CONFIG_GET(flag/pretty_ooc))
 		msg = pretty_filter(msg)
 	msg = emoji_parse(msg)
-
+	
 	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 6)), "say ")))
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
@@ -56,7 +56,14 @@
 		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
 		return
 
-	
+	var/regex/ping = regex("@(\\w*)","g")//Now lets check if they pinged anyone
+	if(ping.Find(msg))
+		if((world.time - src.last_ping_time) < 30)
+			to_chat(src,"<span class='danger'>You are pinging too much! Please wait before pinging again.</span>")
+			return
+		src.last_ping_time = world.time
+	var/list/pinged = ping.group
+
 	///////////////////////////////////////////////////////
 	//Checks over, now lets actually send & process the message//
 	mob.log_talk(raw_msg, LOG_OOC)
@@ -88,16 +95,25 @@
 			// ^ Message sent to normal people
 		else
 			oocmsg += "OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>" // Footer for an admin or AO's OOC.
-		
+			oocmsg_toadmins = oocmsg
 	else
 		oocmsg = "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'>[is_donator(src) ? "(Donator)" : ""]<span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>"
+		oocmsg_toadmins = oocmsg
 	
 	for(var/client/C in GLOB.clients)
-		if(C.prefs.chat_toggles & CHAT_OOC)
-			if(C.holder) // If the listener is an admin
-				to_chat(C, oocmsg_toadmins ? oocmsg_toadmins : oocmsg )
-			else if(holder || !(key in C.prefs.ignoring))
-				to_chat(C, oocmsg)
+		if( (C.prefs.chat_toggles & CHAT_OOC) && (holder || !(key in C.prefs.ignoring)) )
+			var/sentmsg // The message we're sending to this specific person
+			if(C.holder) // If they're an admin-ish
+				sentmsg = oocmsg_toadmins // Get the admin one
+			else
+				sentmsg = oocmsg
+			if(C.key in pinged)
+				var/sound/pingsound = sound('sound/items/bikehorn_alert.ogg')
+				pingsound.volume = 50
+				pingsound.pan = 80
+				SEND_SOUND(C,pingsound)
+				sentmsg = "<span style='background-color: #ccccdd'>" + sentmsg + "</span>"
+			to_chat(C,sentmsg)
 	
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc
