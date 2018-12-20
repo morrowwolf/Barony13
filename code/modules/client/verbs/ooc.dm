@@ -2,6 +2,7 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	//First lets check if we should return early for some reason
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
@@ -32,7 +33,7 @@
 
 	if(!msg)
 		return
-
+	
 	
 	if(CONFIG_GET(flag/pretty_ooc))
 		msg = pretty_filter(msg)
@@ -41,7 +42,7 @@
 	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 6)), "say ")))
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
-
+	
 	if(!holder)
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -55,6 +56,9 @@
 		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
 		return
 
+	
+	///////////////////////////////////////////////////////
+	//Checks over, now lets actually send & process the message//
 	mob.log_talk(raw_msg, LOG_OOC)
 	if(holder && holder.fakekey) //YOGS start - webhook support
 		webhook_send_ooc(holder.fakekey, msg)
@@ -65,25 +69,36 @@
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"
-	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
+	
+	//The linkify span classes make ooc text get clickable chat href links if you pass in something resembling a url
+	
+	var/oocmsg = ""; // The message sent to normal people
+	var/oocmsg_toadmins = FALSE; // The message sent to admins. A value of FALSE should default to the loop giving admins $oocmsg instead.
+	if(holder) // If the speaker is an admin or something
+		if(CONFIG_GET(flag/allow_admin_ooccolor) && check_rights_for(src, R_ADMIN)) // If they're supposed to have their own admin OOC colour
+			oocmsg += "<span class='adminooc'>[ prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>[find_admin_rank(src)]" // The header for an Admin's OOC.
+		else // Else if they're an AdminObserver
+			oocmsg += "<span class='adminobserverooc'><span class='prefix'>[find_admin_rank(src)]" // The header for an AO's OOC.
+		//Check yogstation\code\module\client\verbs\ooc for the find_admin_rank definition.
+		
+		if(holder.fakekey) // If they're stealhminning
+			oocmsg_toadmins = oocmsg + "OOC:</span> <EM>[keyname]/([holder.fakekey]):</EM> <span class='message linkify'>[msg]</span></span></font>"
+			// ^ Message sent to people who should know when someone's stealthminning
+			oocmsg = "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey]:</EM> <span class='message linkify'>[msg]</span></span></font>"
+			// ^ Message sent to normal people
+		else
+			oocmsg += "OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>" // Footer for an admin or AO's OOC.
+		
+	else
+		oocmsg = "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'>[is_donator(src) ? "(Donator)" : ""]<span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>"
+	
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
-			if(holder)
-				if(!holder.fakekey || C.holder)
-					if(check_rights_for(src, R_ADMIN))
-						to_chat(C, "<span class='adminooc'>[CONFIG_GET(flag/allow_admin_ooccolor) && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>[find_admin_rank(src)] OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]</span></span></font>") //Yogs - Added the [find_admin_rank(src)] below, to get the rank of the admin. check yogstation\code\module\client\verbs\ooc for the proc
-					else
-						to_chat(C, "<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message linkify'>[msg]</span></span>")
-				else
-					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message linkify'>[msg]</span></span></font>")
-			else if(!(key in C.prefs.ignoring))
-				// yogs start - Donor OOC tag
-				if(is_donator(src))
-					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>\[Donator\] OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>")
-				else
-					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span></font>")
-				// yogs end
-
+			if(C.holder) // If the listener is an admin
+				to_chat(C, oocmsg_toadmins ? oocmsg_toadmins : oocmsg )
+			else if(holder || !(key in C.prefs.ignoring))
+				to_chat(C, oocmsg)
+	
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc
 		if(toggle != GLOB.ooc_allowed)
