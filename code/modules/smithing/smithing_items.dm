@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 	new/datum/stack_recipe("shovel head", /obj/item/tool_head/shovel, 2, on_floor = TRUE), \
-	new/datum/stack_recipe("felling axe head", /obj/item/tool_head/felling_axe, 2, on_floor = TRUE) \
-	new/datum/stack_recipe("hammer head", /obj/item/tool_head/hammer, 1, on_floor = TRUE), \
+	new/datum/stack_recipe("felling axe head", /obj/item/tool_head/felling_axe, 2, on_floor = TRUE), \
+	new/datum/stack_recipe("hammer head", /obj/item/tool_head/hammer, 1, on_floor = TRUE) \
 ))
 
 //TODO: steel and gold recipes
