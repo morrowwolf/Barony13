@@ -91,20 +91,20 @@
 		turnOn()
 
 /obj/structure/medieval/oven/proc/turnOn()
-	icon_state = "oven_alive"
 	START_PROCESSING(SSprocessing, src)
 	operating = TRUE
 	soundloop.start()
 	visible_message("[src] bursts to life.")
 	set_light(5)
+	update_icon()
 
 /obj/structure/medieval/oven/proc/turnOff()
-	icon_state = "oven"
 	STOP_PROCESSING(SSprocessing, src)
 	operating = FALSE
 	soundloop.stop()
 	visible_message("[src]'s flames die down.")
 	set_light(0)
+	update_icon()
 
 /obj/structure/medieval/oven/proc/handleGas()
 	if(wood && wood.len)
@@ -141,3 +141,10 @@
 	itemInside = itemInside.microwave_act()
 	itemInside.forceMove(src)
 	itemInside = null
+
+/obj/structure/medieval/oven/update_icon()
+	..()
+	if(operating)
+		icon_state = "oven_alive"
+	else
+		icon_state = "oven"
