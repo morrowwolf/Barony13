@@ -237,6 +237,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/knight
 	name = "Knight"
 
+/obj/effect/landmark/start/craftsman
+	name = "Craftsman"
+
 /obj/effect/landmark/start/wizard
 	name = "wizard"
 	icon = 'icons/effects/landmarks_static.dmi'

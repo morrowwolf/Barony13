@@ -26,6 +26,10 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 	merge_type = /obj/item/stack/ingot
 	var/heated = FALSE
 
+/obj/item/stack/ingot/Initialize()
+	. = ..()
+	update_icon()
+
 /obj/item/stack/ingot/examine(mob/user)
 	..()
 	if(heated)
@@ -142,23 +146,32 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 	var/finished_tool
 	var/long_handle = FALSE //Set to true if it needs a long handle
 	var/requires_quenching = FALSE //It's mainly just weapons that require quenching, since they're steel
+	var/heated_icon_state //if it has a special heated icon. Mainly just swords.
 
 /obj/item/tool_head/Initialize()
 	. = ..()
 	if(heated)
 		name = "heated [initial(name)]"
-		addtimer(CALLBACK(src, .proc/quench), 3000) //5 minutes before it air-cools. Not super realistic but whatever.
+		addtimer(CALLBACK(src, .proc/quench, FALSE), 3000) //5 minutes before it air-cools. Not super realistic but whatever.
+	update_icon()
 
-/obj/item/tool_head/proc/quench()
-	if(ruined)
+/obj/item/tool_head/proc/quench(var/proper_quenching = TRUE)
+	if(ruined || !heated) //Quenching is pointless
 		return
-	if(requires_quenching)
-		visible_message("<span class='warning'>\The [src] was not quenched in time. It has been ruined!</span>")
+	heated = FALSE
+	update_icon()
+	if(requires_quenching && !proper_quenching)
+		visible_message("<span class='warning'>\The [src] was not properly quenched in time. It has been ruined!</span>")
 		ruined = TRUE
 		name = "ruined [initial(name)]"
 		return
-	heated = FALSE
 	name = "[initial(name)]"
+
+/obj/item/tool_head/update_icon()
+	if(heated && heated_icon_state)
+		icon_state = "[heated_icon_state]"
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/tool_head/examine(mob/user)
 	..()
