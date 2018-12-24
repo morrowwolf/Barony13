@@ -34,7 +34,7 @@
 "aH" = (/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
 "aI" = (/mob/living/simple_animal/chicken,/turf/open/floor/barony,/area/barony/inside)
 "aJ" = (/obj/item/flashlight/lantern{on = 1},/mob/living/simple_animal/chicken,/turf/open/floor/barony,/area/barony/inside)
-"aK" = (/obj/structure/window/fulltile/barony,/turf/open/floor/plating/dirt,/area/barony/inside)
+"aK" = (/obj/structure/window/fulltile/barony{dir = 2},/turf/open/floor/plating/dirt,/area/barony/inside)
 "aL" = (/obj/structure/bookcase/random/religion,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
 "aM" = (/obj/effect/decal/remains/human,/obj/item/melee/medieval/blade/dagger,/obj/effect/decal/cleanable/blood,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
 "aN" = (/turf/open/floor/holofloor/beach,/area/barony/outside)
@@ -104,6 +104,7 @@
 "bZ" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 5},/area/barony/inside)
 "ca" = (/obj/structure/flora/tree/jungle,/turf/open/floor/plating/dirt,/area/barony/outside)
 "cb" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 1},/area/barony/inside)
+"cc" = (/obj/structure/window/fulltile/barony{dir = 2},/turf/open/floor/barony,/area/barony/inside)
 "ce" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 10},/area/barony/inside)
 "cf" = (/obj/structure/flora/tree/dead,/turf/open/floor/plating/dirt,/area/barony/outside)
 "cg" = (/obj/structure/chair/wood/normal{dir = 1},/turf/open/floor/barony,/area/barony/inside)
@@ -114,7 +115,6 @@
 "cm" = (/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/structure/table/wood,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
 "cn" = (/obj/item/twohanded/fireaxe/fellingaxe,/obj/structure/table/wood,/turf/open/floor/barony,/area/barony/inside)
 "co" = (/turf/open/floor/barony,/area/barony/inside)
-"cp" = (/obj/structure/window/fulltile/barony,/turf/open/floor/barony,/area/barony/inside)
 "cq" = (/obj/structure/window/fulltile/barony{icon_state = "wooden_window"; dir = 8},/turf/open/floor/barony,/area/barony/inside)
 "cr" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 10},/area/barony/inside)
 "cs" = (/obj/effect/light_emitter/sun_light,/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/plating/dirt,/area/barony/outside)
@@ -170,13 +170,13 @@ ababababaaavavavavavavavavavavavavavavbFbFavavavavavavbFbFbFbsbuavbFavbFavavavav
 ababababaaavavavavavavavavavavaUavavavavavavavavavavavbFbFbIbuavbFbFavavavavavavavavavavavavavbFbFbFavavcCcAcAcAaNaNaUbFbFbGbGcsbGbGbFaaabababab
 ababababaaavavavavavavavavavavavavavavavavavavavavaBavbFbFbsbsbubFavbFavavavavavavavavavavavavavbFavavbFbFaNcAcAaNaNavavbFbFbFctbFbFbFaaabababab
 ababababaaavavavavavavavavavavavavavavavavavayazavavbFbFbFbsbsbsbFbFbFbFavamamaEamamamamamamamavcfbFavavbFbFcAcAaNavavbFbFavbFcucvcvczaaabababab
-ababababaaavavavavavaVavavavavavavavaxavavavavavavavbFbFbFbFbubFbFbFbFbFamcebqbqbqcpbqbqbqbAambFbFbFavavavbFcBcAcEbFavavavavavavavazbFaaabababab
+ababababaaavavavavavaVavavavavavavavaxavavavavavavavbFbFbFbFbubFbFbFbFbFamcebqbqbqccbqbqbqbAambFbFbFavavavbFcBcAcEbFavavavavavavavazbFaaabababab
 ababababaaavavavavavavamamamamamamamamamamamamamamambFbFbFbsbsbubFbFbFbGcebzakcicocococobnbmamavavavavavavbFbFcAcAbFavavbFbFbFbFbFavavaaabababab
 ababababaaavavavavavamcebqbqbqbqbgbqbqbqbqbqbqbqbqbAbGbFbFbubsbsbFbFbFbGbmcocococoakcocobncqamavavavavbFavavbFcFcAcAavavbFbFbFcabFavavaaabababab
 ababababaaavavavavavambmacaeaeaebmaiajajajajajanajbmbGbFbFbsbubJbFbFbFbGalcococobobjbtcocobfamavavaUbFaBbFbFbFcAcAcAbFaBbFbFbFbFbHavavaaabababab
 ababababaaavaUavavavambfajajajajbmaiajapaqajasapaqahbGbFbFbsbsbFbFbFbFbGbmcococococgcocobvcqamavbFavbFbFbFavbFbFcAcAavavbFbFbFbFbFavavaaabababab
 ababababaaavavavavavambmajatbbajbkajajapaqajasbcaqbmbGbFbsbFbsbsbFbFbFbGbpbAcgcicococococnbmamavaravbFbFavavbFbFcAcAcAbFbFaravavbFavavaaabababab
-ababababaaavavavavavambmajbcbhajbmajajapaqajajajajalbibubsbFbubsbFbFbFbFambpbqbqbqcpbqbqbqbzamavavbFavbFbFbFaUbFavcAcAbFbFbFbFcfbFavavaaabababab
+ababababaaavavavavavambmajbcbhajbmajajapaqajajajajalbibubsbFbubsbFbFbFbFambpbqbqbqccbqbqbqbzamavavbFavbFbFbFaUbFavcAcAbFbFbFbFcfbFavavaaabababab
 ababababaaavavavavavambmajapapajbmapapbwaqajajajajalbibsbubsbsbsbFbFbFbFavamamamamamamamamamamavavavavbFbFavavbFcacAcDbFavbFbFbFbFavavaaabababab
 ababababaaavavavavavambmajajajajbmbxbxajajajajajajbmbGbFbFbsbsbFbFbFbFbFbFavbFavbFavaxavbFavavaUavavavcabFbFavbFbFcAcAbFbFavavbFbFavavaaabababab
 ababababaaavavavavavambmapapapbcbmajajajajbyajajanahbGbFbsbsbFbFbFbFbFbFbFavavavazbFavavbFavavavavavavbFbFavbsavbFavcBcAbFaBbFbFbFavavaaabababab
