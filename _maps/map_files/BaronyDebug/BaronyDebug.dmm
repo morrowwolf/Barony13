@@ -1,24 +1,24 @@
 "aa" = (/turf/closed/indestructible/rock,/area/barony/edge)
-"ab" = (/turf/open/space/basic,/area/space)
-"ac" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/beaker/mortar,/obj/item/pestle,/turf/open/floor/wood,/area/barony/inside)
-"ad" = (/turf/closed/wall/mineral/wood/nonmetal,/area/barony/inside)
-"ae" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/turf/open/floor/wood,/area/barony/inside)
-"af" = (/turf/open/floor/wood,/area/barony/inside)
-"ag" = (/obj/structure/table/wood,/turf/open/floor/wood,/area/barony/inside)
-"ah" = (/obj/structure/chair/wood/normal{dir = 8},/turf/open/floor/wood,/area/barony/inside)
-"ai" = (/obj/structure/chair/wood/normal,/turf/open/floor/wood,/area/barony/inside)
-"aj" = (/obj/structure/closet/crate/wooden,/turf/open/floor/wood,/area/barony/inside)
-"ak" = (/obj/structure/chair/wood/normal{dir = 4},/turf/open/floor/wood,/area/barony/inside)
+"ab" = (/turf/closed/indestructible/rock,/area/space)
+"ac" = (/obj/structure/closet/crate/wooden,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ad" = (/obj/structure/table/wood,/obj/item/clothing/head/rice_hat,/obj/item/clothing/head/rice_hat,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ae" = (/obj/structure/medieval/oven,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"af" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/turf/open/floor/barony,/area/barony/inside)
+"ag" = (/obj/structure/fermenting_barrel,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ah" = (/obj/structure/window/fulltile/barony{icon_state = "wooden_window"; dir = 8},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ai" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/obj/item/reagent_containers/glass/beaker/mug,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"aj" = (/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ak" = (/obj/structure/chair/wood/normal,/turf/open/floor/barony,/area/barony/inside)
 "al" = (/obj/structure/mineral_door/wood,/turf/open/floor/wood,/area/barony/inside)
 "am" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/grass,/area/barony/outside)
-"an" = (/obj/structure/table/wood,/obj/item/twohanded/fireaxe/fellingaxe,/turf/open/floor/wood,/area/barony/inside)
-"ao" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/turf/open/floor/wood,/area/barony/inside)
-"ap" = (/turf/open/floor/carpet,/area/barony/inside)
-"aq" = (/obj/item/flashlight/lantern{on = 1},/obj/structure/table/wood,/turf/open/floor/wood,/area/barony/inside)
-"ar" = (/obj/structure/chair/wood/normal{dir = 1},/turf/open/floor/wood,/area/barony/inside)
-"as" = (/obj/effect/landmark/observer_start,/obj/effect/landmark/latejoin,/turf/open/floor/wood,/area/barony/inside)
-"at" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/rag,/obj/item/reagent_containers/glass/rag,/turf/open/floor/wood,/area/barony/inside)
-"au" = (/obj/effect/landmark/start/knight,/turf/open/floor/grass,/area/barony/outside)
+"an" = (/obj/structure/chair/wood/normal,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ao" = (/obj/structure/table/wood,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/turf/open/floor/barony,/area/barony/inside)
+"ap" = (/obj/structure/table/wood,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"aq" = (/obj/structure/chair/wood/normal{dir = 8},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ar" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/plating/dirt,/area/barony/outside)
+"as" = (/obj/structure/chair/wood/normal{dir = 4},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"at" = (/obj/structure/table/wood,/obj/item/clothing/head/chefhat,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"au" = (/obj/effect/landmark/start/knight,/turf/open/floor/barony/cobble,/area/barony/inside)
 "av" = (/turf/open/floor/grass,/area/barony/outside)
 "aw" = (/obj/effect/landmark/start/peasant,/turf/open/floor/grass,/area/barony/outside)
 "ax" = (/obj/structure/flora/bush,/turf/open/floor/grass,/area/barony/outside)
@@ -26,37 +26,120 @@
 "az" = (/obj/structure/flora/ausbushes,/turf/open/floor/grass,/area/barony/outside)
 "aA" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/grass,/area/barony/outside)
 "aB" = (/obj/structure/flora/tree/jungle,/turf/open/floor/grass,/area/barony/outside)
-"aC" = (/obj/structure/fermenting_barrel,/turf/open/floor/wood,/area/barony/inside)
-"aD" = (/obj/structure/bed/medieval,/turf/open/floor/wood,/area/barony/inside)
+"aC" = (/obj/structure/fermenting_barrel,/turf/open/floor/barony,/area/barony/inside)
+"aD" = (/obj/structure/bed/medieval,/turf/open/floor/barony/cobble,/area/barony/inside)
 "aE" = (/obj/structure/flora/ausbushes,/obj/effect/light_emitter/sun_light,/turf/open/floor/grass,/area/barony/outside)
-"aF" = (/obj/machinery/hydroponics/soil/medieval,/turf/open/floor/grass,/area/barony/outside)
-"aG" = (/obj/item/flashlight/lantern{on = 1},/turf/open/floor/wood,/area/barony/inside)
-"aH" = (/mob/living/simple_animal/cow,/turf/open/floor/wood,/area/barony/inside)
-"aI" = (/mob/living/simple_animal/chicken,/turf/open/floor/wood,/area/barony/inside)
-"aJ" = (/obj/item/flashlight/lantern{on = 1},/mob/living/simple_animal/chicken,/turf/open/floor/wood,/area/barony/inside)
-"aK" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/turf/open/floor/wood,/area/barony/inside)
-"aL" = (/obj/structure/table/wood,/obj/item/clothing/head/rice_hat,/obj/item/clothing/head/rice_hat,/turf/open/floor/wood,/area/barony/inside)
-"aM" = (/obj/effect/decal/remains/human,/obj/item/melee/medieval/blade/dagger,/turf/open/floor/wood,/area/barony/inside)
-"aN" = (/obj/structure/sink/puddle,/turf/open/floor/grass,/area/barony/outside)
-"aO" = (/turf/closed/wall/mineral/wood/nonmetal,/area/barony/armory)
+"aF" = (/obj/structure/sink/puddle,/turf/open/floor/plating/dirt,/area/barony/outside)
+"aG" = (/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony,/area/barony/inside)
+"aH" = (/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"aI" = (/mob/living/simple_animal/chicken,/turf/open/floor/barony,/area/barony/inside)
+"aJ" = (/obj/item/flashlight/lantern{on = 1},/mob/living/simple_animal/chicken,/turf/open/floor/barony,/area/barony/inside)
+"aK" = (/obj/structure/window/fulltile/barony,/turf/open/floor/plating/dirt,/area/barony/inside)
+"aL" = (/obj/structure/bookcase/random/religion,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"aM" = (/obj/effect/decal/remains/human,/obj/item/melee/medieval/blade/dagger,/obj/effect/decal/cleanable/blood,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
+"aN" = (/turf/open/floor/holofloor/beach,/area/barony/outside)
+"aO" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 5},/area/barony/armory)
 "aP" = (/obj/structure/mineral_door/wood/armory,/turf/open/floor/wood,/area/barony/armory)
-"aQ" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -10},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -2},/turf/open/floor/wood,/area/barony/armory)
-"aR" = (/turf/open/floor/wood,/area/barony/armory)
-"aS" = (/obj/structure/table/wood,/obj/item/bow,/obj/item/storage/backpack/quiver/full,/turf/open/floor/wood,/area/barony/armory)
-"aT" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -2},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -10},/turf/open/floor/wood,/area/barony/armory)
+"aQ" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -10},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -2},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
+"aR" = (/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
+"aS" = (/obj/structure/table/wood,/obj/item/bow,/obj/item/storage/backpack/quiver/full,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
+"aT" = (/obj/structure/table/wood,/obj/item/twohanded/steelspear{pixel_x = -2},/obj/item/twohanded/steelspear{pixel_x = 5},/obj/item/twohanded/steelspear{pixel_x = -10},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
 "aU" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/grass,/area/barony/outside)
 "aV" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/grass,/area/barony/outside)
 "aW" = (/obj/structure/flora/rock/jungle,/turf/open/floor/grass,/area/barony/outside)
-"aX" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = 5},/turf/open/floor/wood,/area/barony/armory)
-"aY" = (/obj/structure/table/wood,/obj/item/clothing/under/gambeson{pixel_x = -8},/obj/item/clothing/under/gambeson{pixel_x = 8},/turf/open/floor/wood,/area/barony/armory)
-"aZ" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = 10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = -5},/turf/open/floor/wood,/area/barony/armory)
+"aX" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = 5},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
+"aY" = (/obj/structure/table/wood,/obj/item/clothing/under/gambeson{pixel_x = -8},/obj/item/clothing/under/gambeson{pixel_x = 8},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
+"aZ" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1; pixel_x = 10},/obj/item/clothing/suit/armor/coat_of_plates{pixel_x = -5},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/armory)
 "ba" = (/obj/structure/flora/tree/dead,/turf/open/floor/grass,/area/barony/outside)
-"bb" = (/obj/structure/medieval/oven,/turf/open/floor/wood,/area/barony/inside)
-"bc" = (/obj/structure/table/wood,/obj/item/clothing/head/chefhat,/turf/open/floor/wood,/area/barony/inside)
-"bd" = (/obj/structure/table/wood,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/obj/item/seeds/wheat,/turf/open/floor/wood,/area/barony/inside)
-"be" = (/obj/structure/barricade/wooden/snowed,/turf/open/floor/wood,/area/barony/inside)
-"bh" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/plating/dirt,/area/barony/outside)
-"bi" = (/turf/open/floor/plating/dirt,/area/barony/outside)
+"bb" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/rag,/obj/item/reagent_containers/glass/rag,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bc" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bd" = (/obj/item/flashlight/lantern{on = 1; pixel_x = 10},/obj/structure/table/wood,/obj/item/twohanded/fireaxe/fellingaxe,/obj/item/clothing/mask/balaclava,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
+"be" = (/obj/structure/barricade/wooden/snowed,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
+"bf" = (/obj/structure/mineral_door/wood,/turf/open/floor/barony,/area/barony/inside)
+"bg" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 1},/area/barony/inside)
+"bh" = (/obj/structure/table/wood,/obj/item/reagent_containers/glass/beaker/mortar,/obj/item/pestle,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bi" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/barony/cobble/mossy,/area/barony/outside)
+"bj" = (/obj/structure/table/wood,/turf/open/floor/barony,/area/barony/inside)
+"bk" = (/obj/structure/mineral_door/wood,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bl" = (/obj/structure/window/fulltile/barony/stone{dir = 2},/turf/open/floor/barony/cobble,/area/barony/inside)
+"bm" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 4},/area/barony/inside)
+"bn" = (/obj/structure/closet/crate/wooden,/turf/open/floor/barony,/area/barony/inside)
+"bo" = (/obj/structure/chair/wood/normal{dir = 4},/turf/open/floor/barony,/area/barony/inside)
+"bp" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 5},/area/barony/inside)
+"bq" = (/turf/closed/wall/barony,/area/barony/inside)
+"br" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 8},/area/barony/inside)
+"bs" = (/turf/open/floor/barony/cobble,/area/barony/outside)
+"bt" = (/obj/structure/chair/wood/normal{dir = 8},/turf/open/floor/barony,/area/barony/inside)
+"bu" = (/turf/open/floor/barony/cobble/mossy,/area/barony/outside)
+"bv" = (/obj/item/twohanded/fireaxe/fellingaxe,/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony,/area/barony/inside)
+"bw" = (/obj/item/flashlight/lantern{on = 1},/obj/structure/table/wood,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bx" = (/obj/structure/chair/wood/normal{dir = 1},/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"by" = (/obj/effect/landmark/observer_start,/obj/effect/landmark/latejoin,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"bz" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 9},/area/barony/inside)
+"bA" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 6},/area/barony/inside)
+"bB" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/barony/cobble,/area/barony/outside)
+"bC" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/barony/cobble,/area/barony/outside)
+"bD" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/barony/cobble/mossy,/area/barony/outside)
+"bE" = (/obj/structure/flora/ausbushes,/turf/open/floor/barony/cobble,/area/barony/outside)
+"bF" = (/turf/open/floor/plating/dirt,/area/barony/outside)
+"bG" = (/obj/effect/light_emitter/sun_light,/turf/open/floor/plating/dirt,/area/barony/outside)
+"bH" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/plating/dirt,/area/barony/outside)
+"bI" = (/obj/structure/flora/bush,/turf/open/floor/plating/dirt,/area/barony/outside)
+"bJ" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/plating/dirt,/area/barony/outside)
+"bK" = (/obj/machinery/hydroponics/soil/medieval,/turf/open/floor/plating/dirt,/area/barony/outside)
+"bL" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 10},/area/barony/armory)
+"bM" = (/turf/closed/wall/barony/stone,/area/barony/armory)
+"bN" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 4},/area/barony/armory)
+"bO" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 1},/area/barony/armory)
+"bP" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 8},/area/barony/armory)
+"bQ" = (/turf/closed/wall/barony/stone,/area/barony/inside)
+"bR" = (/obj/structure/mineral_door/wood/armory,/turf/open/floor/barony/cobble,/area/barony/inside)
+"bS" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 6},/area/barony/inside)
+"bT" = (/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
+"bU" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 4},/area/barony/inside)
+"bV" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 8},/area/barony/inside)
+"bW" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 9},/area/barony/inside)
+"bX" = (/turf/open/floor/barony/cobble,/area/barony/inside)
+"bY" = (/obj/machinery/hydroponics/soil/medieval,/turf/open/floor/holofloor/beach,/area/barony/outside)
+"bZ" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 5},/area/barony/inside)
+"ca" = (/obj/structure/flora/tree/jungle,/turf/open/floor/plating/dirt,/area/barony/outside)
+"cb" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 1},/area/barony/inside)
+"ce" = (/turf/closed/wall/barony{icon_state = "woodwallshit"; dir = 10},/area/barony/inside)
+"cf" = (/obj/structure/flora/tree/dead,/turf/open/floor/plating/dirt,/area/barony/outside)
+"cg" = (/obj/structure/chair/wood/normal{dir = 1},/turf/open/floor/barony,/area/barony/inside)
+"ch" = (/obj/structure/mineral_door/wood/armory,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ci" = (/obj/structure/table/wood,/obj/item/flashlight/lantern{on = 1},/turf/open/floor/barony,/area/barony/inside)
+"cj" = (/obj/structure/bed/medieval,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"ck" = (/obj/structure/guillotine,/turf/open/floor/barony/cobble,/area/barony/inside)
+"cm" = (/obj/item/flashlight/lantern{on = 1; pixel_x = -10},/obj/structure/table/wood,/turf/open/floor/barony/cobble/mossy,/area/barony/inside)
+"cn" = (/obj/item/twohanded/fireaxe/fellingaxe,/obj/structure/table/wood,/turf/open/floor/barony,/area/barony/inside)
+"co" = (/turf/open/floor/barony,/area/barony/inside)
+"cp" = (/obj/structure/window/fulltile/barony,/turf/open/floor/barony,/area/barony/inside)
+"cq" = (/obj/structure/window/fulltile/barony{icon_state = "wooden_window"; dir = 8},/turf/open/floor/barony,/area/barony/inside)
+"cr" = (/turf/closed/wall/barony/stone{icon_state = "stonewall"; dir = 10},/area/barony/inside)
+"cs" = (/obj/effect/light_emitter/sun_light,/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/plating/dirt,/area/barony/outside)
+"ct" = (/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/plating/dirt,/area/barony/outside)
+"cu" = (/obj/effect/decal/cleanable/blood/tracks{icon_state = "tracks"; dir = 10},/turf/open/floor/plating/dirt,/area/barony/outside)
+"cv" = (/obj/effect/decal/cleanable/blood/tracks{icon_state = "tracks"; dir = 8},/turf/open/floor/grass,/area/barony/outside)
+"cw" = (/turf/closed/wall/barony{icon_state = "woodendpiece"; dir = 1},/area/barony/inside)
+"cx" = (/turf/closed/wall/barony/stone{icon_state = "stoneendpiece"; dir = 1},/area/barony/armory)
+"cy" = (/turf/closed/wall/barony/stone{icon_state = "stoneendpiece"; dir = 1},/area/barony/inside)
+"cz" = (/obj/effect/decal/cleanable/blood/tracks{icon_state = "tracks"; dir = 8},/turf/open/floor/plating/dirt,/area/barony/outside)
+"cA" = (/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cB" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cC" = (/obj/structure/flora/tree/jungle,/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cD" = (/obj/structure/flora/ausbushes,/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cE" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cF" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/holofloor/beach/water,/area/barony/outside)
+"cG" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/holofloor/beach,/area/barony/outside)
+"cH" = (/obj/structure/flora/ausbushes/pointybush,/turf/open/floor/holofloor/beach,/area/barony/outside)
+"cI" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/barony/cobble,/area/barony/outside)
+"cJ" = (/obj/structure/bookcase/random/adult,/turf/open/floor/barony/cobble,/area/barony/inside)
+"cK" = (/turf/open/floor/plating/dirt,/area/barony/inside)
+"cL" = (/mob/living/simple_animal/cow,/turf/open/floor/plating/dirt,/area/barony/inside)
+"cM" = (/mob/living/simple_animal/chicken,/turf/open/floor/plating/dirt,/area/barony/inside)
+"cN" = (/mob/living/simple_animal/cow,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
+"cO" = (/mob/living/simple_animal/chicken,/turf/open/floor/barony{color = "#A9A9A9"},/area/barony/inside)
 
 (1,1,1) = {"
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
@@ -65,56 +148,56 @@ abababababababababababababababababababababababababababababababababababababababab
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
 ababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababab
 ababababaaaaaaaaaaaaavavavaaaaaaaaaaaaaaaaaaaaaaavavavavavavavavavavavavavavavavavavaUavavavavavavavavavavavavavavaaaaaaaaaaaaaaaaaaaaaaabababab
-ababababaaaabaaaaaavavavavavavavavavavavavavavavavavavavavavavavamamamamamamamamamamavavavavavavavazaUavavavavavavavavaaaaavavavaaaaaaaaabababab
-ababababaaaaavavavavavavaFaFaFaFaFaFaFavaAavaFaFaFaFaFaFaFavavamadadadadadadadadadadamavavavavavaAavavavavavbaavavavavavavavavaVaBaaaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavamadaGafaHaHafafafaGadamavavavavavavavavaBavavavavavaBavavavazavavavavaaaaabababab
-ababababaaavavavavaUavavaFaFaFaFaFaFaFavaNavaFaFaFaFaFaFaFavavamadafaHafafafafafafadamavavavavavavavavavaUavavaAavavavavavavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavamadafafaHafafaIafaIadamavavavavaBavavavavavavavavavavavavavavavbaavavaaaaabababab
-ababababaaavaVavavavavavaFaFaFaFaFaFaFavaNavaFaFaFaFaFaFaFavavamadafaHafafafafaIafadamavavavavavavavaAavavavavavavavaUavaBavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavamadafafafafafafafafadamavavavavavavavavavaVavavavavavavavavavavavavavaaaaabababab
-ababababaaavavavavavavavaFaFaFaFaFaFaFavaUavaFaFaFaFaFaFaFavavamadafafafafafafaIaIadamavavavavaUavavavavavaBavavavaAavavavavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavamadafafafafafafaIafadamavavavavavavavavavavavavavavavavavavavavaUaBavaaaaabababab
-ababababaaavavavavavavaUavavavavavavamamamamavavavavavavavavavamadaGafafafafafafaJadamavavavavavavavavavavavavaAavavavavavavavavavavaaaaabababab
-ababababaaaUavavavavavavavavavavavamadafafadamamamamavavavavavamadadadafafafafadadadamavavavavavavaAavavavavavavaUavavaBavavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavamadafafadadadafafamavavavavavamamadadalaladadamamavavavavavavavavavavavavaUavavavavavavazavavavaVavaaabababab
-ababababaaavavavavavavavavavavavavamadafafaKaKafafafamavavavavavavavamamamamamamavavavavavavavavavavavavavavavavavavavavavavaBavavavavaaabababab
-ababababaaavavavavavavavavavavavavamadaLafafafafafadamavavavavavavavavaUavavavavavavavavavavavavavaUavavaBavavavaAavavavavavavavavavavaaabababab
-ababababaaavavavavavavavavavavavaUamadaobdaCaCagaoadamavavavavavaVavavavavavavavaWavavavavavavavaBavaUavavavavavavavavavavamamamamamavaaabababab
-ababababaaavavaBavavavavavavavavavamadadadadadadadadamavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavamadadadadadamaaabababab
-ababababaaavavavaUavavavavavavavavavamamamamamamamamavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaUavavavavamadafafaDadamaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaUavavavavavavavavavavavavavavavavavavavaBavavamadaMafafadamaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaAavaUavavavavavavavavavamadadbeadadamaaabababab
-ababababaaavavavavavavavavavavaUavavavavavavavavavavavavavaxavavavavavavavavavavavavavauavavavavavavavavaBavavavavavaUavavamamamamamavaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavaBavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavavavavavavavavavavavavavavavayazavavavavavavavavavavavavavamamaEamamavavavavavavbaavavavavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavavavaVavavavavavavavaxavavavavavavavavavavavavavavavavavamadadadadadamavavavavavavavavavavavaUavaAavavavavavavavavazavaaabababab
-ababababaaavavavavavavamamamamamamamamamamamamamamamavavavavavavavavavamadadakaoahadamavavavavavavavavavavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavavavamadadadadadadadadadadadadadadadamavavavavavavavavamadafafafafadamavavavavavavavavavavavavaVavavavavavavavaBavavavaaabababab
-ababababaaavavavavavamadajbbbbbbadaeafafafafafaiafadamavavavavaVavavavamalafafafafadamavavavavavavaUavaBavavavavavavavaBavavavavaUavavaaabababab
-ababababaaavaUavavavamalafafafafadaeafagahafakagahadamavavavavavavavavamadafafafafadamavavavavavavavavavavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavavavamadafbcatafalafafagahafakaoahadamavavavavavavavavamadadaDagaDadamavavavavavaAavavavavavavavavavavavavaAavavavavavaaabababab
-ababababaaavavavavavamadafaoacafadafafagahapapapapalbhbibibibiavavavavavamadadadadadamavavavavavavavavavavavaUavavavavavavavavbaavavavaaabababab
-ababababaaavavavavavamadafananafadagagaqahapapapapalbhbibibiavavavavavavavamamamamamavavavavavavavavavavavavavavaBavazavavavavavavavavaaabababab
-ababababaaavavavavavamadafafafafadararafafafafafafadamavavavavavavavavavavavavavavavaxavavavavaUavavavaBavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavavavamadagagagaoadafafafafasafafaiadamavavavavavavavavavavavavavazavavavavavavavavavavavavavavavavavaUavavaBavavavavavaaabababab
-ababababaaavavavavavamadadadadadadakaoahakagahakaoadamavavavavavavaUavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaaabababab
-ababababaaavavavazavavamamamamamadadadadadadadadadadamavavavavavavavavavavavavavavavavavavavavavavavavavavaUaAavavavavavavavavavaBavavaaabababab
-ababababaaavavavavavavavayavavavamamamamamamamamamamavavavavavavavavavavavavavavavavavavavavavavavavaBavavavavavavavavaBavavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavayavavavavavavavavavavavavavavavavavavavavavavavavavavavavaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavawavavavavavavavavavavavavavaUavavavavavavavavavavavavavavavaaaaaaabababab
-ababababaaavavavavavavavavavavavavavavavavavazavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaBavavavavaUaAavavaaaaaaabababab
-ababababaaaaaaavavavavavavavavavavavaUavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaUavavazavavavavavaaaaaaabababab
-ababababaaaaaaavavavavaAavavavavavavavavavavavavavavavavavavavavaxavavavavavavavavavavavavavavavavavaAavavavavavavavavavavavaBavavaaaaaaabababab
-ababababaaaaaaaaavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavavaUaBavavavbaavavavavavavavaaaaaaabababab
-ababababaaaaaaaaaaavavavavaUavavavavavavavamamamamamavavavavavavavavavavavavavavazavavavavavavavavavavavavavavavavavavavavavavavaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaavavavavavavavavavamaOaOaPaOaOamavavavavavavavavavavavavavavavavavamamamamamamavavavavavaaaaavavavavavavavaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaavavavavavavavavamaOaQaRaSaOamavavavaVavavavavavavavavavavavavamadadadadaladamavavavaaaaaaavavaBavavavavaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaaaavavayavavavavamaOaTaRaSaOamavavavavavavavavavavavavavavavavamadaoafafafadamavaaaaaaaaaaavavavavavavavaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaaaavavavavavavavamaOaXaYaZaOamavavavavavavayaaaaaaaaavavavavavamadafaDadaradamaaaaaaaaaaaaaaavavavavavaaaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaaaaaaaavavavavavaEaOaOaOaOaOamavavavavaaaaaaaaaaaaaaaaavavavavamadadadadadadamaaaaaaaaaaaaaaavavavavavaaaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaaaaaaaaaaaavavavavamamamamamavavavavaaaaaaaaaaaaaaaaaaaaavavavavamamamamamamavaaaaaaaaaaaaaaaaaaavavaaaaaaaaaaaaabababab
-ababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababab
-abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
+ababababaaaabaaaaaavavavavbFavavavbFbFavavavaNavaNavbFaNavavavavamamamamamamamamamamavavavavavavavazaUavavavavavavavavaaaaavavavaaaaaaaaabababab
+ababababaaaaavavavavavbFbKbKbKbKbKbYbKbFarbFbKbYbKbKbKbYbKavavamcebqbqbqbqbqbqbqbqbAamavavavavavaAavavavavavbaavavavavavavavavaVaBaaaaaaabababab
+ababababaaavavavavavavbFaNaNbFbFbFbFbFbFbFbFbFaNbFaNbFbFaNavavbGbmaHajcNcNcocoajaGbmamavbFbFavavavavavaBavavavavavaBavavavazavavavavaaaaabababab
+ababababaaavavavavaUavbFbYbYbKbKbYbKbKbFaFbFbYbYbYbYbYbYbYavavambmajcNajajcKcKajajbmamavbFbFbFavavavavavaUavavaAavavavavavavavavavavaaaaabababab
+ababababaaavavavavavavavbFbFbFbFbFbFbFbFbFbFaNaNbFaNbFaNaNavavbGbmajajcNajcocOajcObmambFavavbFcabFavavavavavavavavavavavavavavbaavavaaaaabababab
+ababababaaavaVavavavavaNbKbYbKbKbKbKbKbFaFbFbYbYbYbYbYbYbYavavbGbmcKcLcoajcoajcOcobmamavbFavavbFbFavarbFavavavavavavaUavaBavavavavavaaaaabababab
+ababababaaavavavavavavbFaNbFbFbFaNbFbFbFbFbFbFaNaNbFbFbFaNbFbFbGbmajajajcocococKcobmambFbFbFavavavbFbFbFaVavavavavavavavavavavavavavaaaaabababab
+ababababaaavavavavavavavbKbKbKbKbYbKbKbFbHbFbYbYbYbKbYbKbKbFbsambmcKajcoajcKcoaIcMbmambFbFbFavaUavbFavbFavaBavavavaAavavavavavavavavaaaaabababab
+ababababaaavavavavavavavavavavavavavavbubsbsbubFbubsbubFbFbsbFbGbmcocKcKcocKcKaIcKbmambFbFbFavavavavavavavavavavavavavavavavavaUaBavaaaaabababab
+ababababaaavavavavavavaUavavavavbFbFbBbGbBbBbFbsbFbubsbsbubsbsbGbmaHajcKajcKcKcoaJbmbGavbFbFavbFbFavavavavavcAcGbFaNavavavavavavavavaaaaabababab
+ababababaaaUavavavavavavavavavavbFamcwcKcocwbGbGbGbGbFbsbFbsbubGbpbqbAcKcKcKcKcebqbzamavbFbFavbFbFaravavavbFcAcAcBbFaNcCaNaNaNaNavavaaaaabababab
+ababababaaavavavavavavavavavavavavbGbmajcKbpbqaKajcKbGbFbsbsbsbFbGbGbpbqalalbqbzambGavbFbFavavavavbFbFbFcAcAcBcAcAcAcAcAcAcDcAavaNcHavaaabababab
+ababababaaavavavavavavavavavavavbFambmcKajafafcKcocKambFbFbubsbFbFbFbGbGbGambGambFbFbFbFbFavavavavavavaNcAcAcAcAavcAcAbFcAbFcCcAcAavavaaabababab
+ababababaaavavavavavavavavavavavbFambmadcocKajajcKcwambFbFbsbubsbsbsbsbCbsbFbsbsbsbFavavavavavbFavaUbFcAcCcAcAcAaAaNbFcAcAcAcAbFbFbFbFaaabababab
+ababababaaavavavavavavavavavavavbHbGbmciaoagaCapcibmambFbFbsbsbubDbsbsbsbubsbubsaWbFavavavavavbFcaavaUcAcAcAcAcAavaNaNcAbFbGbGbGbGbGavaaabababab
+ababababaaavavaBavavavavavavavavbFbGbpbqbqbqbqbqbqbzambFavbFbsbsavbFbFbFavbFavbFbFavavavavavavbFbFavbFcAcAcAcAcAcAavavbFbGcrbQbQbQbSbGaaabababab
+ababababaaavavavaUavavavavavavavbFbFbGbGamamamamamamavavbFbFbubsbFbFavbFavbFbFbFavavavavavavavavavavavaNaNaNcAcBcAavavbFbGbUcJbTaDbUamaaabababab
+ababababaaavavavavavavavavavavavavavbFbFbFavbFbFbFavavbFbFbubsavbFbFbFbFbFaUbFbFavavavavavavavbFbFbFavavcAaNcAcAaNaBavbFambUaMbTbTbUamaaabababab
+ababababaaavavavavavavavavavavavavavavbFbFavavavavavavbFbFbFbsbuavbFavbFavavavavavavavavavavavbFaravaUavavaNcAcAcAaNavbFbGbZblbeblbWbGaaabababab
+ababababaaavavavavavavavavavavaUavavavavavavavavavavavbFbFbIbuavbFbFavavavavavavavavavavavavavbFbFbFavavcCcAcAcAaNaNaUbFbFbGbGcsbGbGbFaaabababab
+ababababaaavavavavavavavavavavavavavavavavavavavavaBavbFbFbsbsbubFavbFavavavavavavavavavavavavavbFavavbFbFaNcAcAaNaNavavbFbFbFctbFbFbFaaabababab
+ababababaaavavavavavavavavavavavavavavavavavayazavavbFbFbFbsbsbsbFbFbFbFavamamaEamamamamamamamavcfbFavavbFbFcAcAaNavavbFbFavbFcucvcvczaaabababab
+ababababaaavavavavavaVavavavavavavavaxavavavavavavavbFbFbFbFbubFbFbFbFbFamcebqbqbqcpbqbqbqbAambFbFbFavavavbFcBcAcEbFavavavavavavavazbFaaabababab
+ababababaaavavavavavavamamamamamamamamamamamamamamambFbFbFbsbsbubFbFbFbGcebzakcicocococobnbmamavavavavavavbFbFcAcAbFavavbFbFbFbFbFavavaaabababab
+ababababaaavavavavavamcebqbqbqbqbgbqbqbqbqbqbqbqbqbAbGbFbFbubsbsbFbFbFbGbmcocococoakcocobncqamavavavavbFavavbFcFcAcAavavbFbFbFcabFavavaaabababab
+ababababaaavavavavavambmacaeaeaebmaiajajajajajanajbmbGbFbFbsbubJbFbFbFbGalcococobobjbtcocobfamavavaUbFaBbFbFbFcAcAcAbFaBbFbFbFbFbHavavaaabababab
+ababababaaavaUavavavambfajajajajbmaiajapaqajasapaqahbGbFbFbsbsbFbFbFbFbGbmcococococgcocobvcqamavbFavbFbFbFavbFbFcAcAavavbFbFbFbFbFavavaaabababab
+ababababaaavavavavavambmajatbbajbkajajapaqajasbcaqbmbGbFbsbFbsbsbFbFbFbGbpbAcgcicococococnbmamavaravbFbFavavbFbFcAcAcAbFbFaravavbFavavaaabababab
+ababababaaavavavavavambmajbcbhajbmajajapaqajajajajalbibubsbFbubsbFbFbFbFambpbqbqbqcpbqbqbqbzamavavbFavbFbFbFaUbFavcAcAbFbFbFbFcfbFavavaaabababab
+ababababaaavavavavavambmajapapajbmapapbwaqajajajajalbibsbubsbsbsbFbFbFbFavamamamamamamamamamamavavavavbFbFavavbFcacAcDbFavbFbFbFbFavavaaabababab
+ababababaaavavavavavambmajajajajbmbxbxajajajajajajbmbGbFbFbsbsbFbFbFbFbFbFavbFavbFavaxavbFavavaUavavavcabFbFavbFbFcAcAbFbFavavbFbFavavaaabababab
+ababababaaavavavavavambmapapapbcbmajajajajbyajajanahbGbFbsbsbFbFbFbFbFbFbFavavavazbFavavbFavavavavavavbFbFavbsavbFavcBcAbFaBbFbFbFavavaaabababab
+ababababaaavavavavavambpbqbqbqbAbmasbcaqasapaqasbcbmbGbFbFbsbsbFbFbHbFbFbsbsbsbFbFbsbFbFbFavbsbsbsavavavavavbsbsbFavcAcAbFbFbFbFbFavavaaabababab
+ababababaaavavavazavavamamamambpbrbqbqbqbqbqbqbqbqbzbGbFbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbsbCcIbsbsbFcAcAbFbFbFbFcaavavaaabababab
+ababababaaavavavavavavavayavavamamamamamambGbGbGbGbGbFbFbFbsbsbsbsbsbsbsbsbFavbsbsbsavbsavbsbsavbsbscabFbsbsbsbsbsavcAcCavavavbFbFavaaaaabababab
+ababababaaavavavavavavavavavavavavavavbFbFbFbFbFbFbFbFbFbsbsbFbFbFbFbFavavayavavavbFavavbFavavavavbFbFbFavavavavavbFcAcAbFavavbFavavaaaaabababab
+ababababaaavavavavavavavavavavavavavavbFavbFbFbFbFbFbFbFbFbsbsbsbFbFavawavavavavavavavbFbFavavavavaUavavavbFbFbFbFavcAcAavavavavavaaaaaaabababab
+ababababaaavavavavavavavavavavavavavavavbFbFbEbFbsbsbFbFbFbsbsbsbFbFbFbFavavavavavavavavavavavavavavavavavbFbFbFcaavcAcAavbHaravavaaaaaaabababab
+ababababaaaaaaavavavavavavavavavavavaUavbFbFbFbsbsbsbsbsbFbsbsbFbsbFbFbFavavavavavavavavavavavavavavbFavavbFbFavaUbFcAcDbFbFbFavavaaaaaaabababab
+ababababaaaaaaavavavavaAavavavavavavavbFbFbFbsbsbsbFbsbsbsbsbFbFbIbFavavavavavavavavavavavavavavavbFaravavavbFbFavavcAcAbFbFcaavavaaaaaaabababab
+ababababaaaaaaaaavavavavavavavavavavavavbFbFbsbibsbFbFbFbFbFbFbFbFbFbFavbFbFavamavavavavavavavavavavavavaUcabFbFavbacAcAbFavbFavavaaaaaaabababab
+ababababaaaaaaaaaaavavavavaUavavavavavavavbicxbicxbibGbGbGbGbGbGbGbGbGbGamamcyamcyamavavavavavavavavavavavbFavavavavcAbFbFavavavaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaavavavavavavavavavambLbPaPbPbObQbQbQbQbQbRbQbQbQbQbQcbbValbVbSamavavavavavavavavavavavavaaaabFcAbFavavavavaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaavavavavavavavavambNaQaRaSbNbXbTbTbdbTbTbTcmbTbTbXbUaLajajbUamavavavavavavavavavavavaaaaaabFcAaBavavavavaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaaaavavayavavavavambNaTaRaSbNckbXbXbXbXaubXbXbXbXbXbUajajajbUamavavavavavavavavavaaaaaaaaaacAcAbFavavavavaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaaaavavavavavavavambNaXaYaZbNbXbTbTbTbTbTbTbTbTbTbXbUbcajcjbUamavavavavavavavavaaaaaaaaaaaaaaavavavavavaaaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaaaaaaaavavavavavaEaObMbMbMbPcbbQblchblcbblbRblbQcbbVbQbQbQbWamavavavavavavavavaaaaaaaaaaaaaaavavavavavaaaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaaaaaaaaaaaavavavavamamamamambUcjajajajbUajajajcjbUamamamamamavavavavavavavavavaaaaaaaaaaaaaaaaaaavavaaaaaaaaaaaaabababab
+ababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabZbQbQbQbQbVbQbQbQbQbWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababab
+abababababababababababababababababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababab
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
 abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
