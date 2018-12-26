@@ -25,6 +25,9 @@
 /obj/item/tool_head/blade/attackby(obj/item/O, mob/user, params)
 	if(!check_ready(user))
 		return
+	if(!is_sharp())
+		to_chat(user, "<span class='warning'>Sharpen \the [src] first, you fool!</span>")
+		return
 	if(istype(O, /obj/item/tool_head/sword_crafting/sword_assembly))
 		to_chat(user, "<span class='notice'>You start attaching \the [src] to \the [O].</span>")
 		if(do_after(user, 50, target = O))
@@ -87,6 +90,9 @@
 		var/obj/item/tool_head/B = O
 		if(isnull(B.finished_tool))
 			CRASH("[B]'s finished_tool is null!")
+			return
+		if(!B.is_sharp())
+			to_chat(user, "<span class='warning'>Sharpen \the [B] first, you fool!</span>")
 			return
 		to_chat(user, "<span class='notice'>You start attaching \the [src] to \the [B].</span>")
 		if(do_after(user, 50, target = B))
