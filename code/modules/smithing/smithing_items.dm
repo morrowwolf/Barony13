@@ -4,7 +4,15 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 	new/datum/stack_recipe("hammer head", /obj/item/tool_head/hammer, 1, on_floor = TRUE) \
 ))
 
-//TODO: steel and gold recipes
+GLOBAL_LIST_INIT(steel_ingot_recipes, list ( \
+	new/datum/stack_recipe("dagger blade", /obj/item/tool_head/blade/dagger, 1, on_floor = TRUE), \
+	new/datum/stack_recipe("shortsword blade", /obj/item/tool_head/blade/short_sword, 2, on_floor = TRUE), \
+	new/datum/stack_recipe("sword blade", /obj/item/tool_head/blade/sword, 3, on_floor = TRUE), \
+	new/datum/stack_recipe("crossguard", /obj/item/tool_head/sword_crafting/crossguard, 1, on_floor = TRUE), \
+	new/datum/stack_recipe("pommel", /obj/item/tool_head/sword_crafting/pommel, 1, on_floor = TRUE) \
+))
+
+//TODO: gold recipes
 //TODO: Handcuff crafting?
 
 /obj/item/stack/ore/iron/medieval
@@ -28,6 +36,8 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 
 /obj/item/stack/ingot/Initialize()
 	. = ..()
+	if(heated)
+		heat()
 	update_icon()
 
 /obj/item/stack/ingot/examine(mob/user)
@@ -102,6 +112,19 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 /obj/item/stack/ingot/iron/five
 	amount = 5
 
+/obj/item/stack/ingot/iron/fifty
+	amount = 50
+
+/obj/item/stack/ingot/steel/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.steel_ingot_recipes
+	return ..()
+
+/obj/item/stack/ingot/steel/five
+	amount = 5
+
+/obj/item/stack/ingot/steel/fifty
+	amount = 50
+
 /obj/item/hammer
 	desc = "It's hammertime."
 	name = "hammer"
@@ -146,7 +169,7 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 	var/finished_tool
 	var/long_handle = FALSE //Set to true if it needs a long handle
 	var/requires_quenching = FALSE //It's mainly just weapons that require quenching, since they're steel
-	var/heated_icon_state //if it has a special heated icon. Mainly just swords.
+	var/heated_icon_state = FALSE //if it has a special heated icon. Mainly just swords.
 
 /obj/item/tool_head/Initialize()
 	. = ..()
@@ -169,7 +192,7 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 
 /obj/item/tool_head/update_icon()
 	if(heated && heated_icon_state)
-		icon_state = "[heated_icon_state]"
+		icon_state = "[initial(icon_state)]_heated"
 	else
 		icon_state = "[initial(icon_state)]"
 
@@ -191,17 +214,7 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 
 
 /obj/item/tool_head/attackby(obj/item/O, mob/user, params)
-	if(ruined)
-		to_chat(user, "<span class='warning'>[src] is ruined, it can't be used for anything!</span>")
-		return
-	if(heated)
-		if(requires_quenching)
-			to_chat(user, "<span class='warning'>Quench it first you fool.</span>")
-		else
-			to_chat(user, "<span class='warning'>Quench it or wait for it to cool.</span>")
-		return
-	if(isnull(finished_tool))
-		CRASH("[src]'s finished_tool is null!'")
+	if(!check_ready(user))
 		return
 	if(istype(O, /obj/item/handle) && !istype(O, /obj/item/handle/long))
 		if(long_handle)
@@ -223,6 +236,18 @@ GLOBAL_LIST_INIT(iron_ingot_recipes, list ( \
 			new finished_tool(drop_location())
 			qdel(O)
 			qdel(src)
+
+/obj/item/tool_head/proc/check_ready(mob/user)
+	if(ruined)
+		to_chat(user, "<span class='warning'>[src] is ruined, it can't be used for anything!</span>")
+		return FALSE
+	if(heated)
+		if(requires_quenching)
+			to_chat(user, "<span class='warning'>Quench it first you fool.</span>")
+		else
+			to_chat(user, "<span class='warning'>Quench it or wait for it to cool.</span>")
+		return FALSE
+	return TRUE
 
 // RECIPES
 

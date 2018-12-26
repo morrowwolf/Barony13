@@ -2510,6 +2510,7 @@
 #include "code\modules\shuttle\white_ship.dm"
 #include "code\modules\smithing\smithing_items.dm"
 #include "code\modules\smithing\smithing_structures.dm"
+#include "code\modules\smithing\smithing_swordcrafting.dm"
 #include "code\modules\spells\spell.dm"
 #include "code\modules\spells\spell_types\aimed.dm"
 #include "code\modules\spells\spell_types\area_teleport.dm"

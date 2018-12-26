@@ -95,3 +95,23 @@
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 100
+
+/obj/structure/grindstone/attackby(obj/item/I, mob/user, params) //TODO: Non-water ruins the tool head? Like, if half or more of the total reagent volume is non-water
+	if(istype(I, /obj/item/tool_head/blade))
+		var/obj/item/tool_head/blade/H = I
+		if(H.heated)
+			to_chat(user,"<span class='warning'>Quench \the [H] first you fool!</span>")
+			return TRUE
+		if(H.is_sharp())
+			to_chat(user,"<span class='warning'>\The [H] is already sharp you fool!</span>")
+			return
+		if(H.ruined)
+			to_chat(user,"<span class='warning'>\The [H] was ruined by improper quenching! It can't be used for anything you fool!</span>")
+			return
+		to_chat(user,"<span class='notice'>You start sharpening \the [H].</span>")
+		if(do_after(user, 600, target = src))
+			to_chat(user,"<span class='notice'>You sharpen \the [H].</span>")
+			H.sharpness = IS_SHARP
+			H.name = "sharpened [initial(name)]"
+	else //TODO: Allow sharpening other things?
+		return ..()
