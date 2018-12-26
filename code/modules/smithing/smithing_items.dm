@@ -40,6 +40,9 @@ GLOBAL_LIST_INIT(steel_ingot_recipes, list ( \
 		heat()
 	update_icon()
 
+/obj/item/stack/ingot/fire_act()
+	return
+
 /obj/item/stack/ingot/examine(mob/user)
 	..()
 	if(heated)

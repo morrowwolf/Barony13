@@ -138,8 +138,8 @@
 		cookProgress = 0
 
 /obj/structure/medieval/oven/proc/cook()
-	itemInside = itemInside.microwave_act()
-	itemInside.forceMove(src)
+	itemInside.microwave_act()
+	itemInside.forceMove(loc)
 	itemInside = null
 
 /obj/structure/medieval/oven/update_icon()
