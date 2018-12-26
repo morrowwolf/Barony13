@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(steel_ingot_recipes, list ( \
 
 /obj/item/stack/ingot/Initialize()
 	. = ..()
-	if(heated)
+	if(heated) //I doubt this will ever be necessary but it's here just in case
 		heat()
 	update_icon()
 
@@ -112,6 +112,12 @@ GLOBAL_LIST_INIT(steel_ingot_recipes, list ( \
 /obj/item/stack/ingot/iron/five
 	amount = 5
 
+/obj/item/stack/ingot/iron/ten
+	amount = 10
+
+/obj/item/stack/ingot/iron/twenty
+	amount = 20
+
 /obj/item/stack/ingot/iron/fifty
 	amount = 50
 
@@ -121,6 +127,12 @@ GLOBAL_LIST_INIT(steel_ingot_recipes, list ( \
 
 /obj/item/stack/ingot/steel/five
 	amount = 5
+
+/obj/item/stack/ingot/steel/ten
+	amount = 10
+
+/obj/item/stack/ingot/steel/twenty
+	amount = 20
 
 /obj/item/stack/ingot/steel/fifty
 	amount = 50
