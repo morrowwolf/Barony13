@@ -189,10 +189,11 @@
 				return
 
 		var/obj/O
-		if(R.max_res_amount > 1) //Is it a stack?
+		if(istype(R, /obj/item/stack)) //Is it a stack?
 			O = new R.result_type(usr.drop_location(), R.res_amount * multiplier)
 		else
-			O = new R.result_type(usr.drop_location())
+			for(var/i in 1 to (R.res_amount * multiplier))
+				O = new R.result_type(usr.drop_location())
 		O.setDir(usr.dir)
 		use(R.req_amount * multiplier)
 

@@ -85,3 +85,34 @@ Arena guys
 			continue
 		else
 			break
+
+/datum/job/craftsman
+	title = "Craftsman"
+	flag = CRAFTSMAN
+	department_flag = ARENA
+	faction = "Arena"
+	total_positions = 3
+	spawn_positions = 3
+	supervisors = "the Baron and their Knights"
+	selection_color = "#dddddd"
+	outfit = /datum/outfit/job/craftsman
+
+/datum/job/craftsman/after_spawn(mob/living/carbon/human/H, mob/M)
+	handle_arena_spawn(H)
+
+/datum/job/craftsman/override_latejoin_spawn(mob/living/carbon/human/H)
+	return TRUE
+
+/datum/outfit/job/craftsman/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	return
+
+/datum/outfit/job/craftsman
+	name = "Craftsman"
+	jobtype = /datum/job/craftsman
+	belt = /obj/item/hammer
+	uniform = /obj/item/clothing/under/yogs/peasant
+	neck = /obj/item/clothing/neck/cloak/medieval
+	shoes = /obj/item/clothing/shoes/yogs/boots
+	id = null
+	ears = null
+	back = null
