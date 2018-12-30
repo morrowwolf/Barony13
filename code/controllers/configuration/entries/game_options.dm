@@ -355,3 +355,5 @@
 	config_entry_value = 0.1
 	integer = FALSE
 	min_val = 0
+
+/datum/config_entry/flag/earn_your_beard

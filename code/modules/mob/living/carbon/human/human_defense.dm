@@ -619,7 +619,7 @@
 			if(prob(min(acidpwr*acid_volume/10, 90))) //Applies disfigurement
 				affecting.receive_damage(acidity, 2*acidity*damagemod) // yogs - Old Plant People
 				emote("scream")
-				facial_hair_style = "Shaved"
+				change_facial_hair("Shaved")
 				hair_style = "Bald"
 				update_hair()
 				add_trait(TRAIT_DISFIGURED, TRAIT_GENERIC)

@@ -143,7 +143,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	donor_hat       = sanitize_integer(donor_hat, 0, donor_start_items.len, 0)
 	purrbation      = sanitize_integer(purrbation, 0, 1, initial(purrbation))
 	// yogs end
-	
+
 	load_keybindings(S) // yogs - Custom keybindings
 
 	return 1
@@ -189,13 +189,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["tip_delay"], tip_delay)
 	WRITE_FILE(S["pda_style"], pda_style)
 	WRITE_FILE(S["pda_color"], pda_color)
-	
+
 	// yogs start - Donor features
 	WRITE_FILE(S["donor_pda"], donor_pda)
 	WRITE_FILE(S["donor_hat"], donor_hat)
 	WRITE_FILE(S["purrbation"], purrbation)
 	// yogs end
-	
+
 	save_keybindings(S) // yogs - Custom keybindings
 
 	return 1
@@ -220,6 +220,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/needs_update = savefile_needs_update(S)
 	if(needs_update == -2)		//fatal, can't load any data
 		return 0
+
+	load_consecutive_rounds(slot, S)
 
 	//Species
 	var/species_id
@@ -454,3 +456,63 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S.ImportText("/",file("[path].txt"))
 
 #endif
+
+/datum/preferences/proc/get_consecutive_rounds_savefile(slot, savefile/S)
+	if(!path)
+		return 0
+	if(!S)
+		S = new /savefile(path)
+	if(!S)
+		return 0
+	if(!slot)
+		slot = default_slot
+	slot = sanitize_integer(slot, 1, max_save_slots, FALSE)
+	if(!slot)
+		return 0
+	S.cd = "/character[slot]"
+	return S
+
+/datum/preferences/proc/save_consecutive_rounds(slot, savefile/S, to_buffer = TRUE)
+	if(to_buffer)
+		var/list/B = list()
+		B["consecutive_rounds_survived"] = consecutive_rounds_survived
+		B["beard_level"] = beard_level
+		B["beard_level_beard"] = beard_level_beard
+		consecutive_rounds_buffer["slot[slot]"] = B
+	else
+		S = get_consecutive_rounds_savefile(slot, S)
+		if(!S)
+			return 0
+
+		S["consecutive_rounds_survived"] << consecutive_rounds_survived
+		S["beard_level"] << beard_level
+		S["beard_level_beard"] << beard_level_beard
+
+	return 1
+
+#define POSITIVE_OR_ZERO(num) ((isnum(num) && (num >= 1)) ? num : 0)
+
+/datum/preferences/proc/load_consecutive_rounds(slot, savefile/S, from_buffer = TRUE)
+	var/list/B = consecutive_rounds_buffer["slot[slot]"]
+	if(from_buffer && B)
+		consecutive_rounds_survived = B["consecutive_rounds_survived"]
+		beard_level = B["beard_level"]
+		beard_level_beard = B["beard_level_beard"]
+	else
+		if(path && (!fexists(path)))
+			return 0
+		S = get_consecutive_rounds_savefile(slot, S)
+		if(!S)
+			return 0
+
+		S["consecutive_rounds_survived"] >> consecutive_rounds_survived
+		S["beard_level"] >> beard_level
+		S["beard_level_beard"] >> beard_level_beard
+
+	consecutive_rounds_survived = round(POSITIVE_OR_ZERO(consecutive_rounds_survived))
+	beard_level = round(POSITIVE_OR_ZERO(beard_level))
+	beard_level_beard = sanitize_inlist(beard_level_beard, GLOB.facial_hair_styles_list, "Shaved")
+
+	return 1
+
+#undef POSITIVE_OR_ZERO

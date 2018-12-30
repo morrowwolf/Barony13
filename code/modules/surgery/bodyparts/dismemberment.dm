@@ -321,7 +321,7 @@
 		H.hair_color = hair_color
 		H.hair_style = hair_style
 		H.facial_hair_color = facial_hair_color
-		H.facial_hair_style = facial_hair_style
+		H.change_facial_hair(facial_hair_style)
 		H.lip_style = lip_style
 		H.lip_color = lip_color
 	if(real_name)

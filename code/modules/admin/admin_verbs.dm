@@ -73,7 +73,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/datum/admins/proc/open_borgopanel,
 	/datum/admins/proc/restart, //yogs - moved from +server
 	/client/proc/admin_pick_random_player, //yogs
-	/client/proc/check_alts
+	/client/proc/check_alts,
+	/client/proc/freeze_streaks /* Freezes survival streak scores at their position for the round and does not automatically process them when the round is over */
 	)
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))

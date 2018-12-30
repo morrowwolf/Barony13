@@ -31,11 +31,20 @@
 
 		//handle facial hair (if necessary)
 		if(H.gender == MALE)
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
-			if(userloc != H.loc)
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hair_style = new_style
+			while(H.client)
+				var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
+				var/datum/preferences/prefs
+				if(H.client && H.client.prefs)
+					prefs = H.client.prefs
+				if(userloc != H.loc)
+					return	//no tele-grooming
+				if(new_style)
+					var/datum/sprite_accessory/facial_hair/new_beard = GLOB.facial_hair_styles_list[new_style]
+					if(CONFIG_GET(flag/earn_your_beard) && new_beard && prefs && prefs.beard_level_enabled && new_beard.beard_level > prefs.beard_level)
+						to_chat(user, "You don't have enough hair to change to this beard.")
+						return
+					H.change_facial_hair(new_style)
+				break
 		else
 			H.facial_hair_style = "Shaved"
 

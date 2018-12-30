@@ -488,6 +488,9 @@
 		client.prefs.random_character()
 		client.prefs.real_name = client.prefs.pref_species.random_name(gender,1)
 	client.prefs.copy_to(H)
+	if(!(mind.assigned_role in GLOB.nonhuman_positions))
+		client.prefs.spawn_mob_ref = "[REF(H)]"
+		client.prefs.characters_spawned += client.prefs.default_slot
 	H.dna.update_dna_identity()
 	if(mind)
 		if(transfer_after)

@@ -537,3 +537,6 @@ DISABLE_HUMAN_MOOD
 
 ## A cap on how many monkeys may be created via monkey cubes
 MONKEYCAP 64
+
+## Earn Your Beard - Forces beard growth by surviving consecutive rounds. Comment it out to disable.
+EARN_YOUR_BEARD
