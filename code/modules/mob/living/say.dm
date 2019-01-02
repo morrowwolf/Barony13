@@ -207,6 +207,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		spans |= SPAN_ITALICS
 
 	send_speech(message, message_range, src, bubble_type, spans, language, message_mode)
+	if(CONFIG_GET(flag/chatter))
+		chatter(message,usr.gender == FEMALE ? "griffin" : "owl",usr)
 
 	if(succumbed)
 		succumb(1)
