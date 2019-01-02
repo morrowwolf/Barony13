@@ -83,20 +83,20 @@
 	else
 		if(mind && mind.name)
 			name = "[mind.name]"
+			if(name != real_name)
+				alt_name = " (died as [real_name])"
 		else
 			name = real_name
-		if(name != real_name)
-			alt_name = " (died as [real_name])"
-
+		
 	var/K
-
+	var/admin_rendered = FALSE
+	var/spanned = src.say_quote(message, get_spans())
 	if(key)
 		K = src.key
-
-	var/spanned = src.say_quote(message, get_spans())
+		admin_rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>/([K])<span class='message'>[emoji_parse(spanned)]</span></span>" // Includes ckey, disincludes (discludes?) alt name
 	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[emoji_parse(spanned)]</span></span>"
 	log_talk(message, LOG_SAY, tag="DEAD")
-	deadchat_broadcast(rendered, follow_target = src, speaker_key = K)
+	deadchat_broadcast(rendered, follow_target = src, speaker_key = K,admin_rendered)
 
 /mob/proc/check_emote(message)
 	if(copytext(message, 1, 2) == "*")
