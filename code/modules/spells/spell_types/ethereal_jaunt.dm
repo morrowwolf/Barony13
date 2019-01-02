@@ -33,7 +33,7 @@
 		return
 
 	if(W.power < bones_required)
-		to_chat(user, "Not enough power to jaunt!")
+		to_chat(user, SPAN_WARNING("Not enough power to jaunt!"))
 		return
 
 	playsound(get_turf(user), 'sound/magic/ethereal_enter.ogg', 50, 1, -1)

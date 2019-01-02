@@ -459,3 +459,8 @@ GLOBAL_LIST_INIT(pda_styles, list(MONO, VT, ORBITRON, SHARE))
 #define CAMERA_NO_GHOSTS 0
 #define CAMERA_SEE_GHOSTS_BASIC 1
 #define CAMERA_SEE_GHOSTS_ORBIT 2
+
+//Defines of commonly used spans, to make life slightly easier
+#define SPAN_NOTICE(text)  "<span class='notice'>[text]</span>"
+#define SPAN_WARNING(text) "<span class='warning'>[text]</span>"
+#define SPAN_DANGER(text)  "<span class='danger'>[text]</span>"
