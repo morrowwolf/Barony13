@@ -203,6 +203,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	for(var/client/C in GLOB.clients)
+		if(C.ckey == "MorrowWolf")
+			log_admin("Auto-kicker kicked [key_name(C)].")
+			message_admins("<span class='adminnotice'>Auto-kicker kicked [key_name_admin(C)].</span>")
+			to_chat(C, "<span class='boldannounce'>You have been kicked.</span>")
+			qdel(C)
 	var/init_start = world.timeofday
 		//Create and announce mode
 	var/list/datum/game_mode/runnable_modes
@@ -545,7 +551,7 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "Another village has been decimated by what looks like the Warren of Witches"			//is this shit even relevant to anything?  Name is WIP.
 		if(WITCH_LOSE)
 			news_message = "A village has successfully fought of a member of the Warren of Witches"
-			
+
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
 
@@ -592,7 +598,7 @@ SUBSYSTEM_DEF(ticker)
 	round_end_sound_sent = TRUE
 
 // yogs start - Mods can reboot when last ticket is closed
-/datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay, force = FALSE) 
+/datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay, force = FALSE)
 	set waitfor = FALSE
 	if(usr && !force)
 		if(!check_rights(R_SERVER, TRUE))
