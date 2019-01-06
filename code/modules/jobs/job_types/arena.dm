@@ -12,9 +12,6 @@ Arena guys
 	selection_color = "#dddddd"
 	outfit = /datum/outfit/job/peasant
 
-/datum/job/peasant/after_spawn(mob/living/carbon/human/H, mob/M)
-	handle_arena_spawn(H)
-
 /datum/job/peasant/override_latejoin_spawn(mob/living/carbon/human/H)
 	return TRUE
 
@@ -44,7 +41,6 @@ Arena guys
 	outfit = /datum/outfit/job/knight
 
 /datum/job/knight/after_spawn(mob/living/carbon/human/H, mob/M)
-	handle_arena_spawn(H)
 	//Now lets add a thing before their names to make them more honourable or some shit
 	if(H.gender == FEMALE)
 		H.real_name = "Dame [H.real_name]"
@@ -73,15 +69,3 @@ Arena guys
 
 /datum/outfit/job/knight/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	return
-
-/datum/job/proc/handle_arena_spawn(mob/living/carbon/human/H)
-	var/destination = /area/barony/inside
-	var/turf/T
-	var/safety = 0
-	while(safety < 40)
-		T = safepick(get_area_turfs(destination))
-		if(T && !H.Move(T))
-			safety += 1
-			continue
-		else
-			break
