@@ -544,7 +544,7 @@ SUBSYSTEM_DEF(ticker)
 		if(WITCH_WIN)
 			news_message = "Another village has been decimated by what looks like the Warren of Witches"			//is this shit even relevant to anything?  Name is WIP.
 		if(WITCH_LOSE)
-			news_message = "A village has successfully fought of a member of the Warren of Witches"
+			news_message = "A village has successfully fought off a member of the Warren of Witches"
 			
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
