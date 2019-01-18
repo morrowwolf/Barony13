@@ -1071,7 +1071,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
 		return
-	H.facial_hair_style = "Shaved"
+	H.change_facial_hair("Shaved")
 	H.hair_style = "Bald"
 	H.update_hair()
 

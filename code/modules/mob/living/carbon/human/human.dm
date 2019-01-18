@@ -21,7 +21,7 @@
 		set_species(dna.species.type)
 
 	guaranteed_butcher_results = dna.species.species_butcher_results
-		
+
 	//initialise organs
 	create_internal_organs() //most of it is done in set_species now, this is only for parent call
 	physiology = new()
@@ -191,7 +191,7 @@
 		if (org.bandaged)
 			dat += "<tr><td><i>[org.name]</i> wrapped with:</td><td><a href='byond://?src=\ref[src];unwrap=\ref[org.bandaged]'>[org.bandaged]</a></td></tr>"
 	// yogs end
-		
+
 	if(handcuffed)
 		dat += "<tr><td><B>Handcuffed:</B> <A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Remove</A></td></tr>"
 	if(legcuffed)
@@ -537,7 +537,7 @@
 			obscured |= SLOT_GLASSES
 		if(head.flags_inv & HIDEEARS)
 			obscured |= SLOT_EARS
-			
+
 	if(wear_neck)
 		if(wear_neck.flags_inv & HIDEMASK)
 			obscured |= SLOT_WEAR_MASK
@@ -630,9 +630,9 @@
 //Used for new human mobs created by cloning/goleming/podding
 /mob/living/carbon/human/proc/set_cloned_appearance()
 	if(gender == MALE)
-		facial_hair_style = "Full Beard"
+		change_facial_hair("Full Beard")
 	else
-		facial_hair_style = "Shaved"
+		change_facial_hair("Shaved")
 	hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
 	underwear = "Nude"
 	update_body()
@@ -913,6 +913,28 @@
 /mob/living/carbon/human/species/Initialize()
 	. = ..()
 	set_species(race)
+
+/mob/living/carbon/human/proc/change_facial_hair(var/new_facial_hair)
+	if(CONFIG_GET(flag/earn_your_beard))
+		for(var/ckey in GLOB.preferences_datums)
+			var/datum/preferences/P = GLOB.preferences_datums[ckey]
+			if(P.spawn_mob_ref == "[REF(src)]")
+				var/datum/sprite_accessory/facial_hair/beard = GLOB.facial_hair_styles_list[P.beard_level_beard]
+				var/datum/sprite_accessory/facial_hair/new_beard = GLOB.facial_hair_styles_list[new_facial_hair]
+				if(beard && new_beard)
+					var/character_slot = P.characters_spawned[P.characters_spawned.len]
+					P.load_consecutive_rounds(character_slot)
+					if(new_beard.beard_level > P.beard_level)
+						P.beard_level = 0
+						P.beard_level_beard = "Shaved"
+						to_chat(src, "<span class='notice'>As your facial hair changes, the surface of your face starts to feel extremely boring. You feel an inescapable urge to shave it off when you get back home.</span>")
+					else
+						if(new_beard.beard_level < beard.beard_level)
+							P.beard_level = new_beard.beard_level
+						P.beard_level_beard = new_facial_hair
+					P.save_consecutive_rounds(character_slot)
+				break
+	facial_hair_style = new_facial_hair
 
 /mob/living/carbon/human/species/abductor
 	race = /datum/species/abductor

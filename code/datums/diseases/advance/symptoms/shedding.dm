@@ -48,7 +48,7 @@ BONUS
 
 /datum/symptom/shedding/proc/Shed(mob/living/carbon/human/H, fullbald)
 	if(fullbald)
-		H.facial_hair_style = "Shaved"
+		H.change_facial_hair("Shaved")
 		H.hair_style = "Bald"
 	else
 		H.hair_style = "Balding Hair"

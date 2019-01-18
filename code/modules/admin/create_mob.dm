@@ -17,7 +17,7 @@
 	H.underwear = random_underwear(H.gender)
 	H.skin_tone = random_skin_tone()
 	H.hair_style = random_hair_style(H.gender)
-	H.facial_hair_style = random_facial_hair_style(H.gender)
+	H.change_facial_hair(random_facial_hair_style(H.gender))
 	H.hair_color = random_short_color()
 	H.facial_hair_color = H.hair_color
 	H.eye_color = random_eye_color()
@@ -26,8 +26,8 @@
 	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
 	H.dna.features["mcolor"] = random_short_color()
 	H.dna.features["tail_lizard"] = pick(GLOB.tails_list_lizard)
-	H.dna.features["snout"] = pick(GLOB.snouts_list) 
-	H.dna.features["horns"] = pick(GLOB.horns_list) 
+	H.dna.features["snout"] = pick(GLOB.snouts_list)
+	H.dna.features["horns"] = pick(GLOB.horns_list)
 	H.dna.features["frills"] = pick(GLOB.frills_list)
 	H.dna.features["spines"] = pick(GLOB.spines_list)
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)

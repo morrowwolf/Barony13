@@ -518,11 +518,15 @@
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face.dmi'
 	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
+	var/beard_level = 5
+	var/grow_beard = FALSE
 
 /datum/sprite_accessory/facial_hair/shaved
 	name = "Shaved"
 	icon_state = null
 	gender = NEUTER
+	beard_level = 0
+	grow_beard = TRUE
 
 /datum/sprite_accessory/facial_hair/watson
 	name = "Watson Mustache"
@@ -547,22 +551,29 @@
 /datum/sprite_accessory/facial_hair/neckbeard
 	name = "Neckbeard"
 	icon_state = "facial_neckbeard"
+	beard_level = 7
 
 /datum/sprite_accessory/facial_hair/fullbeard
 	name = "Full Beard"
 	icon_state = "facial_fullbeard"
+	grow_beard = TRUE
 
 /datum/sprite_accessory/facial_hair/longbeard
 	name = "Long Beard"
 	icon_state = "facial_longbeard"
+	grow_beard = TRUE
+	beard_level = 7
 
 /datum/sprite_accessory/facial_hair/vlongbeard
 	name = "Very Long Beard"
 	icon_state = "facial_wise"
+	grow_beard = TRUE
+	beard_level = 10
 
 /datum/sprite_accessory/facial_hair/elvis
 	name = "Elvis Sideburns"
 	icon_state = "facial_elvis"
+	beard_level = 5
 
 /datum/sprite_accessory/facial_hair/abe
 	name = "Abraham Lincoln Beard"
@@ -587,10 +598,14 @@
 /datum/sprite_accessory/facial_hair/dwarf
 	name = "Dwarf Beard"
 	icon_state = "facial_dwarf"
+	beard_level = 13
+	grow_beard = TRUE
 
 /datum/sprite_accessory/facial_hair/fiveoclock
 	name = "Five o Clock Shadow"
 	icon_state = "facial_fiveoclock"
+	grow_beard = TRUE
+	beard_level = 3
 
 /datum/sprite_accessory/facial_hair/fu
 	name = "Fu Manchu"

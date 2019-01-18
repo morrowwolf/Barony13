@@ -16,6 +16,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/last_ip
 	var/last_id
 
+	//Earn Your Beard
+	var/beard_level = 0
+	var/beard_level_beard = "Shaved"
+	var/consecutive_rounds_survived = 0
+
+	var/spawn_mob_ref = ""
+	var/list/characters_spawned = list()
+	var/list/consecutive_rounds_buffer = list()
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = null
@@ -65,6 +74,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
+	var/beard_level_enabled = FALSE		//Enables beard level
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
@@ -95,7 +105,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/job_engsec_high = 0
 	var/job_engsec_med = 0
 	var/job_engsec_low = 0
-	
+
 	var/job_arena_high = 0
 	var/job_arena_med = 0
 	var/job_arena_low = 0
@@ -125,6 +135,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/action_buttons_screen_locs = list()
 
 /datum/preferences/New(client/C)
+	beard_level_enabled = CONFIG_GET(flag/earn_your_beard)
 	parent = C
 
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -232,7 +243,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<td valign='center'>"
 
-			dat += "<div class='statusDisplay'><center><img src=previewicon.png width=[preview_icon.Width()] height=[preview_icon.Height()]></center></div>"
+			dat += "<div class='statusDisplay'><center>Rounds survived in a row: <b>[consecutive_rounds_survived]</b><BR><img src=previewicon.png width=[preview_icon.Width()] height=[preview_icon.Height()]></center></div>"
 
 			dat += "</td></tr></table>"
 
@@ -295,11 +306,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
 
 				dat += "<h3>Facial Hair Style</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
-				dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
-				dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
-
+				if(beard_level_enabled)
+					dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+					dat += "Earn your beard by surviving consecutive rounds, you will start shaven.<BR>"
+				else
+					dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
+					dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
+					dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 				dat += "</td>"
 
 			//Mutant stuff
@@ -624,7 +637,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b><a href='http://www.yogstation.net/index.php?do=donate'>Donate here</b>"
 			dat += "</tr></table>"
 		// yogs end
-		
+
 		// yogs start - Custom keybindings
 		if (4) // Keybindings
 			dat += "<center><a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a>"
@@ -639,7 +652,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				BUTTON_KEY_MOVEMENT("Move West (left)", ACTION_MOVEWEST, WEST)
 				BUTTON_KEY_MOVEMENT("Move South (down)", ACTION_MOVESOUTH, SOUTH)
 				BUTTON_KEY_MOVEMENT("Move East (right)", ACTION_MOVEEAST, EAST)
-				
+
 				BUTTON_KEY("OOC", ACTION_OOC)
 				BUTTON_KEY("LOOC", ACTION_LOOC)
 				BUTTON_KEY("Adminhelp", ACTION_AHELP)
@@ -675,7 +688,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				BUTTON_KEY("Disarm intent", ACTION_INTENTDISARM)
 				BUTTON_KEY("Grab intent", ACTION_INTENTGRAB)
 				BUTTON_KEY("Harm intent", ACTION_INTENTHARM)
-				
+
 				if(parent && parent.holder)
 					dat += "<h2>Admin</h2>"
 					BUTTON_KEY("Adminchat", ACTION_ASAY)
@@ -953,7 +966,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	job_engsec_high = 0
 	job_engsec_med = 0
 	job_engsec_low = 0
-	
+
 	job_arena_high = 0
 	job_arena_med = 0
 	job_arena_low = 0
@@ -1667,6 +1680,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
+	if(beard_level_enabled)
+		var/is_shaven = TRUE
+		load_consecutive_rounds(default_slot)
+		if(beard_level_beard)
+			var/datum/sprite_accessory/facial_hair/B = GLOB.facial_hair_styles_list[beard_level_beard]
+			if(B || beard_level_beard == "Shaved") //Shaved doesn't have a datum. That fucker.
+				var/datum/sprite_accessory/facial_hair/nB
+				for(var/beard in GLOB.facial_hair_styles_list)
+					var/datum/sprite_accessory/facial_hair/cB = GLOB.facial_hair_styles_list[beard]
+					if(cB && cB.grow_beard && cB.beard_level <= beard_level && (!nB || cB.beard_level < nB.beard_level))
+						if((B && cB.beard_level > B.beard_level) || (beard_level_beard == "Shaved" && cB.beard_level > 0))
+							nB = cB
+				if(nB)
+					beard_level_beard = nB.name
+				character.facial_hair_style = beard_level_beard
+				save_consecutive_rounds(default_slot)
+				is_shaven = FALSE
+		if(is_shaven)
+			beard_level_beard = "Shaved"
+			character.facial_hair_style = beard_level_beard
 	character.underwear = underwear
 	character.undershirt = undershirt
 	character.socks = socks

@@ -7,6 +7,9 @@
 	record_nuke_disk_location()
 	var/json_file = file("[GLOB.log_directory]/round_end_data.json")
 	var/list/file_data = list("escapees" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "abandoned" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "ghosts" = list(), "additional data" = list())
+	var/list/survivors = list()
+	var/list/escapees = list()
+	var/list/shuttle_escapees = list()
 	var/num_survivors = 0
 	var/num_escapees = 0
 	var/num_shuttle_escapees = 0
@@ -21,7 +24,7 @@
 			continue
 		if(m.mind)
 			if(m.stat != DEAD && !isbrain(m) && !iscameramob(m))
-				num_survivors++
+				survivors += m
 			mob_data += list("name" = m.name, "ckey" = ckey(m.mind.key))
 			if(isobserver(m))
 				escaped = "ghosts"
@@ -47,9 +50,9 @@
 		if(!escaped)
 			if(EMERGENCY_ESCAPED_OR_ENDGAMED && (m.onCentCom() || m.onSyndieBase()))
 				escaped = "escapees"
-				num_escapees++
+				escapees += m
 				if(shuttle_areas[get_area(m)])
-					num_shuttle_escapees++
+					shuttle_escapees += m
 			else
 				escaped = "abandoned"
 		if(!m.mind && (!ishuman(m) || !issilicon(m)))
@@ -68,6 +71,39 @@
 					mob_data += list("name" = m.name, "typepath" = m.type)
 				var/pos = length(file_data["[escaped]"]["[category]"]) + 1
 				file_data["[escaped]"]["[category]"]["[pos]"] = mob_data
+
+	num_survivors = survivors.len
+	num_escapees = escapees.len
+	num_shuttle_escapees = shuttle_escapees.len
+	if(!GLOB.survival_streak_frozen)
+		for(var/ckey in GLOB.preferences_datums)
+			var/datum/preferences/P = GLOB.preferences_datums[ckey]
+			if(P.characters_spawned.len)
+				var/survived = FALSE
+				for(var/survivor in survivors)
+					if("[REF(survivor)]" == P.spawn_mob_ref)
+						var/slot = P.characters_spawned[P.characters_spawned.len]
+						P.load_consecutive_rounds(slot)
+						survived = TRUE
+						if(P.beard_level_enabled)
+							P.beard_level++
+						P.consecutive_rounds_survived++
+						P.save_consecutive_rounds(slot, to_buffer = FALSE)
+						break
+				var/spawned_chars_num = P.characters_spawned.len
+				var/list/reset_chars = P.characters_spawned.Copy(1, (spawned_chars_num+(survived ? 0 : 1)))
+				var/old_beard_level = P.beard_level
+				var/old_consecutive_rounds_survived = P.consecutive_rounds_survived
+				for(var/character in reset_chars)
+					P.load_consecutive_rounds(character)
+					P.beard_level = 0
+					P.consecutive_rounds_survived = 0
+					P.beard_level_beard = "Shaved"
+					P.save_consecutive_rounds(character, to_buffer = FALSE)
+				if(survived)
+					P.beard_level = old_beard_level
+					P.consecutive_rounds_survived = old_consecutive_rounds_survived
+
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
 	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
