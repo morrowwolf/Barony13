@@ -23,6 +23,11 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return
 	if(message == "" || !message)
 		return
+	
+	/*
+	if(usr.job && usr.job.chatter_voice)
+		chatter(message,usr.job.chatter_voice,usr)
+	*/
 	var/list/spans = get_spans()
 	if(!language)
 		language = get_default_language()

@@ -1,39 +1,40 @@
 /proc/chatter(message, phomeme, atom/A)
-	// We want to transform any message into a list of numbers
-	// and punctuation marks
+	// We want to transform any message into a list of numbers, stored in $letter_count.
 	// For example:
-	// "Hi." -> [2, '.']
+	// "Hi." -> [2]
 	// "HALP GEROGE MELLONS, that swine, is GRIFFIN ME!"
-	// -> [4, 6, 7, ',', 4, 5, ',', '2', 7, 2, '!']
-	// "fuck,thissentenceissquashed" -> [4, ',', 21]
+	// -> [4, 6, 7, 4, 5, '2', 7, 2]
+	// "fuck,thissentenceissquashed" -> [4, 21]
 
-	var/list/punctuation = list(",",":",";",".","?","!","\'","-")
-	var/regex/R = regex("(\[\\l\\d]*)(\[^\\l\\d\\s])?", "g")
+	// Original regex text:  / ([a-z\d]+)([\.\?\!\'\-;,])? /gi
+	// You can test it here: https://regex101.com/r/qeiVs2/3/
+	var/regex/R = regex("(\[a-z\\d]+)(\[\\.\\?\\!\\'\\-;,])?", "gi")
 	var/list/letter_count = list()
-	while(R.Find(message) != 0)
-		if(R.group[1])
-			letter_count += length(R.group[1])
+	var/list/puncts = list() // A list storing, for each word, what punctuation thing comes after that word. If no such thing exists, the value is FALSE.
+
+	while(R.Find(message) != 0) // As long as we keep finding words
+		letter_count += length(R.group[1])
 		if(R.group[2])
-			letter_count += R.group[2]
+			puncts += R.group[2]
+		else
+			puncts += FALSE
 
 	spawn(0)
-		for(var/item in letter_count)
-			if (item in punctuation)
-				// simulate pausing in talking
-				// ignore semi-colons because of their use in HTML escaping
-				if (item in list(",", ":"))
+		for(var/i in 1 to letter_count.len)
+			var/word = letter_count[i]
+			var/wordlength = min(word, 10)
+			chatter_speak_word(A.loc, phomeme, wordlength)
+			
+			if(puncts[i]) // If this word had a punctuation thing after it
+				var/punc = puncts[i]
+				if (punc in list(",", ":",";"))
 					sleep(3)
-				if (item in list("!", "?", "."))
+				else if (punc in list("!", "?", "."))
 					sleep(6)
-				continue
-
-			if(isnum(item))
-				var/length = min(item, 10)
-				if (length == 0)
-					// "verbalise" long spaces
+				else
 					sleep(1)
-				chatter_speak_word(A.loc, phomeme, length)
-
+			else
+				sleep(1)
 /proc/chatter_speak_word(loc, phomeme, length)
 	var/path = "sound/chatter/[phomeme]_[length].ogg"
 
@@ -43,14 +44,15 @@
 	sleep((length + 1) * chatter_get_sleep_multiplier(phomeme))
 
 /proc/chatter_get_sleep_multiplier(phomeme)
-	// These values are tenths of seconds, so 0.5 == 0.05seconds
-	. = 1
+	// By the way dude, these values are tenths of seconds, so 0.5 == 0.05seconds
 	switch(phomeme)
 		if("papyrus")
-			. = 0.5
+			return 0.5
 		if("griffin")
-			. = 0.5
+			return 0.5
 		if("sans")
-			. = 0.7
+			return 0.7
 		if("owl")
-			. = 0.7
+			return 0.7
+		else
+			return 1
